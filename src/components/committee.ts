@@ -52,8 +52,13 @@ export function renderCommittee(): HTMLElement {
             <div class="expert-card">
               <div class="expert-glow"></div>
               <div class="expert-top">
-                <span class="expert-badge">${exp.badge}</span>
-                <div class="expert-globe-icon">🌐</div>
+                <div class="expert-avatar ${exp.image ? 'has-img' : ''}">
+                  ${exp.image ? `<img src="${exp.image}" alt="${exp.name}" class="person-img" />` : `<span class="avatar-initials">${getInitials(exp.name)}</span>`}
+                </div>
+                <div class="expert-badges">
+                  <span class="expert-badge">${exp.badge}</span>
+                  <div class="expert-globe-icon">🌐</div>
+                </div>
               </div>
               <h4 class="expert-name">${exp.name}</h4>
               <p class="expert-role">${exp.role}</p>
@@ -70,8 +75,8 @@ export function renderCommittee(): HTMLElement {
         <div class="leadership-grid">
           ${leadership.map(l => `
             <div class="leader-card">
-              <div class="leader-avatar">
-                <span class="avatar-initials">${getInitials(l.name)}</span>
+              <div class="leader-avatar ${l.image ? 'has-img' : ''}">
+                ${l.image ? `<img src="${l.image}" alt="${l.name}" class="person-img" />` : `<span class="avatar-initials">${getInitials(l.name)}</span>`}
               </div>
               <div class="leader-info">
                 <span class="leader-badge">${l.badge}</span>
@@ -90,7 +95,12 @@ export function renderCommittee(): HTMLElement {
         <div class="faculty-grid">
           ${organizing.map(f => `
             <div class="faculty-card">
-              <span class="faculty-role-tag">${f.role}</span>
+              <div class="faculty-card-header">
+                <div class="faculty-avatar ${f.image ? 'has-img' : ''}">
+                  ${f.image ? `<img src="${f.image}" alt="${f.name}" class="person-img" />` : `<span class="avatar-initials">${getInitials(f.name)}</span>`}
+                </div>
+                <span class="faculty-role-tag">${f.role}</span>
+              </div>
               <h4 class="faculty-name">${f.name}</h4>
               <p class="faculty-desig">${f.designation}</p>
               <p class="faculty-org">${f.organization}</p>
@@ -105,7 +115,12 @@ export function renderCommittee(): HTMLElement {
         <div class="eval-grid">
           ${evaluation.map(ev => `
             <div class="eval-card">
-              <span class="eval-role-tag">${ev.role}</span>
+              <div class="eval-card-header">
+                <div class="eval-avatar ${ev.image ? 'has-img' : ''}">
+                  ${ev.image ? `<img src="${ev.image}" alt="${ev.name}" class="person-img" />` : `<span class="avatar-initials">${getInitials(ev.name)}</span>`}
+                </div>
+                <span class="eval-role-tag">${ev.role}</span>
+              </div>
               <h4 class="eval-name">${ev.name}</h4>
               <p class="eval-desig">${ev.designation}</p>
             </div>

@@ -461,7 +461,7 @@ export const COMMITTEE: CommitteeMember[] = [
     organization: 'Galgotias University, India',
     category: 'patron',
     badge: 'Pro-VC',
-    image: '/images/Prof. (Dr.) Avadhesh Kumar.jpg'
+    image: '/images/Prof. (Dr.) Avadhesh Kumar.png'
   },
   {
     name: 'Prof. (Dr.) Nitin Gaur',
@@ -478,7 +478,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'CEO, CleverInsight | Former Advisor, BrightInsight (San Jose) | Former CEO, Mphasis-BFL (USA)',
     organization: 'USA / Global',
     category: 'international',
-    badge: 'Silicon Valley Veteran'
+    badge: 'Silicon Valley Veteran',
+    image: '/images/kothandharman.jpg'
   },
   {
     name: 'Prof. (Dr.) Ciro Rodriguez Rodriguez',
@@ -486,7 +487,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'Director – Postgraduate Programs',
     organization: 'UNMSM University, Peru',
     category: 'international',
-    badge: 'Global Academic Advisor'
+    badge: 'Global Academic Advisor',
+    image: '/images/CIRO RODRIGUEZ RODRIGUEZ.jpg'
   },
   {
     name: 'Prof. (Dr.) Manish Raj',
@@ -494,7 +496,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'Dean, School of Artificial Intelligence',
     organization: 'Galgotias University, India',
     category: 'leadership',
-    badge: 'Dean SoAI'
+    badge: 'Dean SoAI',
+    image: '/images/manish.jpg'
   },
   {
     name: 'Prof. (Dr.) Saurabh Singh',
@@ -502,7 +505,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'Associate Dean, Department of AI & Data Science',
     organization: 'Galgotias University, India',
     category: 'leadership',
-    badge: 'Associate Dean'
+    badge: 'Associate Dean',
+    image: '/images/saurabh.jpg'
   },
   {
     name: 'Dr. Vartika Puri',
@@ -510,7 +514,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'Convener – 30-Day Innovation Challenge',
     organization: 'Department of AI & Data Science, SoAI, Galgotias University',
     category: 'challenge',
-    badge: '30-Day Challenge Lead'
+    badge: '30-Day Challenge Lead',
+    image: '/images/Vartika.jpg'
   },
   {
     name: 'Dr. Manu Singh',
@@ -518,7 +523,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'Faculty, Department of AI & Data Science',
     organization: 'Galgotias University, India',
     category: 'organizing',
-    badge: 'Convener'
+    badge: 'Convener',
+    image: '/images/manu.jpg'
   },
   {
     name: 'Dr. Isha Chopra',
@@ -526,7 +532,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'Faculty, Department of AI & Data Science',
     organization: 'Galgotias University, India',
     category: 'organizing',
-    badge: 'Co-Convener'
+    badge: 'Co-Convener',
+    image: '/images/isha.jpg'
   },
   {
     name: 'Dr. Amit Batra',
@@ -534,7 +541,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'Faculty, Department of AI & Data Science',
     organization: 'Galgotias University, India',
     category: 'organizing',
-    badge: 'Technical Lead'
+    badge: 'Technical Lead',
+    image: '/images/amit.jpg'
   },
   {
     name: 'Ms. Meenakshi Srivastava',
@@ -542,7 +550,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'Faculty, Department of AI & Data Science',
     organization: 'Galgotias University, India',
     category: 'organizing',
-    badge: 'Publications Lead'
+    badge: 'Publications Lead',
+    image: '/images/Meena.jpg'
   },
   {
     name: 'Dr. Shachi Mall',
@@ -550,7 +559,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'Department of AI and Data Science, SoAI',
     organization: 'Galgotias University, India',
     category: 'evaluation',
-    badge: 'Evaluation Lead'
+    badge: 'Evaluation Lead',
+    image: '/images/shachi.jpg.jpg'
   },
   {
     name: 'Dr. Anuradha',
@@ -566,7 +576,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'Department of AI and Data Science, SoAI',
     organization: 'Galgotias University, India',
     category: 'evaluation',
-    badge: 'Evaluation'
+    badge: 'Evaluation',
+    image: '/images/vipin.jpg'
   }
 ];
 

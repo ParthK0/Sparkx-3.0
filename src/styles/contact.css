@@ -89,6 +89,28 @@
   margin-bottom: 8px;
 }
 
+.coord-card-body {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.coord-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.35);
+}
+
+.coord-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .coord-name {
   font-size: 1.15rem;
   font-weight: 700;
