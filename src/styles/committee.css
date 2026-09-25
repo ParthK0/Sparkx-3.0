@@ -1,0 +1,229 @@
+/* ==========================================================================
+   SparkX 3.0 — Leadership & Committee Styles
+   ========================================================================== */
+
+.committee-tier {
+  margin-bottom: 48px;
+}
+
+.tier-label {
+  font-size: 1.35rem;
+  margin-bottom: 20px;
+  border-left: 3px solid var(--gold);
+  padding-left: 12px;
+}
+
+.patrons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.patron-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.patron-avatar, .leader-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid var(--gold-light);
+}
+
+.patron-avatar.has-img {
+  overflow: hidden;
+  background: transparent;
+}
+
+.patron-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.avatar-initials {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.member-badge, .leader-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.member-name, .leader-name {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.member-designation, .leader-desig {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.member-org, .leader-org {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.intl-tier-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.tier-pill-gold {
+  background: var(--gold);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.intl-experts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.expert-card {
+  background: linear-gradient(180deg, rgba(30, 58, 138, 0.25) 0%, rgba(14, 25, 52, 0.85) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  position: relative;
+  transition: all var(--transition-smooth);
+}
+
+.expert-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--blue-neon);
+}
+
+.expert-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.expert-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--blue-neon);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.expert-globe-icon {
+  font-size: 1.3rem;
+}
+
+.expert-name {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.expert-role {
+  color: var(--gold-light);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.expert-designation {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.expert-org {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.leader-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.faculty-grid, .eval-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.faculty-card, .eval-card {
+  background: rgba(14, 25, 52, 0.5);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+
+.faculty-role-tag, .eval-role-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--blue-neon);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.faculty-name, .eval-name {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.faculty-desig, .eval-desig {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.faculty-org {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+@media (max-width: 1024px) {
+  .patrons-grid {
+    grid-template-columns: 1fr;
+  }
+  .intl-experts-grid {
+    grid-template-columns: 1fr;
+  }
+  .leadership-grid {
+    grid-template-columns: 1fr;
+  }
+}

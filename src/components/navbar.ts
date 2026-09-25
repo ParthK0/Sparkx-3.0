@@ -18,6 +18,7 @@ export function renderNavbar(): HTMLElement {
     <div class="main-nav-bar">
       <div class="container nav-content">
         <a href="#hero" class="brand-logo" aria-label="SparkX 3.0 Home">
+          <img src="/images/galgotias%20univeristy.png" alt="Galgotias University" class="navbar-uni-logo" />
           <div class="brand-badge">3.0</div>
           <div class="brand-text">
             <span class="brand-title">SPARK<span class="gold-gradient">X</span></span>

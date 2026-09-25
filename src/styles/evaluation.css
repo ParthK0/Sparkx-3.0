@@ -1,0 +1,209 @@
+/* ==========================================================================
+   SparkX 3.0 — Evaluation, Deliverables & Opportunities Styles
+   ========================================================================== */
+
+.deliverables-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  margin-bottom: 56px;
+}
+
+.deliv-header {
+  margin-bottom: 28px;
+}
+
+.deliv-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.deliv-title {
+  font-size: 1.5rem;
+  margin: 4px 0 6px 0;
+}
+
+.deliv-sub {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.deliv-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.deliv-card {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+}
+
+.deliv-card.highlight-card {
+  border-color: var(--gold);
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.deliv-icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.deliv-name {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.deliv-info {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.rubric-block {
+  margin-bottom: 56px;
+}
+
+.rubric-heading {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.rubric-sub {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-bottom: 28px;
+}
+
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.criterion-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+}
+
+.crit-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.crit-num {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--gold-light);
+}
+
+.crit-metric {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--blue-neon);
+  background: rgba(56, 189, 248, 0.1);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.crit-title {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.crit-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.opp-inner-card {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(14, 25, 52, 0.9) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+}
+
+.opp-inner-card.card-blue-theme {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(14, 25, 52, 0.9) 100%);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.opp-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.opp-heading {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.opp-sub {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-bottom: 24px;
+}
+
+.opp-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.opp-chip {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 0.84rem;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .deliv-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .criteria-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .opp-chips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .deliv-grid {
+    grid-template-columns: 1fr;
+  }
+  .criteria-grid {
+    grid-template-columns: 1fr;
+  }
+  .opp-chips-grid {
+    grid-template-columns: 1fr;
+  }
+  .deliverables-box {
+    padding: 24px;
+  }
+  .opp-inner-card {
+    padding: 24px;
+  }
+}

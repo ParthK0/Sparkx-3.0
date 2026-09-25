@@ -1,0 +1,162 @@
+/* ==========================================================================
+   SparkX 3.0 — Timeline Styles
+   ========================================================================== */
+
+.timeline-container {
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.timeline-nodes-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.timeline-node {
+  display: flex;
+  flex-direction: column;
+}
+
+.node-marker {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.node-marker::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 36px;
+  right: -16px;
+  height: 2px;
+  background: var(--border-card);
+  z-index: 0;
+}
+
+.timeline-node:last-child .node-marker::after {
+  display: none;
+}
+
+.node-bullet {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--border-card);
+  color: var(--text-muted);
+  font-weight: 800;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-node.current-node .node-bullet {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: #000;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.5);
+}
+
+.node-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  padding: 20px 16px;
+  flex-grow: 1;
+}
+
+.node-date-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 6px;
+}
+
+.node-title {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.node-description {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.node-reconcile-note {
+  margin-top: 10px;
+  padding: 8px;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--gold-light);
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.timeline-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.timeline-day-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.timeline-day-card.day-highlight {
+  border-color: var(--blue-neon);
+}
+
+.day-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--gold-light);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.day-badge.badge-blue {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--blue-neon);
+}
+
+.day-title {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.day-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.timeline-bottom-cta {
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .timeline-nodes-wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .node-marker::after {
+    display: none;
+  }
+}

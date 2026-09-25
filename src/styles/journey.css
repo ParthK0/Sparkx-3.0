@@ -1,0 +1,147 @@
+/* ==========================================================================
+   SparkX 3.0 — Innovation Journey Styles
+   ========================================================================== */
+
+.journey-track-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.journey-step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.journey-step-card.highlight-step {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.1) 0%, rgba(14, 25, 52, 0.9) 100%);
+}
+
+.step-badge-circle {
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  margin-bottom: 12px;
+}
+
+.step-subtitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 700;
+  display: block;
+}
+
+.step-title {
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+}
+
+.step-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.outcome-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blue-neon);
+  background: rgba(56, 189, 248, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.submission-expectations-box {
+  background: rgba(10, 19, 41, 0.9);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 32px;
+}
+
+.expectations-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.exp-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exp-title {
+  font-size: 1.3rem;
+}
+
+.exp-sub {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.expectations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.exp-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 16px;
+  border-radius: var(--radius-sm);
+}
+
+.exp-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--gold);
+  border-radius: 50%;
+  margin-top: 6px;
+}
+
+.exp-item strong {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.exp-item p {
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  margin-top: 4px;
+}
+
+@media (max-width: 1024px) {
+  .journey-track-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .expectations-grid {
+    grid-template-columns: 1fr;
+  }
+  .submission-expectations-box {
+    padding: 20px;
+  }
+}
