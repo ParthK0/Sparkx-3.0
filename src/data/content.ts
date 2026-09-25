@@ -568,7 +568,8 @@ export const COMMITTEE: CommitteeMember[] = [
     designation: 'Department of AI and Data Science, SoAI',
     organization: 'Galgotias University, India',
     category: 'evaluation',
-    badge: 'Evaluation'
+    badge: 'Evaluation',
+    image: '/images/anuradha.png'
   },
   {
     name: 'Dr. Vipin Rai',
