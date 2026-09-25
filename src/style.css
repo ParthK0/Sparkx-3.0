@@ -1,12 +1,14 @@
 /* ==========================================================================
    SparkX 3.0 — Master Stylesheet Index (Modular Section-Based Architecture)
-   Theme: Deep Navy Academic Prestige with Gold & Electric Blue Accents
+   Clean Academic White Theme with Solid Colors & Gateway Flows
    ========================================================================== */
 
 @import './styles/base.css';
+@import './styles/loadingGateway.css';
 @import './styles/navbar.css';
 @import './styles/hero.css';
 @import './styles/countdown.css';
+@import './styles/flyerOverview.css';
 @import './styles/about.css';
 @import './styles/journey.css';
 @import './styles/tracks.css';
@@ -19,3 +21,7 @@
 @import './styles/faq.css';
 @import './styles/contact.css';
 @import './styles/footer.css';
+@import './styles/networkStatus.css';
+@import './styles/notFound.css';
+@import './styles/registerPage.css';
+@import './styles/challengesEvaluationPage.css';

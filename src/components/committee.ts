@@ -1,5 +1,13 @@
 import { COMMITTEE } from '../data/content';
 
+function renderPersonAvatar(image?: string, name: string = '', cssClass: string = 'person-img'): string {
+  const initials = getInitials(name);
+  if (!image) {
+    return `<span class="avatar-initials">${initials}</span>`;
+  }
+  return `<img src="${image}" alt="${name}" class="${cssClass}" loading="lazy" onerror="this.onerror=null; this.parentElement.classList.remove('has-img'); this.parentElement.classList.add('fallback-avatar'); this.parentElement.innerHTML='<span class=\\'avatar-initials\\'>${initials}</span>';" />`;
+}
+
 export function renderCommittee(): HTMLElement {
   const section = document.createElement('section');
   section.className = 'committee-section section-padding';
@@ -28,7 +36,7 @@ export function renderCommittee(): HTMLElement {
           ${patrons.map(p => `
             <div class="patron-card">
               <div class="patron-avatar ${p.image ? 'has-img' : ''}">
-                ${p.image ? `<img src="${p.image}" alt="${p.name}" class="patron-img" />` : `<span class="avatar-initials">${getInitials(p.name)}</span>`}
+                ${renderPersonAvatar(p.image, p.name, 'patron-img')}
               </div>
               <div class="patron-meta">
                 <span class="member-badge">${p.badge || 'Patron'}</span>
@@ -53,7 +61,7 @@ export function renderCommittee(): HTMLElement {
               <div class="expert-glow"></div>
               <div class="expert-top">
                 <div class="expert-avatar ${exp.image ? 'has-img' : ''}">
-                  ${exp.image ? `<img src="${exp.image}" alt="${exp.name}" class="person-img" />` : `<span class="avatar-initials">${getInitials(exp.name)}</span>`}
+                  ${renderPersonAvatar(exp.image, exp.name, 'person-img')}
                 </div>
                 <div class="expert-badges">
                   <span class="expert-badge">${exp.badge}</span>
@@ -76,7 +84,7 @@ export function renderCommittee(): HTMLElement {
           ${leadership.map(l => `
             <div class="leader-card">
               <div class="leader-avatar ${l.image ? 'has-img' : ''}">
-                ${l.image ? `<img src="${l.image}" alt="${l.name}" class="person-img" />` : `<span class="avatar-initials">${getInitials(l.name)}</span>`}
+                ${renderPersonAvatar(l.image, l.name, 'person-img')}
               </div>
               <div class="leader-info">
                 <span class="leader-badge">${l.badge}</span>
@@ -97,7 +105,7 @@ export function renderCommittee(): HTMLElement {
             <div class="faculty-card">
               <div class="faculty-card-header">
                 <div class="faculty-avatar ${f.image ? 'has-img' : ''}">
-                  ${f.image ? `<img src="${f.image}" alt="${f.name}" class="person-img" />` : `<span class="avatar-initials">${getInitials(f.name)}</span>`}
+                  ${renderPersonAvatar(f.image, f.name, 'person-img')}
                 </div>
                 <span class="faculty-role-tag">${f.role}</span>
               </div>
@@ -117,7 +125,7 @@ export function renderCommittee(): HTMLElement {
             <div class="eval-card">
               <div class="eval-card-header">
                 <div class="eval-avatar ${ev.image ? 'has-img' : ''}">
-                  ${ev.image ? `<img src="${ev.image}" alt="${ev.name}" class="person-img" />` : `<span class="avatar-initials">${getInitials(ev.name)}</span>`}
+                  ${renderPersonAvatar(ev.image, ev.name, 'person-img')}
                 </div>
                 <span class="eval-role-tag">${ev.role}</span>
               </div>

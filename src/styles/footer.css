@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SparkX 3.0 — Footer Styles (Clean White Theme)
+   SparkX 3.0 — Footer Styles (Clean White Theme with Venue Location Card)
    ========================================================================== */
 
 .site-footer {
@@ -7,11 +7,12 @@
   border-top: 2px solid var(--border-card);
   padding: 72px 0 32px 0;
   color: #334155;
+  position: relative;
 }
 
 .footer-top-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
   gap: 40px;
   margin-bottom: 48px;
 }
@@ -24,13 +25,87 @@
   font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .footer-org-meta {
   font-size: 0.82rem;
   color: var(--text-dim);
   line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   Venue Google Maps Card in Footer
+   ========================================================================== */
+
+.footer-location-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  margin-top: 12px;
+}
+
+.footer-location-card:hover {
+  border-color: var(--theme-major);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.footer-loc-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.loc-pin-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #c0262d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid #fee2e2;
+}
+
+.loc-heading {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #0b1a3d;
+  display: block;
+}
+
+.loc-coords {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.footer-loc-address {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.footer-maps-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  width: 100%;
+  justify-content: center;
+  padding: 8px 12px;
 }
 
 .footer-col-title {
@@ -50,6 +125,7 @@
 .footer-links-list a {
   font-size: 0.88rem;
   color: #475569;
+  text-decoration: none;
   transition: color var(--transition-fast);
 }
 
@@ -74,29 +150,58 @@
   background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
-  padding: 12px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   box-shadow: var(--shadow-sm);
 }
 
 .coord-compact-title {
   font-size: 0.72rem;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--theme-major);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.footer-inquiries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-inquiry-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footer-inquiry-name {
+  font-size: 0.8rem;
   font-weight: 700;
+  color: #0b1a3d;
 }
 
 .coord-compact-mail {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--theme-major);
-  font-weight: 700;
+  font-weight: 600;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.coord-compact-mail:hover {
+  text-decoration: underline;
 }
 
 .coord-compact-phone {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .footer-bottom-bar {
@@ -109,6 +214,23 @@
   gap: 16px;
   font-size: 0.82rem;
   color: var(--text-dim);
+}
+
+.footer-loc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-loc-link:hover {
+  color: var(--theme-major);
+}
+
+.footer-loc-link svg {
+  color: #c0262d;
 }
 
 @media (max-width: 1024px) {

@@ -111,56 +111,100 @@
   border: 1px solid var(--border-card);
   border-left: 4px solid var(--theme-major);
   border-radius: var(--radius-sm);
-  padding: 20px;
+  padding: 20px 24px;
   box-shadow: var(--shadow-sm);
 }
 
-.coord-label {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  color: var(--theme-major);
-  letter-spacing: 0.08em;
-  margin-bottom: 8px;
-  font-weight: 800;
-}
-
-.coord-card-body {
+.coord-label-row {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-.coord-avatar {
-  width: 60px;
-  height: 60px;
+.coord-label-icon {
+  font-size: 1.1rem;
+}
+
+.coord-label {
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  color: #0b1a3d;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  margin: 0;
+}
+
+.inquiry-contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inquiry-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.inquiry-contact-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.inquiry-contact-num {
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  border: 2px solid var(--theme-major);
-  overflow: hidden;
+  background: var(--theme-badge-bg);
+  color: var(--theme-major);
+  border: 1.5px solid var(--theme-border);
+  font-weight: 800;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
-.coord-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.inquiry-contact-content {
+  flex: 1;
+}
+
+.coord-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2px;
 }
 
 .coord-name {
-  font-size: 1.15rem;
+  font-size: 1.02rem;
   font-weight: 800;
   color: #0b1a3d;
 }
 
-.coord-role {
-  font-size: 0.88rem;
-  color: var(--theme-minor);
+.coord-badge {
+  font-size: 0.7rem;
   font-weight: 700;
+  background: #f1f5f9;
+  color: var(--text-dim);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-card);
 }
 
-.coord-dept {
+.coord-role {
   font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-bottom: 12px;
+  color: var(--theme-minor);
+  font-weight: 600;
+  margin-bottom: 6px;
 }
 
 .coord-links {
@@ -247,6 +291,11 @@
 .institutional-seal-box {
   border-top: 1px solid var(--border-subtle);
   padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .seal-host {
@@ -268,6 +317,15 @@
   font-size: 0.82rem;
   color: var(--text-muted);
 }
+
+.venue-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
 
 @media (max-width: 1024px) {
   .contact-grid {

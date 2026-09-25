@@ -1,5 +1,6 @@
-import { CHALLENGES, EVENT_DETAILS } from '../data/content';
-import { Challenge } from '../types';
+import { appState } from '../state';
+import { CHALLENGES } from '../data/content';
+import { Challenge, Audience } from '../types';
 
 export function renderChallenges(): HTMLElement {
   const section = document.createElement('section');
@@ -8,12 +9,11 @@ export function renderChallenges(): HTMLElement {
 
   section.innerHTML = `
     <div class="container">
-      <div class="section-title-area text-center">
-        <span class="section-badge badge-blue">International 30-Day Sprint</span>
-        <h2 class="section-heading">Choose Your AI Challenge Track</h2>
-        <p class="section-subheading">
-          Four mission-critical problem domains. Teams are challenged to build end-to-end deployable intelligence 
-          spanning intuitive user interfaces, agentic pipelines, and production backend architectures.
+      <div class="section-title-area text-center" id="challenges-title-area">
+        <span class="section-badge badge-gold" id="ch-badge">🇮🇳 National 30-Day Sprint</span>
+        <h2 class="section-heading" id="ch-heading">AI Challenge Problem Domains</h2>
+        <p class="section-subheading" id="ch-subheading">
+          Four mission-critical problem domains. Build end-to-end deployable systems evaluated live on campus at Galgotias University.
         </p>
       </div>
 
@@ -30,8 +30,8 @@ export function renderChallenges(): HTMLElement {
         </div>
         <div class="framework-metric">
           <span class="metric-label">Evaluation Mode</span>
-          <span class="metric-val">Online (Intl) / Offline (India)</span>
-          <span class="metric-sub">Live Jury Demonstration</span>
+          <span class="metric-val" id="ch-eval-mode">Offline (Galgotias Campus)</span>
+          <span class="metric-sub" id="ch-eval-sub">Live Expo Presentation</span>
         </div>
         <div class="framework-metric">
           <span class="metric-label">Core Deliverables</span>
@@ -57,8 +57,37 @@ export function renderChallenges(): HTMLElement {
   `;
 
   setupChallengesModal(section);
+  setupChallengesAudience(section);
 
   return section;
+}
+
+function setupChallengesAudience(section: HTMLElement): void {
+  const badge = section.querySelector('#ch-badge') as HTMLElement;
+  const heading = section.querySelector('#ch-heading') as HTMLElement;
+  const subheading = section.querySelector('#ch-subheading') as HTMLElement;
+  const evalMode = section.querySelector('#ch-eval-mode') as HTMLElement;
+  const evalSub = section.querySelector('#ch-eval-sub') as HTMLElement;
+
+  const update = (audience: Audience) => {
+    if (audience === 'india') {
+      badge.textContent = '🇮🇳 National 30-Day Sprint';
+      badge.className = 'section-badge badge-gold';
+      heading.textContent = 'National AI Challenge Problem Domains';
+      subheading.textContent = 'Four mission-critical problem domains for Indian university teams. Construct deployable prototypes showcased on-campus at Galgotias University.';
+      if (evalMode) evalMode.textContent = 'Offline (Galgotias Campus)';
+      if (evalSub) evalSub.textContent = 'Physical Exhibition Stalls';
+    } else {
+      badge.textContent = '🌍 International 30-Day AI Challenge';
+      badge.className = 'section-badge badge-blue';
+      heading.textContent = 'Global AI Challenge Problem Domains';
+      subheading.textContent = 'Four mission-critical problem domains for international participants. 100% online submission with virtual jury demonstration.';
+      if (evalMode) evalMode.textContent = '100% Online Virtual Demo';
+      if (evalSub) evalSub.textContent = 'Remote Jury Video Defense';
+    }
+  };
+
+  appState.subscribe(update);
 }
 
 function renderChallengeCard(ch: Challenge): string {
@@ -88,13 +117,10 @@ function renderChallengeCard(ch: Challenge): string {
       </div>
 
       <div class="ch-card-actions">
-        <button type="button" class="btn btn-secondary btn-sm view-blueprint-btn" data-id="${ch.id}">
+        <button type="button" class="btn btn-primary btn-sm view-blueprint-btn w-full" data-id="${ch.id}">
           <span>View Challenge Blueprint</span>
           <span class="arrow-anim">&rarr;</span>
         </button>
-        <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-          <span>Register</span>
-        </a>
       </div>
     </div>
   `;
@@ -153,10 +179,7 @@ function setupChallengesModal(section: HTMLElement): void {
       </div>
 
       <div class="modal-cta-footer">
-        <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg shadow-gold">
-          Register Your Team for Challenge ${ch.number} &rarr;
-        </a>
-        <button type="button" class="btn btn-secondary btn-lg" id="modal-close-action">
+        <button type="button" class="btn btn-primary btn-lg" id="modal-close-action">
           Close Blueprint
         </button>
       </div>

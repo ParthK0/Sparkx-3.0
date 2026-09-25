@@ -1,6 +1,8 @@
 import { EVENT_DETAILS } from '../data/content';
 import { appState } from '../state';
 
+export const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/Galgotias+University/@28.3646374,77.5399184,17z/data=!3m1!4b1!4m6!3m5!1s0x390cc7365a740e65:0xd0d60a62e55ab171!8m2!3d28.3646374!4d77.5399184!16s%2Fm%2F0gff9fz?hl=en&entry=ttu&g_ep=EgoyMDI2MDkyMi4wIKXMDSoASAFQAw%3D%3D';
+
 export function renderFooter(): HTMLElement {
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
@@ -8,6 +10,7 @@ export function renderFooter(): HTMLElement {
   footer.innerHTML = `
     <div class="container footer-container">
       <div class="footer-top-grid">
+        <!-- Brand & Location Column -->
         <div class="footer-brand-col">
           <div class="footer-logo">
             <span class="brand-title">SPARK<span class="gold-gradient">X</span> <span class="edition-num">3.0</span></span>
@@ -22,12 +25,38 @@ export function renderFooter(): HTMLElement {
             <p>${EVENT_DETAILS.school}</p>
             <p>${EVENT_DETAILS.university}, ${EVENT_DETAILS.location}</p>
           </div>
+
+          <!-- Official Venue Location & Google Maps Card -->
+          <div class="footer-location-card">
+            <div class="footer-loc-header">
+              <span class="loc-pin-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+              </span>
+              <div>
+                <strong class="loc-heading">Campus Venue</strong>
+                <span class="loc-coords">28.3646° N, 77.5399° E</span>
+              </div>
+            </div>
+            <p class="footer-loc-address">
+              Plot No. 2, Sector 17-A, Yamuna Expressway, Greater Noida, Gautam Buddha Nagar, Uttar Pradesh 203201
+            </p>
+            <a href="${GOOGLE_MAPS_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-theme btn-sm footer-maps-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <span>View Location on Google Maps</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+          </div>
         </div>
 
+        <!-- Program Navigation Column -->
         <div class="footer-links-col">
           <h4 class="footer-col-title">Program Navigation</h4>
           <ul class="footer-links-list">
-            <li><a href="#hero">Home</a></li>
+            <li><a href="#hero">Home & Registration</a></li>
             <li><a href="#about">About SparkX 3.0</a></li>
             <li><a href="#journey">Innovation Journey</a></li>
             <li><a href="#tracks">Program Tracks</a></li>
@@ -36,6 +65,7 @@ export function renderFooter(): HTMLElement {
           </ul>
         </div>
 
+        <!-- Important Details Column -->
         <div class="footer-links-col">
           <h4 class="footer-col-title">Important Details</h4>
           <ul class="footer-links-list">
@@ -45,9 +75,11 @@ export function renderFooter(): HTMLElement {
             <li><a href="#committee">Leadership & Committee</a></li>
             <li><a href="#faq">Frequently Asked Questions</a></li>
             <li><a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer">Official Registration Form (Google Form)</a></li>
+            <li><a href="${GOOGLE_MAPS_URL}" target="_blank" rel="noopener noreferrer">Campus Map & Directions &rarr;</a></li>
           </ul>
         </div>
 
+        <!-- Audience Selection & Inquiries Column -->
         <div class="footer-audience-col">
           <h4 class="footer-col-title">Audience Selection</h4>
           <p class="footer-aud-p">Switch your perspective between domestic on-campus tracks and international virtual tracks:</p>
@@ -62,8 +94,21 @@ export function renderFooter(): HTMLElement {
 
           <div class="coordinator-compact-card">
             <span class="coord-compact-title">Event Inquiries:</span>
-            <a href="mailto:${EVENT_DETAILS.contactEmail}" class="coord-compact-mail">${EVENT_DETAILS.contactEmail}</a>
-            <span class="coord-compact-phone">Tel: ${EVENT_DETAILS.contactPhone}</span>
+            <div class="footer-inquiries-list">
+              <div class="footer-inquiry-item">
+                <span class="footer-inquiry-name">Dr. Vartika Puri</span>
+                <a href="mailto:vartika.puri@galgotiasuniversity.edu.in" class="coord-compact-mail">vartika.puri@galgotiasuniversity.edu.in</a>
+              </div>
+              <div class="footer-inquiry-item">
+                <span class="footer-inquiry-name">Dr. Manu Singh</span>
+                <a href="mailto:manu.singh@galgotiasuniversity.edu.in" class="coord-compact-mail">manu.singh@galgotiasuniversity.edu.in</a>
+              </div>
+              <div class="footer-inquiry-item">
+                <span class="footer-inquiry-name">Mr. Ansh Vashisth (IEEE GUSB)</span>
+                <a href="mailto:anshvashisth@ieee.org" class="coord-compact-mail">anshvashisth@ieee.org</a>
+                <a href="tel:7017123652" class="coord-compact-phone">📱 7017123652</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -73,7 +118,10 @@ export function renderFooter(): HTMLElement {
           &copy; 2026 SparkX 3.0 International. School of Artificial Intelligence, Galgotias University. All rights reserved.
         </p>
         <div class="footer-legal">
-          <span>25 & 26 November 2026 • Greater Noida, India</span>
+          <a href="${GOOGLE_MAPS_URL}" target="_blank" rel="noopener noreferrer" class="footer-loc-link" title="Open Galgotias University on Google Maps">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>25 & 26 November 2026 • Galgotias University, Greater Noida, India</span>
+          </a>
         </div>
       </div>
     </div>

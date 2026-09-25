@@ -18,6 +18,38 @@ export const EVENT_DETAILS = {
   contactEmail: 'vartika.puri@galgotiasuniversity.edu.in'
 };
 
+export interface InquiryContact {
+  name: string;
+  role: string;
+  email: string;
+  phone?: string;
+  image?: string;
+  badge?: string;
+}
+
+export const INQUIRY_CONTACTS: InquiryContact[] = [
+  {
+    name: 'Dr. Vartika Puri',
+    role: 'Coordinator, 30-Day Innovation Challenge',
+    email: 'vartika.puri@galgotiasuniversity.edu.in',
+    image: '/images/Vartika.jpg',
+    badge: 'Faculty Coordinator'
+  },
+  {
+    name: 'Dr. Manu Singh',
+    role: 'Coordinator, Organizing Committee, SparkX 3.0 International',
+    email: 'manu.singh@galgotiasuniversity.edu.in',
+    badge: 'Organizing Committee Coordinator'
+  },
+  {
+    name: 'Mr. Ansh Vashisth',
+    role: 'Chairperson, IEEE GUSB',
+    email: 'anshvashisth@ieee.org',
+    phone: '7017123652',
+    badge: 'Student Leadership'
+  }
+];
+
 export const TRACKS: Track[] = [
   {
     id: 'pro',
@@ -413,24 +445,36 @@ export const PRIZES = {
 export const TIMELINE: TimelineMilestone[] = [
   {
     date: '25 September 2026',
+    startDate: '2026-09-25T00:00:00+05:30',
+    endDate: '2026-10-10T23:59:59+05:30',
+    phaseLabel: 'Phase 1: Registration Window',
     title: 'Registration Opens',
     description: 'Online registration begins for Indian tracks (Pro & Novel) and the Global 30-Day Innovation Challenge.',
     status: 'active'
   },
   {
     date: '10 October 2026',
+    startDate: '2026-10-10T00:00:00+05:30',
+    endDate: '2026-10-11T23:59:59+05:30',
+    phaseLabel: 'Phase 2: Idea Submission Deadline',
     title: 'Registration & Idea Submission Deadline',
     description: 'Teams must submit their team roster, challenge selection, and initial project concept/synopsis.',
     status: 'upcoming'
   },
   {
     date: '12 October 2026',
+    startDate: '2026-10-12T00:00:00+05:30',
+    endDate: '2026-10-14T23:59:59+05:30',
+    phaseLabel: 'Phase 3: Idea Screening & Approval',
     title: 'Idea Screening & Approval',
     description: 'Academic and expert screening committee reviews all submissions and issues official approvals to proceed.',
     status: 'upcoming'
   },
   {
     date: '15 October – 15 November 2026',
+    startDate: '2026-10-15T00:00:00+05:30',
+    endDate: '2026-11-15T23:59:59+05:30',
+    phaseLabel: 'Phase 4: 30-Day Innovation Sprint',
     title: '30-Day Innovation Challenge Sprint',
     description: 'Intense development sprint where teams build functional AI prototypes with milestone check-ins and expert guidance.',
     status: 'upcoming',
@@ -438,6 +482,9 @@ export const TIMELINE: TimelineMilestone[] = [
   },
   {
     date: '25 & 26 November 2026',
+    startDate: '2026-11-25T00:00:00+05:30',
+    endDate: '2026-11-26T23:59:59+05:30',
+    phaseLabel: 'Phase 5: Grand Exhibition Showcase',
     title: 'SparkX 3.0 Grand Exhibition & Showcase',
     description: 'Day 1: SparkX Pro & Novel on-campus showcase. Day 2: International 30-Day Challenge online & offline grand evaluations.',
     status: 'upcoming'

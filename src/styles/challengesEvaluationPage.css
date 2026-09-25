@@ -1,0 +1,117 @@
+/* ==========================================================================
+   SparkX 3.0 — Dedicated Challenges & Evaluation Portal Styles
+   ========================================================================== */
+
+.sparkx-ch-eval-page {
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.ch-eval-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 0;
+}
+
+.ch-eval-topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.ch-eval-tabs {
+  display: flex;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 999px;
+  gap: 4px;
+}
+
+.ch-tab-btn {
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #64748b;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.ch-tab-btn:hover {
+  color: #0f172a;
+}
+
+.ch-tab-btn.active {
+  background: #ffffff;
+  color: #1e3a8a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ch-eval-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ch-eval-main-content {
+  flex-grow: 1;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.ch-eval-bottom-bar {
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  padding: 24px 0;
+  color: #64748b;
+  font-size: 0.88rem;
+  margin-top: 40px;
+}
+
+.ch-eval-bottom-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.ch-eval-bottom-links a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ch-eval-bottom-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 860px) {
+  .ch-eval-topbar-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .ch-eval-tabs {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 6px;
+  }
+}

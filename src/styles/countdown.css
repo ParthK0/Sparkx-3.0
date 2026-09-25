@@ -3,17 +3,29 @@
    ========================================================================== */
 
 .countdown-section {
-  padding-bottom: 60px;
+  padding: 20px 0 60px;
   background-color: #ffffff;
 }
 
 .countdown-card-wrapper {
   background: #f8fafc;
-  border: 2px solid var(--border-card);
+  border: 1.5px solid var(--border-card);
   border-radius: var(--radius-lg);
   padding: 40px 32px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-card-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ea580c 0%, #c0262d 35%, #7c3aed 70%, #0047ba 100%);
 }
 
 .countdown-eyebrow {
@@ -53,6 +65,38 @@
   align-items: center;
 }
 
+.countdown-unit-box:nth-child(1) .time-digit-container {
+  border-top: 3px solid #ea580c;
+}
+.countdown-unit-box:nth-child(1) .time-label {
+  color: #ea580c;
+  font-weight: 800;
+}
+
+.countdown-unit-box:nth-child(3) .time-digit-container {
+  border-top: 3px solid #0047ba;
+}
+.countdown-unit-box:nth-child(3) .time-label {
+  color: #0047ba;
+  font-weight: 800;
+}
+
+.countdown-unit-box:nth-child(5) .time-digit-container {
+  border-top: 3px solid #7c3aed;
+}
+.countdown-unit-box:nth-child(5) .time-label {
+  color: #7c3aed;
+  font-weight: 800;
+}
+
+.countdown-unit-box:nth-child(7) .time-digit-container {
+  border-top: 3px solid #c0262d;
+}
+.countdown-unit-box:nth-child(7) .time-label {
+  color: #c0262d;
+  font-weight: 800;
+}
+
 .time-digit-container {
   background: #ffffff;
   border: 2px solid var(--border-card);
@@ -60,7 +104,9 @@
   padding: 16px 24px;
   min-width: 100px;
   box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast);
+  transition: transform var(--transition-fast), border-color 0.35s ease;
+  overflow: hidden;
+  position: relative;
 }
 
 .time-digit-container:hover {
@@ -69,12 +115,28 @@
 }
 
 .time-digit {
+  display: inline-block;
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 5vw, 3.4rem);
   font-weight: 900;
   color: #0f172a;
   letter-spacing: 0.02em;
   line-height: 1;
+}
+
+.time-digit.tick {
+  animation: digitSlide 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes digitSlide {
+  0% {
+    transform: translateY(-35%);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .time-label {

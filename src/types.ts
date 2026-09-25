@@ -45,6 +45,9 @@ export interface TimelineMilestone {
   title: string;
   description: string;
   status: 'upcoming' | 'active' | 'completed';
+  startDate?: string;
+  endDate?: string;
+  phaseLabel?: string;
   note?: string;
 }
 

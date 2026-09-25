@@ -9,19 +9,11 @@ export function renderNavbar(): HTMLElement {
   nav.innerHTML = `
     <div class="main-nav-bar">
       <div class="container nav-content">
-        <a href="#hero" class="brand-logo" aria-label="SparkX 3.0 Home">
-          <img src="/images/galgotias%20univeristy.png" alt="Galgotias University" class="navbar-uni-logo" />
-          <span class="nav-brand-pipe">|</span>
-          <div class="quanta-brand-box">
-            <svg class="quanta-star-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z" fill="#0891b2"/>
-              <circle cx="12" cy="12" r="3" fill="#06b6d4"/>
-            </svg>
-            <span class="quanta-text">uanta</span>
-          </div>
-          <span class="nav-brand-pipe">|</span>
-          <div class="brand-text">
-            <span class="brand-title">Spark<span class="spark-x">X</span> 3.0</span>
+        <a href="#hero" class="brand-logo-link" aria-label="SparkX 3.0 Home">
+          <div class="brand-logo-box">
+            <img src="/images/galgotias%20univeristy.png" alt="Galgotias University" class="navbar-uni-logo" />
+            <div class="brand-logo-divider"></div>
+            <img src="/images/sparkx.png" alt="SparkX 3.0" class="navbar-sparkx-logo" />
           </div>
         </a>
 
@@ -29,10 +21,8 @@ export function renderNavbar(): HTMLElement {
           <a href="#about" class="nav-link">About</a>
           <a href="#journey" class="nav-link">Journey</a>
           <a href="#tracks" class="nav-link">Tracks</a>
-          <a href="#challenges" class="nav-link">AI Challenges</a>
           <a href="#prizes" class="nav-link">Prizes</a>
           <a href="#timeline" class="nav-link">Timeline</a>
-          <a href="#evaluation" class="nav-link">Evaluation</a>
           <a href="#committee" class="nav-link">Leadership</a>
           <a href="#faq" class="nav-link">FAQ</a>
         </nav>
@@ -82,13 +72,10 @@ export function renderNavbar(): HTMLElement {
           <a href="#about" class="mob-link">About SparkX</a>
           <a href="#journey" class="mob-link">Innovation Journey</a>
           <a href="#tracks" class="mob-link">Program Tracks</a>
-          <a href="#challenges" class="mob-link">AI Challenges</a>
           <a href="#prizes" class="mob-link">Prize Pools</a>
           <a href="#timeline" class="mob-link">Important Dates</a>
-          <a href="#evaluation" class="mob-link">Evaluation Criteria</a>
-          <a href="#committee" class="mob-link">Organizing Committee</a>
+          <a href="#committee" class="mob-link">Organizing Leadership</a>
           <a href="#faq" class="mob-link">Frequently Asked Questions</a>
-          <a href="#contact" class="mob-link">Contact & Venue</a>
         </nav>
 
         <div class="mobile-drawer-cta">
@@ -162,8 +149,44 @@ function setupNavbarInteractivity(nav: HTMLElement): void {
     } else {
       nav.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
+
+  // Scroll spy for desktop menu active link highlighting
+  setupScrollSpy(nav);
 
   // Subscribe to app state
   appState.subscribe(updateButtons);
+}
+
+function setupScrollSpy(nav: HTMLElement): void {
+  const links = nav.querySelectorAll<HTMLAnchorElement>('.desktop-menu .nav-link');
+
+  function updateActiveLink(): void {
+    const scrollPos = window.scrollY + 140;
+    let currentId = '';
+
+    links.forEach((link) => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const target = document.querySelector<HTMLElement>(href);
+      if (target) {
+        const top = target.offsetTop;
+        const height = target.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentId = href;
+        }
+      }
+    });
+
+    links.forEach((link) => {
+      if (link.getAttribute('href') === currentId) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  setTimeout(updateActiveLink, 250);
 }

@@ -55,9 +55,6 @@ export function renderCountdown(): HTMLElement {
             <span class="pulse-indicator"></span>
             <span class="status-msg">Idea Submissions Open Until 10 October 2026</span>
           </div>
-          <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold btn-sm">
-            Submit Your Idea &rarr;
-          </a>
         </div>
       </div>
     </div>
@@ -77,15 +74,24 @@ function startCountdown(root: HTMLElement): void {
   const minsEl = root.querySelector('#timer-minutes') as HTMLElement;
   const secsEl = root.querySelector('#timer-seconds') as HTMLElement;
 
+  function setDigitWithAnimation(el: HTMLElement | null, newText: string): void {
+    if (!el) return;
+    if (el.textContent === newText) return;
+    el.textContent = newText;
+    el.classList.remove('tick');
+    void el.offsetWidth;
+    el.classList.add('tick');
+  }
+
   function update(): void {
     const now = new Date().getTime();
     const distance = targetDate - now;
 
     if (distance <= 0) {
-      if (daysEl) daysEl.textContent = '00';
-      if (hoursEl) hoursEl.textContent = '00';
-      if (minsEl) minsEl.textContent = '00';
-      if (secsEl) secsEl.textContent = '00';
+      setDigitWithAnimation(daysEl, '00');
+      setDigitWithAnimation(hoursEl, '00');
+      setDigitWithAnimation(minsEl, '00');
+      setDigitWithAnimation(secsEl, '00');
       return;
     }
 
@@ -94,10 +100,10 @@ function startCountdown(root: HTMLElement): void {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
-    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
-    if (minsEl) minsEl.textContent = String(minutes).padStart(2, '0');
-    if (secsEl) secsEl.textContent = String(seconds).padStart(2, '0');
+    setDigitWithAnimation(daysEl, String(days).padStart(2, '0'));
+    setDigitWithAnimation(hoursEl, String(hours).padStart(2, '0'));
+    setDigitWithAnimation(minsEl, String(minutes).padStart(2, '0'));
+    setDigitWithAnimation(secsEl, String(seconds).padStart(2, '0'));
   }
 
   update();

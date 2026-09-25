@@ -61,10 +61,57 @@
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
+.challenge-card:nth-child(1) {
+  border-top: 5px solid #059669;
+}
+.challenge-card:nth-child(1) .ch-number {
+  color: #059669;
+}
+.challenge-card:nth-child(1) .ch-category-pill {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.challenge-card:nth-child(2) {
+  border-top: 5px solid #0284c7;
+}
+.challenge-card:nth-child(2) .ch-number {
+  color: #0284c7;
+}
+.challenge-card:nth-child(2) .ch-category-pill {
+  background: #f0f9ff;
+  color: #0284c7;
+  border: 1px solid #bae6fd;
+}
+
+.challenge-card:nth-child(3) {
+  border-top: 5px solid #7c3aed;
+}
+.challenge-card:nth-child(3) .ch-number {
+  color: #7c3aed;
+}
+.challenge-card:nth-child(3) .ch-category-pill {
+  background: #f5f3ff;
+  color: #7c3aed;
+  border: 1px solid #ddd6fe;
+}
+
+.challenge-card:nth-child(4) {
+  border-top: 5px solid #ea580c;
+}
+.challenge-card:nth-child(4) .ch-number {
+  color: #ea580c;
+}
+.challenge-card:nth-child(4) .ch-category-pill {
+  background: #fff7ed;
+  color: #ea580c;
+  border: 1px solid #fed7aa;
+}
+
 .challenge-card:hover {
   transform: translateY(-4px);
-  border-color: var(--theme-major);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
 
 .challenge-card-top {

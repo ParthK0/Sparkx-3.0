@@ -1,0 +1,110 @@
+/* ==========================================================================
+   SparkX 3.0 — Network Status Notification Styles
+   ========================================================================== */
+
+.sparkx-network-indicator {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  z-index: 99999;
+  max-width: 90vw;
+  width: 520px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  font-family: inherit;
+}
+
+.sparkx-network-indicator.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.network-indicator-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.network-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.network-msg {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.network-msg strong {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.network-msg span {
+  opacity: 0.9;
+  font-size: 0.82rem;
+}
+
+/* Offline state */
+.sparkx-network-indicator.status-offline {
+  background: #7f1d1d;
+  color: #ffffff;
+  border: 1px solid #b91c1c;
+}
+
+.network-retry-btn {
+  background: #ffffff;
+  color: #991b1b;
+  border: none;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.network-retry-btn:hover {
+  background: #fee2e2;
+  transform: scale(1.04);
+}
+
+/* Online restored state */
+.sparkx-network-indicator.status-online {
+  background: #064e3b;
+  color: #ffffff;
+  border: 1px solid #059669;
+}
+
+/* Shake animation on failed retry */
+@keyframes networkShake {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  20%, 60% { transform: translateX(calc(-50% - 8px)) translateY(0); }
+  40%, 80% { transform: translateX(calc(-50% + 8px)) translateY(0); }
+}
+
+.sparkx-network-indicator.shake {
+  animation: networkShake 0.4s ease-in-out;
+}
+
+@media (max-width: 640px) {
+  .sparkx-network-indicator {
+    bottom: 16px;
+    width: calc(100vw - 32px);
+    padding: 10px 14px;
+  }
+  .network-msg {
+    font-size: 0.8rem;
+  }
+}

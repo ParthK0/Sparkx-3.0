@@ -1,5 +1,11 @@
+/* ==========================================================================
+   SparkX 3.0 — Strictly Segregated Tracks Component
+   If Indian is selected -> Shows ONLY Indian semester tracks & national sprint.
+   If International is selected -> Shows ONLY the International 30-Day AI Innovation Challenge.
+   ========================================================================== */
+
 import { appState } from '../state';
-import { TRACKS, EVENT_DETAILS } from '../data/content';
+import { TRACKS, CHALLENGES } from '../data/content';
 import { Audience } from '../types';
 
 export function renderTracks(): HTMLElement {
@@ -10,14 +16,11 @@ export function renderTracks(): HTMLElement {
   section.innerHTML = `
     <div class="container">
       <div class="section-title-area text-center" id="tracks-title-area">
-        <!-- Injected via update() -->
+        <!-- Injected dynamically -->
       </div>
 
-      <div class="track-audience-filter-bar">
-        <button type="button" class="filter-chip" id="filter-all">All Tracks</button>
-        <button type="button" class="filter-chip" id="filter-pro">Pro (7th Sem)</button>
-        <button type="button" class="filter-chip" id="filter-novel">Novel (3rd/5th Sem)</button>
-        <button type="button" class="filter-chip" id="filter-30day">30-Day Challenge (Global)</button>
+      <div class="track-audience-filter-bar" id="tracks-filter-bar">
+        <!-- Injected dynamically -->
       </div>
 
       <div class="tracks-cards-grid" id="tracks-grid">
@@ -38,126 +41,189 @@ export function renderTracks(): HTMLElement {
             </p>
           </div>
         </div>
-        <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold btn-sm">
-          Form an Interdisciplinary Team &rarr;
+        <a href="#journey" class="btn btn-outline-theme btn-sm">
+          Explore Innovation Journey &rarr;
         </a>
+      </div>
+
+      <!-- Problem Statements & Rubric Portal Banner -->
+      <div class="tracks-portal-callout">
+        <div class="portal-callout-text">
+          <span class="portal-callout-badge">Dedicated Portal</span>
+          <h4 class="portal-callout-heading">Explore AI Challenge Problem Domains & Jury Rubric</h4>
+          <p class="portal-callout-sub">Access the four detailed problem statements, engineering requirements, and mandatory deliverables checklist.</p>
+        </div>
+        <div class="portal-callout-actions">
+          <a href="#/challenges" class="btn btn-primary btn-sm">
+            <span>Problem Statements</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#/evaluation" class="btn btn-secondary btn-sm">
+            <span>Evaluation Rubric</span>
+          </a>
+        </div>
       </div>
     </div>
   `;
 
-  setupTracksInteractivity(section);
+  setupTracksSegregation(section);
 
   return section;
 }
 
-function setupTracksInteractivity(section: HTMLElement): void {
+function setupTracksSegregation(section: HTMLElement): void {
   const titleArea = section.querySelector('#tracks-title-area') as HTMLElement;
+  const filterBar = section.querySelector('#tracks-filter-bar') as HTMLElement;
   const grid = section.querySelector('#tracks-grid') as HTMLElement;
-  const filterAll = section.querySelector('#filter-all') as HTMLElement;
-  const filterPro = section.querySelector('#filter-pro') as HTMLElement;
-  const filterNovel = section.querySelector('#filter-novel') as HTMLElement;
-  const filter30 = section.querySelector('#filter-30day') as HTMLElement;
 
+  let currentAudience: Audience = 'india';
   let activeFilter = 'all';
 
-  const renderContent = (audience: Audience) => {
-    // 1. Update Title Area based on Audience
-    if (audience === 'india') {
+  const renderContent = () => {
+    if (currentAudience === 'india') {
+      // 1. Indian Title
       titleArea.innerHTML = `
         <span class="section-badge badge-gold">🇮🇳 Indian Student Tracks</span>
-        <h2 class="section-heading">Choose Your SparkX Track</h2>
+        <h2 class="section-heading">Indian Participant Innovation Tracks</h2>
         <p class="section-subheading">
-          Structured semester-aligned pathways tailored for students studying at Galgotias University and institutions across India.
+          Structured semester-aligned pathways tailored exclusively for students studying at Galgotias University and colleges across India.
         </p>
       `;
-    } else {
-      titleArea.innerHTML = `
-        <span class="section-badge badge-blue">🌍 Global Participation</span>
-        <h2 class="section-heading">Build. Innovate. Showcase Globally.</h2>
-        <p class="section-subheading">
-          Join students from universities around the globe in the International 30-Day Innovation Challenge to construct deployable AI systems.
-        </p>
+
+      // 2. Indian Filter Chips
+      filterBar.innerHTML = `
+        <button type="button" class="filter-chip ${activeFilter === 'all' ? 'active' : ''}" data-filter="all">All Indian Tracks</button>
+        <button type="button" class="filter-chip ${activeFilter === 'pro' ? 'active' : ''}" data-filter="pro">SparkX Pro (7th Sem)</button>
+        <button type="button" class="filter-chip ${activeFilter === 'novel' ? 'active' : ''}" data-filter="novel">SparkX Novel (3rd & 5th Sem)</button>
+        <button type="button" class="filter-chip ${activeFilter === '30day' ? 'active' : ''}" data-filter="30day">30-Day Innovation Sprint</button>
       `;
-    }
 
-    // 2. Filter tracks based on active audience & filter chip
-    let visibleTracks = TRACKS;
-    if (audience === 'international') {
-      // International students focus primarily on the 30-day challenge
-      visibleTracks = TRACKS.filter((t) => t.id === 'challenge30' || t.audience.includes('international'));
-    }
+      // 3. Indian Tracks Only
+      let visibleTracks = TRACKS.filter(t => t.audience.includes('india'));
+      if (activeFilter === 'pro') visibleTracks = visibleTracks.filter(t => t.id === 'pro');
+      if (activeFilter === 'novel') visibleTracks = visibleTracks.filter(t => t.id === 'novel');
+      if (activeFilter === '30day') visibleTracks = visibleTracks.filter(t => t.id === 'challenge30');
 
-    if (activeFilter === 'pro') visibleTracks = visibleTracks.filter(t => t.id === 'pro');
-    if (activeFilter === 'novel') visibleTracks = visibleTracks.filter(t => t.id === 'novel');
-    if (activeFilter === '30day') visibleTracks = visibleTracks.filter(t => t.id === 'challenge30');
+      grid.innerHTML = visibleTracks.map((track) => {
+        const is30Day = track.id === 'challenge30';
+        return `
+          <div class="track-card ${is30Day ? 'featured-track' : ''}">
+            <div class="track-card-header">
+              <div class="track-badge-tag">${track.badge}</div>
+              <span class="track-target">${track.targetGroup}</span>
+            </div>
 
-    // 3. Render track cards
-    grid.innerHTML = visibleTracks.map((track) => {
-      const is30Day = track.id === 'challenge30';
-      return `
-        <div class="track-card ${is30Day ? 'featured-track' : ''}">
-          <div class="track-card-header">
-            <div class="track-badge-tag">${track.badge}</div>
-            <span class="track-target">${track.targetGroup}</span>
-          </div>
+            <h3 class="track-title">${track.name}</h3>
+            <p class="track-subtitle">${track.subtitle}</p>
 
-          <h3 class="track-title">${track.name}</h3>
-          <p class="track-subtitle">${track.subtitle}</p>
+            <div class="track-focus-box">
+              <span class="focus-label">Core Focus:</span>
+              <span class="focus-value">${track.focus}</span>
+            </div>
 
-          <div class="track-focus-box">
-            <span class="focus-label">Core Focus:</span>
-            <span class="focus-value">${track.focus}</span>
-          </div>
+            <p class="track-description">${track.description}</p>
 
-          <p class="track-description">${track.description}</p>
+            <div class="track-expected-output">
+              <span class="output-label">Expected Output:</span>
+              <p class="output-text">${track.expectedOutput}</p>
+            </div>
 
-          <div class="track-expected-output">
-            <span class="output-label">Expected Output:</span>
-            <p class="output-text">${track.expectedOutput}</p>
-          </div>
+            <div class="track-components-list">
+              <span class="components-heading">Deliverables & Pillars:</span>
+              <ul>
+                ${track.components.map(comp => `<li><span class="bullet-check">✦</span> ${comp}</li>`).join('')}
+              </ul>
+            </div>
 
-          <div class="track-components-list">
-            <span class="components-heading">Key Deliverables & Assessment Pillars:</span>
-            <ul>
-              ${track.components.map(comp => `<li><span class="bullet-check">✦</span> ${comp}</li>`).join('')}
-            </ul>
-          </div>
-
-          <div class="track-card-footer">
-            ${is30Day ? `
-              <a href="#challenges" class="btn btn-primary w-full">
-                <span>View 4 AI Challenges</span>
+            <div class="track-card-footer">
+              <a href="#journey" class="btn btn-secondary w-full">
+                <span>Explore Track Roadmap</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-            ` : `
-              <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold w-full">
-                <span>Register for ${track.id.toUpperCase()}</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
-              </a>
-            `}
+            </div>
           </div>
-        </div>
-      `;
-    }).join('');
+        `;
+      }).join('');
 
-    // Update filter active states
-    [filterAll, filterPro, filterNovel, filter30].forEach(f => f?.classList.remove('active'));
-    if (activeFilter === 'all') filterAll?.classList.add('active');
-    if (activeFilter === 'pro') filterPro?.classList.add('active');
-    if (activeFilter === 'novel') filterNovel?.classList.add('active');
-    if (activeFilter === '30day') filter30?.classList.add('active');
+    } else {
+      // 1. International Title
+      titleArea.innerHTML = `
+        <span class="section-badge badge-blue">🌍 International Participation Track</span>
+        <h2 class="section-heading">Global 30-Day Innovation Challenge</h2>
+        <p class="section-subheading">
+          Open to students worldwide. Compete virtually in pre-defined high-impact AI domains to construct deployable systems.
+        </p>
+      `;
+
+      // 2. International Filter Chips
+      filterBar.innerHTML = `
+        <button type="button" class="filter-chip ${activeFilter === 'all' ? 'active' : ''}" data-filter="all">All AI Challenges</button>
+        <button type="button" class="filter-chip ${activeFilter === 'event-management' ? 'active' : ''}" data-filter="event-management">01. Event Copilot</button>
+        <button type="button" class="filter-chip ${activeFilter === 'career-readiness' ? 'active' : ''}" data-filter="career-readiness">02. Career Readiness</button>
+        <button type="button" class="filter-chip ${activeFilter === 'lab-spoc' ? 'active' : ''}" data-filter="lab-spoc">03. Virtual Lab SPOC</button>
+        <button type="button" class="filter-chip ${activeFilter === 'university-copilot' ? 'active' : ''}" data-filter="university-copilot">04. Campus Copilot</button>
+      `;
+
+      // 3. International Track Only (The 30-Day International Challenge + 4 AI Pillars)
+      let challenges = CHALLENGES;
+      if (activeFilter !== 'all') {
+        challenges = challenges.filter(c => c.id === activeFilter);
+      }
+
+      grid.innerHTML = challenges.map((ch) => {
+        return `
+          <div class="track-card featured-track">
+            <div class="track-card-header">
+              <div class="track-badge-tag">${ch.category}</div>
+              <span class="track-target">International 30-Day Sprint</span>
+            </div>
+
+            <h3 class="track-title">${ch.title}</h3>
+            <p class="track-subtitle">${ch.tagline}</p>
+
+            <div class="track-focus-box">
+              <span class="focus-label">Track Focus:</span>
+              <span class="focus-value">End-to-End AI Solution</span>
+            </div>
+
+            <p class="track-description">${ch.description}</p>
+
+            <div class="track-expected-output">
+              <span class="output-label">Submission Deliverable:</span>
+              <p class="output-text">Working Prototype, Public GitHub Repository & User Manual</p>
+            </div>
+
+            <div class="track-components-list">
+              <span class="components-heading">Target Modules:</span>
+              <ul>
+                ${ch.modules.map(m => `<li><span class="bullet-check">✦</span> ${m.title}</li>`).join('')}
+              </ul>
+            </div>
+
+            <div class="track-card-footer">
+              <a href="#challenges" class="btn btn-primary w-full">
+                <span>View Full Challenge Blueprint</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Attach chip listeners
+    filterBar.querySelectorAll('.filter-chip').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = (e.currentTarget as HTMLElement).getAttribute('data-filter') || 'all';
+        activeFilter = target;
+        renderContent();
+      });
+    });
   };
 
-  filterAll?.addEventListener('click', () => { activeFilter = 'all'; renderContent(appState.getAudience()); });
-  filterPro?.addEventListener('click', () => { activeFilter = 'pro'; renderContent(appState.getAudience()); });
-  filterNovel?.addEventListener('click', () => { activeFilter = 'novel'; renderContent(appState.getAudience()); });
-  filter30?.addEventListener('click', () => { activeFilter = '30day'; renderContent(appState.getAudience()); });
-
   appState.subscribe((audience) => {
-    // If switched to international, default filter chip to all
-    if (audience === 'international' && (activeFilter === 'pro' || activeFilter === 'novel')) {
-      activeFilter = 'all';
-    }
-    renderContent(audience);
+    currentAudience = audience;
+    activeFilter = 'all';
+    renderContent();
   });
 }

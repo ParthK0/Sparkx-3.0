@@ -22,24 +22,58 @@
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.journey-step-card:nth-child(1) {
+  border-top: 4px solid #ea580c;
+}
+.journey-step-card:nth-child(1) .step-badge-circle {
+  color: #ea580c;
+}
+
+.journey-step-card:nth-child(2) {
+  border-top: 4px solid #d97706;
+}
+.journey-step-card:nth-child(2) .step-badge-circle {
+  color: #d97706;
+}
+
+.journey-step-card:nth-child(3) {
+  border-top: 4px solid #0047ba;
+}
+.journey-step-card:nth-child(3) .step-badge-circle {
+  color: #0047ba;
+}
+
+.journey-step-card:nth-child(4) {
+  border-top: 4px solid #7c3aed;
+}
+.journey-step-card:nth-child(4) .step-badge-circle {
+  color: #7c3aed;
+}
+
+.journey-step-card:nth-child(5) {
+  border-top: 4px solid #c0262d;
+}
+.journey-step-card:nth-child(5) .step-badge-circle {
+  color: #c0262d;
 }
 
 .journey-step-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--theme-major);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
 }
 
 .journey-step-card.highlight-step {
   border: 2px solid var(--theme-major);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .step-badge-circle {
   font-family: var(--font-mono);
   font-weight: 900;
-  font-size: 1.1rem;
-  color: var(--theme-major);
+  font-size: 1.15rem;
   margin-bottom: 12px;
 }
 
