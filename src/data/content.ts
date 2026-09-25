@@ -1,0 +1,672 @@
+import { Track, Challenge, TimelineMilestone, CommitteeMember, FAQItem } from '../types';
+
+export const EVENT_DETAILS = {
+  name: 'SparkX 3.0 International',
+  theme: 'Beyond Boundaries',
+  tagline: 'Global Ideas • Global Impact',
+  subTagline: 'From Intelligent Software to Real-World AI Systems',
+  dates: '25 & 26 November 2026',
+  countdownTarget: '2026-11-25T09:00:00+05:30',
+  registrationUrl: 'https://forms.gle/ci5yKTxQCprMmJj4A',
+  university: 'Galgotias University',
+  department: 'Department of Artificial Intelligence & Data Science',
+  school: 'School of Artificial Intelligence',
+  location: 'Greater Noida, Uttar Pradesh, India',
+  contactPerson: 'Dr. Vartika Puri',
+  contactRole: 'Coordinator, 30-Day Innovation Challenge',
+  contactPhone: '+91 9560430101',
+  contactEmail: 'vartika.puri@galgotiasuniversity.edu.in'
+};
+
+export const TRACKS: Track[] = [
+  {
+    id: 'pro',
+    name: 'SparkX 3.0 — Pro',
+    subtitle: 'Advanced Project Proposal, Implementation & Research',
+    targetGroup: '7th Semester Students',
+    focus: 'Proposal • Implementation • Validation • Research Orientation',
+    badge: 'Final-Year Capstone',
+    description: 'The 7th Semester track focuses on advanced research depth, structured validation, and deployable systems capable of evolving into publishable literature, patents, and commercial ventures.',
+    expectedOutput: 'Implemented project with research component, experimental validation, and high prototype/publication potential.',
+    components: [
+      'Clear problem statement & clinical/industrial motivation',
+      'Exhaustive literature review & research gap analysis',
+      'Novel proposed methodology & algorithmic design',
+      'End-to-end technical implementation & code quality',
+      'Rigorous experimentation, benchmarks & comparative analysis',
+      'Deployment architecture, patents & publication roadmap'
+    ],
+    audience: ['india']
+  },
+  {
+    id: 'novel',
+    name: 'SparkX 3.0 — Novel',
+    subtitle: 'Novel Product-Based Innovation',
+    targetGroup: '3rd & 5th Semester Students',
+    focus: 'Product Innovation • Novelty • Differentiation • UX',
+    badge: 'Intermediate Innovation',
+    description: 'Students focus on creating real products or hardware/software prototypes that demonstrate undeniable novelty, user-centric ergonomics, and market distinctiveness.',
+    expectedOutput: 'Novel product/prototype with clear differentiated features and verified user utility.',
+    components: [
+      'Originality & distinctiveness from existing solutions',
+      'Creative technical problem solving',
+      'Demonstrated technical feasibility & execution',
+      'User-centric ergonomics and intuitive interface',
+      'Practical utility in real-world environments',
+      'Clear market or societal value proposition'
+    ],
+    audience: ['india']
+  },
+  {
+    id: 'challenge30',
+    name: 'SparkX 3.0 — 30-Day Innovation Challenge',
+    subtitle: 'From Intelligent Software to Real-World AI Systems',
+    targetGroup: 'Open UG/PG Category (National & International)',
+    focus: 'Predefined AI Challenges • Rapid Sprint • Deployed System',
+    badge: 'Global AI Sprint',
+    description: 'A high-intensity sprint designed to push teams beyond high-level slides into production-grade, deployable AI applications addressing 4 global impact tracks.',
+    expectedOutput: 'Functional end-to-end software/prototype integrating intelligent AI/ML models, seamless user flows, and real-time inference.',
+    components: [
+      'Complete end-to-end functional application',
+      'Integrated AI/ML models (LLM, Vision, NLP, or RAG)',
+      'Modern, accessible user interface & responsive workflow',
+      'Backend infrastructure, database models & production APIs',
+      'Decision-support dashboard & real-time analytics',
+      'Open-source repository & comprehensive user manual'
+    ],
+    audience: ['india', 'international']
+  }
+];
+
+export const CHALLENGES: Challenge[] = [
+  {
+    id: 'event-management',
+    number: '01',
+    title: 'AI-Powered Intelligent Event Planning & Management Platform',
+    tagline: 'Autonomous orchestration for mega-conferences, hackathons & symposiums',
+    description: 'Develop an end-to-end intelligent event platform that leverages AI to plan agendas, resolve scheduling conflicts, optimize physical and logistical resources, and automate real-time attendee interactions.',
+    category: 'Enterprise AI & Automation',
+    icon: 'calendar-check',
+    modules: [
+      {
+        title: 'AI Event Planning Copilot',
+        items: [
+          'Natural language prompt-to-agenda generator',
+          'Automated task breakdown and dependency trees',
+          'Dynamic multi-day timeline estimation',
+          'Venue capacity & breakout room recommendations'
+        ]
+      },
+      {
+        title: 'Intelligent Scheduling & Conflict Resolution',
+        items: [
+          'Flyer & automated dynamic registration form generator',
+          'Constraint satisfaction scheduler (speaker, track, room)',
+          'Speaker availability & flight/commute buffer handling',
+          'Real-time conflict detection & instant reschedule proposals'
+        ]
+      },
+      {
+        title: 'AI-Based Resource Optimization',
+        items: [
+          'Predictive catering, equipment & badge allocation',
+          'Volunteer and stage crew staffing forecast models',
+          'Historical registration vs turn-out shrinkage modeling',
+          'Cost and budgetary optimization alerts'
+        ]
+      },
+      {
+        title: 'Personalized Participant Experience',
+        items: [
+          'Smart session & workshop recommendation engine',
+          'AI-powered 1-on-1 attendee networking matchmaking',
+          'Personalized agenda sync with calendar exports (ICS/Google)'
+        ]
+      },
+      {
+        title: 'AI Communication Agent & Post-Event Analytics',
+        items: [
+          '24/7 multilingual participant query support chatbot',
+          'Context-aware push reminders & schedule delta alerts',
+          'Automated feedback sentiment & thematic analysis',
+          'Automated certificate generation & executive summary report'
+        ]
+      }
+    ],
+    expectedOutput: [
+      'Fully working web/mobile portal with organizer & attendee modes',
+      'Live scheduling engine with interactive timeline viewer',
+      'Integrated conversational AI agent trained on event data',
+      'Post-event analytical dashboard with PDF report generation'
+    ],
+    suggestedStack: ['React / Next.js', 'Python FastAPI', 'OpenAI / Gemini / Llama 3', 'PostgreSQL / Supabase', 'Tailwind / Modern CSS']
+  },
+  {
+    id: 'career-readiness',
+    number: '02',
+    title: 'AI-Powered Interview Preparation & Career Readiness Assistant',
+    tagline: 'Hyper-personalized mock interviews, speech fluency & resume auditing',
+    description: 'Develop an intelligent career readiness ecosystem that analyzes candidate profiles, conducts realistic adaptive interviews across HR and technical domains, evaluates responses in real-time, and generates actionable growth roadmaps.',
+    category: 'EdTech & HR Tech',
+    icon: 'briefcase',
+    modules: [
+      {
+        title: 'AI Resume Intelligence & Skill Gap Extraction',
+        items: [
+          'Deep semantic parsing of multi-page PDF/Word resumes',
+          'Entity extraction of tech stacks, projects, and certifications',
+          'Job description vs resume cosine similarity & gap scoring',
+          'Actionable bullet-point revision suggestions with STAR framing'
+        ]
+      },
+      {
+        title: 'Personalized Interview Question Generator',
+        items: [
+          'Dynamic questioning derived directly from candidate projects',
+          'Adaptive difficulty climbing based on prior answers',
+          'Role-specific tracks: System Design, Frontend, ML, HR, Leadership',
+          'Deep-dive follow-up generation ("Why did you choose Redis over RabbitMQ?")'
+        ]
+      },
+      {
+        title: 'Conversational AI Mock Interviewer',
+        items: [
+          'Realistic voice-to-voice & text-based interview simulation',
+          'Behavioral probing using the STAR (Situation, Task, Action, Result) rubric',
+          'Stress-testing & counter-questioning simulation'
+        ]
+      },
+      {
+        title: 'Intelligent Answer Evaluation',
+        items: [
+          'Semantic accuracy & conceptual keyword completeness check',
+          'Clarity, conciseness, and structural delivery scoring',
+          'Immediate constructive feedback with model sample answers'
+        ]
+      },
+      {
+        title: 'Speech, Prosody & Communication Analytics',
+        items: [
+          'Speaking cadence (WPM) & prolonged pause detection',
+          'Filler word counter (um, ah, like, basically)',
+          'Observable vocal confidence and tonality indicators'
+        ]
+      },
+      {
+        title: 'Personalized Career Coach & Milestone Tracking',
+        items: [
+          'Longitudinal progress tracking across sequential interview sessions',
+          'Targeted micro-learning curriculum & curated documentation recommendations'
+        ]
+      }
+    ],
+    expectedOutput: [
+      'Interactive interview room with live speech recording & transcription',
+      'Resume upload & ATS-style gap analysis dashboard',
+      'Scorecard breakdown (Technical, Delivery, Communication, Relevance)',
+      'Customized 14-day study plan generator'
+    ],
+    suggestedStack: ['Web Audio API / WebRTC', 'Whisper API / Deepgram', 'LangChain / LlamaIndex', 'Node.js / Python', 'Chart.js']
+  },
+  {
+    id: 'lab-spoc',
+    number: '03',
+    title: 'AI-Powered Intelligent Lab SPOC (Virtual Lab Ambassador)',
+    tagline: 'Autonomous representative for accreditation, industry & research lab tours',
+    description: 'Create an intelligent virtual Single Point of Contact (SPOC) that acts as an interactive ambassador for advanced research labs during academic visits, NBA/NAAC accreditation reviews, and corporate partner inspections.',
+    category: 'Smart Campus & Digital Twin',
+    icon: 'microchip',
+    modules: [
+      {
+        title: 'AI Virtual Lab Guide & Audience-Adaptive Persona',
+        items: [
+          'Interactive tour guide with 3D/virtual panoramic lab navigation',
+          'Audience detection & adaptation (Undergrad, Industry Executive, NBA Auditor)',
+          'Contextual welcome briefs tailored to specific delegation agendas'
+        ]
+      },
+      {
+        title: 'Conversational Voice & Multilingual Assistant',
+        items: [
+          'Natural hands-free voice interaction and physical kiosk mode',
+          'Maintains conversational context over multi-turn technical dialogues',
+          'Multilingual support for international visiting scientists'
+        ]
+      },
+      {
+        title: 'RAG-Based Lab Knowledge System',
+        items: [
+          'Grounded retrieval from verified lab SOPs, patent filings & equipment specs',
+          'Hardware specification lookup (GPUs, FPGA rigs, Oscilloscopes, IoT nodes)',
+          'Live researcher publication & citation index query engine',
+          'Secure administrative portal for real-time document sync'
+        ]
+      },
+      {
+        title: 'Interactive Project Demonstrator',
+        items: [
+          'Interactive showcase of student/faculty capstone innovations',
+          'Instant retrieval of architecture diagrams, benchmark videos & live demo URLs',
+          'Automated explanation of problem statements and societal impacts'
+        ]
+      },
+      {
+        title: 'Visitor Engagement Analytics & Adaptive Presentations',
+        items: [
+          'Visitor query heatmaps & telemetry (most explored projects/tools)',
+          'Dynamic pitch generator: 2-min elevator, 5-min executive, 15-min deep-dive',
+          'Automatic visitor summary digest sent to lab director'
+        ]
+      }
+    ],
+    expectedOutput: [
+      'Kiosk-ready interactive dashboard with speech recognition and synthesis',
+      'RAG pipeline verified with zero hallucinations on lab specs',
+      'Interactive showcase gallery of active laboratory projects',
+      'Analytics portal highlighting visitor interest trends'
+    ],
+    suggestedStack: ['Three.js / WebGL / Canvas', 'Vector DB (Chroma / Pinecone)', 'FastAPI / LangChain', 'Text-to-Speech (ElevenLabs / WebSpeech)', 'Modern CSS']
+  },
+  {
+    id: 'university-copilot',
+    number: '04',
+    title: 'AI University Copilot & Intelligent Campus Platform',
+    tagline: 'Unified intelligence powering academic advising, grievances & campus ops',
+    description: 'Develop an enterprise AI campus copilot that unifies student academic guidance, grievance redressing, and predictive administrative operational intelligence across the institutional ecosystem.',
+    category: 'EdTech & Smart Governance',
+    icon: 'graduation-cap',
+    modules: [
+      {
+        title: 'AI Student & Administrative Copilot',
+        items: [
+          'Strictly grounded Q&A over official university ordinances, grading policies & rules',
+          'Course registration, exam timetable & hall ticket assistance',
+          'Context-aware routing of complex inquiries to respective Dean/HOD offices'
+        ]
+      },
+      {
+        title: 'Academic Intelligence & Early-Warning System',
+        items: [
+          'Continuous student grade and attendance trajectory modeling',
+          'Early intervention alert triggers for students at risk of detentions',
+          'Hyper-personalized elective and prerequisite path recommendations'
+        ]
+      },
+      {
+        title: 'Intelligent Grievance & Complaint Redressal',
+        items: [
+          'NLP-based triage, sentiment scoring, and urgency classification',
+          'Automated ticket routing to hostel, IT, fee, or exam cells',
+          'AI-synthesized ticket summaries & automated status updates for students'
+        ]
+      },
+      {
+        title: 'Campus Operational Analytics & Decision Support',
+        items: [
+          'Natural language query engine over institutional datasets (e.g., "Compare library footfall vs midterm exam scores")',
+          'Classroom and lab real-estate utilization optimization',
+          'Predictive campus transit and dining demand modeling'
+        ]
+      }
+    ],
+    expectedOutput: [
+      'Role-based multi-tenant portal (Student, Faculty, Dean/Admin)',
+      'Policy-compliant conversational interface with source document citations',
+      'Predictive student retention / academic health scorecard',
+      'Automated administrative ticketing flow with priority flagging'
+    ],
+    suggestedStack: ['React / Vite', 'Python / Django / FastAPI', 'PostgreSQL / pgvector', 'Hugging Face / OpenAI', 'Tailwind / Glassmorphism']
+  }
+];
+
+export const PRIZES = {
+  indian: [
+    {
+      position: 'First Prize',
+      place: '1st',
+      medal: '🥇',
+      amount: '₹10,000',
+      currency: 'INR',
+      perks: [
+        'Certificate of Excellence & Grand Trophy',
+        'Direct Incubation Consideration at University E-Cell',
+        'Patent Filing & Publication Guidance from Faculty Mentors',
+        'Sponsorship support for National Hackathons'
+      ],
+      color: 'from-amber-400 to-yellow-600'
+    },
+    {
+      position: 'Second Prize',
+      place: '2nd',
+      medal: '🥈',
+      amount: '₹8,000',
+      currency: 'INR',
+      perks: [
+        'Certificate of Merit & Silver Trophy',
+        'Lab Infrastructure & Cloud Credits Access',
+        'Fast-track review for Conference Publication',
+        'Industry Expert Mentorship Sessions'
+      ],
+      color: 'from-slate-300 to-slate-500'
+    },
+    {
+      position: 'Third Prize',
+      place: '3rd',
+      medal: '🥉',
+      amount: '₹5,000',
+      currency: 'INR',
+      perks: [
+        'Certificate of Merit & Bronze Trophy',
+        'Prototype Development Acceleration Grant Support',
+        'Featured Spotlight on University Portals',
+        'Exclusive Workshop Access'
+      ],
+      color: 'from-amber-700 to-yellow-900'
+    }
+  ],
+  international: [
+    {
+      position: 'First Prize',
+      place: '1st',
+      medal: '🥇',
+      amount: 'USD 150',
+      currency: 'USD',
+      perks: [
+        'International Winner Certificate of Honor & Digital Badge',
+        'Opportunity for Joint International Research Publication',
+        'Global Mentorship from Silicon Valley & International Tech Executives',
+        'Featured International Spotlight & Media Release'
+      ],
+      color: 'from-amber-400 to-yellow-600'
+    },
+    {
+      position: 'Second Prize',
+      place: '2nd',
+      medal: '🥈',
+      amount: 'USD 100',
+      currency: 'USD',
+      perks: [
+        'International Runner-Up Certificate of Honor',
+        'Cross-border Collaborative Research Network Access',
+        'Mentorship for Startup Incubation & Tech Acceleration',
+        'Exclusive Industry Networking Session'
+      ],
+      color: 'from-slate-300 to-slate-500'
+    },
+    {
+      position: 'Third Prize',
+      place: '3rd',
+      medal: '🥉',
+      amount: 'USD 80',
+      currency: 'USD',
+      perks: [
+        'International 2nd Runner-Up Certificate of Honor',
+        'Technical Review & Roadmap Guidance from AI Experts',
+        'Community Recognition & Global Hackathon Network Access',
+        'Digital Certificate of Innovation'
+      ],
+      color: 'from-amber-700 to-yellow-900'
+    }
+  ]
+};
+
+export const TIMELINE: TimelineMilestone[] = [
+  {
+    date: '25 September 2026',
+    title: 'Registration Opens',
+    description: 'Online registration begins for Indian tracks (Pro & Novel) and the Global 30-Day Innovation Challenge.',
+    status: 'active'
+  },
+  {
+    date: '10 October 2026',
+    title: 'Registration & Idea Submission Deadline',
+    description: 'Teams must submit their team roster, challenge selection, and initial project concept/synopsis.',
+    status: 'upcoming'
+  },
+  {
+    date: '12 October 2026',
+    title: 'Idea Screening & Approval',
+    description: 'Academic and expert screening committee reviews all submissions and issues official approvals to proceed.',
+    status: 'upcoming'
+  },
+  {
+    date: '15 October – 15 November 2026',
+    title: '30-Day Innovation Challenge Sprint',
+    description: 'Intense development sprint where teams build functional AI prototypes with milestone check-ins and expert guidance.',
+    status: 'upcoming',
+    note: 'Sprint window: 15 Oct – 15 Nov 2026 (Preliminary planning indicated 01 Oct – 30 Oct in early drafts; official window confirmed as 15 Oct – 15 Nov).'
+  },
+  {
+    date: '25 & 26 November 2026',
+    title: 'SparkX 3.0 Grand Exhibition & Showcase',
+    description: 'Day 1: SparkX Pro & Novel on-campus showcase. Day 2: International 30-Day Challenge online & offline grand evaluations.',
+    status: 'upcoming'
+  }
+];
+
+export const COMMITTEE: CommitteeMember[] = [
+  {
+    name: 'Prof. (Dr.) K. Mallikharjuna Babu',
+    role: 'Patron',
+    designation: 'Vice Chancellor',
+    organization: 'Galgotias University, India',
+    category: 'patron',
+    badge: 'Vice Chancellor',
+    image: '/images/Prof.(Dr.) K. Mallikarjuna Babu.jpg'
+  },
+  {
+    name: 'Prof. (Dr.) Avadhesh Kumar',
+    role: 'Patron',
+    designation: 'Pro-Vice Chancellor',
+    organization: 'Galgotias University, India',
+    category: 'patron',
+    badge: 'Pro-VC',
+    image: '/images/Prof. (Dr.) Avadhesh Kumar.jpg'
+  },
+  {
+    name: 'Prof. (Dr.) Nitin Gaur',
+    role: 'Patron',
+    designation: 'Registrar',
+    organization: 'Galgotias University, India',
+    category: 'patron',
+    badge: 'Registrar',
+    image: '/images/Prof. (Dr.) Nitin Gaur.jpg'
+  },
+  {
+    name: 'Mr. Kothandarman Sridharan',
+    role: 'International Expert & Keynote',
+    designation: 'CEO, CleverInsight | Former Advisor, BrightInsight (San Jose) | Former CEO, Mphasis-BFL (USA)',
+    organization: 'USA / Global',
+    category: 'international',
+    badge: 'Silicon Valley Veteran'
+  },
+  {
+    name: 'Prof. (Dr.) Ciro Rodriguez Rodriguez',
+    role: 'International Expert & Academic Advisor',
+    designation: 'Director – Postgraduate Programs',
+    organization: 'UNMSM University, Peru',
+    category: 'international',
+    badge: 'Global Academic Advisor'
+  },
+  {
+    name: 'Prof. (Dr.) Manish Raj',
+    role: 'Dean',
+    designation: 'Dean, School of Artificial Intelligence',
+    organization: 'Galgotias University, India',
+    category: 'leadership',
+    badge: 'Dean SoAI'
+  },
+  {
+    name: 'Prof. (Dr.) Saurabh Singh',
+    role: 'Associate Dean',
+    designation: 'Associate Dean, Department of AI & Data Science',
+    organization: 'Galgotias University, India',
+    category: 'leadership',
+    badge: 'Associate Dean'
+  },
+  {
+    name: 'Dr. Vartika Puri',
+    role: 'Convener & Primary Coordinator',
+    designation: 'Convener – 30-Day Innovation Challenge',
+    organization: 'Department of AI & Data Science, SoAI, Galgotias University',
+    category: 'challenge',
+    badge: '30-Day Challenge Lead'
+  },
+  {
+    name: 'Dr. Manu Singh',
+    role: 'Convener',
+    designation: 'Faculty, Department of AI & Data Science',
+    organization: 'Galgotias University, India',
+    category: 'organizing',
+    badge: 'Convener'
+  },
+  {
+    name: 'Dr. Isha Chopra',
+    role: 'Co-Convener',
+    designation: 'Faculty, Department of AI & Data Science',
+    organization: 'Galgotias University, India',
+    category: 'organizing',
+    badge: 'Co-Convener'
+  },
+  {
+    name: 'Dr. Amit Batra',
+    role: 'Technical Lead',
+    designation: 'Faculty, Department of AI & Data Science',
+    organization: 'Galgotias University, India',
+    category: 'organizing',
+    badge: 'Technical Lead'
+  },
+  {
+    name: 'Ms. Meenakshi Srivastava',
+    role: 'Convener: Publication & Promotion',
+    designation: 'Faculty, Department of AI & Data Science',
+    organization: 'Galgotias University, India',
+    category: 'organizing',
+    badge: 'Publications Lead'
+  },
+  {
+    name: 'Dr. Shachi Mall',
+    role: 'Convener – Evaluation Committee',
+    designation: 'Department of AI and Data Science, SoAI',
+    organization: 'Galgotias University, India',
+    category: 'evaluation',
+    badge: 'Evaluation Lead'
+  },
+  {
+    name: 'Dr. Anuradha',
+    role: 'Co-Convener – Evaluation Committee',
+    designation: 'Department of AI and Data Science, SoAI',
+    organization: 'Galgotias University, India',
+    category: 'evaluation',
+    badge: 'Evaluation'
+  },
+  {
+    name: 'Dr. Vipin Rai',
+    role: 'Co-Convener – Evaluation Committee',
+    designation: 'Department of AI and Data Science, SoAI',
+    organization: 'Galgotias University, India',
+    category: 'evaluation',
+    badge: 'Evaluation'
+  }
+];
+
+export const EVALUATION_CRITERIA = [
+  {
+    title: 'Problem Identification & Real-World Relevance',
+    desc: 'Clarity of the core problem, user empathy, societal/industrial impact, and identified research gap.',
+    metric: 'Depth & Context'
+  },
+  {
+    title: 'Innovation & Technical Originality',
+    desc: 'Novelty of approach, creative engineering, differentiation against existing benchmarks and tools.',
+    metric: 'Novelty & IP'
+  },
+  {
+    title: 'Technical Implementation & Code Architecture',
+    desc: 'Code quality, software engineering practices, pipeline efficiency, architectural robustness, and API security.',
+    metric: 'Architecture'
+  },
+  {
+    title: 'Completeness & Product Functionality',
+    desc: 'End-to-end working state, UI/UX polish, bug-free interactive workflows, and user ergonomics.',
+    metric: 'Working Prototype'
+  },
+  {
+    title: 'Effective AI/ML Integration & Research Depth',
+    desc: 'Meaningful utilization of AI/ML, LLMs, Computer Vision or RAG models with tangible inference accuracy.',
+    metric: 'AI Utility'
+  },
+  {
+    title: 'User / Market Potential & Scalability',
+    desc: 'Deployment viability, modular cloud infrastructure, startup feasibility, and addressable market size.',
+    metric: 'Scalability'
+  },
+  {
+    title: 'Live Demonstration & Technical Defense',
+    desc: 'Poise and technical command during the demo, response to judges’ counter-questions, and pitch clarity.',
+    metric: 'Presentation'
+  },
+  {
+    title: 'Future Scope & Publication / Patent Horizon',
+    desc: 'Feasibility of progressing into IEEE/Scopus publications, patent filings, or external startup incubation.',
+    metric: 'Future Trajectory'
+  }
+];
+
+export const FAQS: FAQItem[] = [
+  {
+    category: 'general',
+    question: 'What is SparkX 3.0 Beyond Boundaries?',
+    answer: 'SparkX 3.0 is a premier innovation and project exhibition hosted by the Department of Artificial Intelligence & Data Science, School of Artificial Intelligence at Galgotias University. It provides a progressive pathway from Idea → Product → Novel Product → Proposal & Implementation → Research/Innovation.'
+  },
+  {
+    category: 'general',
+    question: 'What are the main dates for SparkX 3.0?',
+    answer: 'Registrations open on 25 September 2026. The Registration and Idea Submission deadline is 10 October 2026. The 30-Day Challenge sprint runs from 15 October to 15 November 2026. The Grand Exhibition and Final Evaluation take place on 25 & 26 November 2026.'
+  },
+  {
+    category: 'general',
+    question: 'What is the team size allowed?',
+    answer: 'For the International 30-Day Innovation Challenge, the dedicated challenge guidelines specify teams of 1 to 4 students. For internal university tracks, please refer to your semester track guidelines (or contact your faculty coordinator). Interdisciplinary collaborations across departments are highly encouraged.'
+  },
+  {
+    category: 'indian',
+    question: 'Which track should I register for as an Indian / Galgotias student?',
+    answer: 'Students in their 7th semester should participate in SparkX 3.0 — Pro (focusing on advanced proposals, research, publications, and patents). Students in their 3rd and 5th semesters should participate in SparkX 3.0 — Novel (focusing on novel product-based prototypes). All UG/PG students can also enter the 30-Day Innovation Challenge.'
+  },
+  {
+    category: 'indian',
+    question: 'Do Indian teams participate physically or online?',
+    answer: 'Teams participating from India will attend the Grand Exhibition offline at Galgotias University campus, Greater Noida on 25–26 November 2026 to demonstrate their prototypes live to the evaluation panel and industry leaders.'
+  },
+  {
+    category: 'indian',
+    question: 'What are the prize amounts for Indian participants?',
+    answer: 'Across each category (Pro, Novel, and 30-Day Challenge), Indian winners receive: 1st Prize: ₹10,000 | 2nd Prize: ₹8,000 | 3rd Prize: ₹5,000, along with trophies, certificates, incubation opportunities, and patent assistance.'
+  },
+  {
+    category: 'international',
+    question: 'Can students outside India participate in SparkX 3.0?',
+    answer: 'Yes! International students from accredited universities and colleges worldwide are warmly invited to join the SparkX 3.0 International 30-Day Innovation Challenge. Participation is 100% online with no travel required.'
+  },
+  {
+    category: 'international',
+    question: 'How do international teams present and showcase their work?',
+    answer: 'International teams submit their deliverables (presentation, code repository, user manual, and video demonstration) and present their projects virtually via video conference to our international evaluation panel on Day 2 of the exhibition.'
+  },
+  {
+    category: 'international',
+    question: 'What are the international prizes?',
+    answer: 'International winners of the 30-Day Innovation Challenge receive USD cash awards: 1st Prize: USD 150 | 2nd Prize: USD 100 | 3rd Prize: USD 80, along with digital certificates of honor, global networking, and opportunities for joint research publications.'
+  },
+  {
+    category: 'submission',
+    question: 'What are the mandatory deliverables for the 30-Day Challenge?',
+    answer: 'Teams must deliver four core items: (1) Project Presentation (Slide Deck), (2) Live Working Prototype / Product Demonstration, (3) Public GitHub Repository with clear commit history, and (4) Comprehensive User Manual / Setup Guide.'
+  },
+  {
+    category: 'submission',
+    question: 'What technologies are allowed?',
+    answer: 'Teams have full architectural freedom. Modern stacks such as Python (FastAPI/Flask/Django), React, Next.js, Flutter, PyTorch, TensorFlow, Hugging Face, OpenAI APIs, WebRTC, Edge AI, IoT microcontrollers, and modern databases are all welcomed.'
+  }
+];
