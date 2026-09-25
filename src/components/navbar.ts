@@ -11,7 +11,7 @@ export function renderNavbar(): HTMLElement {
       <div class="container announcement-inner">
         <span class="announcement-badge">Official Announcement</span>
         <span class="announcement-text">SparkX 3.0 Registration is Open • Grand Showcase: 25–26 November 2026 • Galgotias University</span>
-        <a href="#register" class="announcement-link">Register Now &rarr;</a>
+        <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="announcement-link">Register Now &rarr;</a>
       </div>
     </div>
     

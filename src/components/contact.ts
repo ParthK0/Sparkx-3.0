@@ -32,6 +32,13 @@ export function renderContact(): HTMLElement {
                 <span>Complete Official Registration Form</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
               </a>
+              <div class="direct-link-snippet">
+                <span class="direct-link-label">Direct Registration Form URL:</span>
+                <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="direct-url-anchor">
+                  <span>${EVENT_DETAILS.registrationUrl}</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
+              </div>
             </div>
 
             <!-- Official Coordinator Contact Box -->
