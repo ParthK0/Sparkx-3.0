@@ -1,6 +1,10 @@
 /* ==========================================================================
-   SparkX 3.0 — AI Challenges & Modal Blueprint Styles
+   SparkX 3.0 — AI Challenges & Modal Blueprint Styles (Clean White Theme)
    ========================================================================== */
+
+.challenges-section {
+  background-color: #ffffff;
+}
 
 .challenge-framework-summary {
   display: grid;
@@ -10,7 +14,7 @@
 }
 
 .framework-metric {
-  background: rgba(14, 25, 52, 0.6);
+  background: #f8fafc;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
   padding: 16px;
@@ -21,21 +25,22 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   color: var(--text-dim);
-  font-weight: 700;
+  font-weight: 800;
   display: block;
 }
 
 .metric-val {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #0b1a3d;
   margin: 4px 0 2px 0;
   display: block;
 }
 
 .metric-sub {
   font-size: 0.78rem;
-  color: var(--gold-light);
+  color: var(--theme-major);
+  font-weight: 700;
 }
 
 .challenges-grid {
@@ -45,21 +50,21 @@
 }
 
 .challenge-card {
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
   padding: 32px;
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .challenge-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--blue-neon);
-  background: var(--bg-card-hover);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 24px rgba(56, 189, 248, 0.15);
+  transform: translateY(-4px);
+  border-color: var(--theme-major);
+  box-shadow: var(--shadow-md);
 }
 
 .challenge-card-top {
@@ -73,29 +78,31 @@
   font-family: var(--font-mono);
   font-size: 1.4rem;
   font-weight: 900;
-  color: var(--gold-light);
+  color: var(--theme-major);
   margin-right: 12px;
 }
 
 .ch-category-pill {
   font-size: 0.75rem;
-  font-weight: 700;
-  background: rgba(56, 189, 248, 0.15);
-  color: var(--blue-neon);
-  padding: 4px 10px;
+  font-weight: 800;
+  background: var(--theme-badge-bg);
+  color: var(--theme-badge-color);
+  padding: 4px 12px;
   border-radius: var(--radius-full);
+  border: 1px solid var(--theme-border);
 }
 
 .ch-title {
   font-size: 1.4rem;
+  color: #0b1a3d;
   margin-bottom: 8px;
 }
 
 .ch-tagline {
   font-size: 0.88rem;
-  color: var(--gold-light);
+  color: var(--theme-minor);
   margin-bottom: 14px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .ch-desc {
@@ -106,7 +113,8 @@
 }
 
 .ch-modules-preview {
-  background: rgba(0, 0, 0, 0.25);
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 14px 16px;
   margin-bottom: 24px;
@@ -115,8 +123,8 @@
 
 .modules-count-tag {
   font-size: 0.78rem;
-  font-weight: 700;
-  color: #cbd5e1;
+  font-weight: 800;
+  color: #0f172a;
   display: block;
   margin-bottom: 8px;
 }
@@ -130,12 +138,13 @@
 
 .preview-bullets li {
   font-size: 0.82rem;
-  color: var(--text-muted);
+  color: #475569;
 }
 
 .more-indicator {
-  color: var(--gold-light);
+  color: var(--theme-major);
   font-style: italic;
+  font-weight: 700;
 }
 
 .ch-card-actions {
@@ -152,8 +161,8 @@
 .challenge-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(4, 8, 19, 0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -170,8 +179,8 @@
 }
 
 .challenge-modal-card {
-  background: #09122a;
-  border: 1px solid rgba(56, 189, 248, 0.4);
+  background: #ffffff;
+  border: 2px solid var(--theme-major);
   border-radius: var(--radius-lg);
   max-width: 860px;
   width: 100%;
@@ -179,7 +188,7 @@
   overflow-y: auto;
   padding: 40px;
   position: relative;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
 }
 
 .modal-close-btn {
@@ -189,9 +198,9 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
-  color: #ffffff;
+  background: #f1f5f9;
+  border: 1px solid var(--border-card);
+  color: #0f172a;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
@@ -201,7 +210,7 @@
 }
 
 .modal-close-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #e2e8f0;
 }
 
 .modal-header-strip {
@@ -214,27 +223,30 @@
 .modal-num-badge {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  font-weight: 700;
-  background: var(--gold);
-  color: #000;
+  font-weight: 800;
+  background: var(--theme-major);
+  color: #ffffff;
   padding: 4px 10px;
   border-radius: var(--radius-sm);
 }
 
 .modal-category-tag {
   font-size: 0.85rem;
-  color: var(--blue-neon);
+  color: var(--theme-minor);
+  font-weight: 700;
 }
 
 .modal-title {
   font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  color: #0b1a3d;
   margin-bottom: 6px;
 }
 
 .modal-tagline {
   font-size: 1rem;
-  color: var(--gold-light);
+  color: var(--theme-major);
   margin-bottom: 24px;
+  font-weight: 700;
 }
 
 .modal-section-block {
@@ -243,9 +255,9 @@
 
 .modal-subheading {
   font-size: 1.15rem;
-  color: #ffffff;
+  color: #0b1a3d;
   margin-bottom: 12px;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 2px solid var(--border-subtle);
   padding-bottom: 6px;
 }
 
@@ -261,7 +273,7 @@
 }
 
 .modal-module-item {
-  background: rgba(255, 255, 255, 0.03);
+  background: #f8fafc;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 16px;
@@ -269,7 +281,8 @@
 
 .module-item-title {
   font-size: 0.95rem;
-  color: var(--gold-light);
+  color: var(--theme-major);
+  font-weight: 800;
   margin-bottom: 8px;
 }
 
@@ -289,7 +302,8 @@
 
 .modal-outputs-list li {
   font-size: 0.9rem;
-  color: #e2e8f0;
+  color: #334155;
+  font-weight: 500;
 }
 
 .modal-stack-tags {
@@ -299,13 +313,14 @@
 }
 
 .tech-tag {
-  background: rgba(56, 189, 248, 0.12);
-  color: var(--blue-neon);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: #eff6ff;
+  color: #0047ba;
+  border: 1px solid #bfdbfe;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   padding: 4px 12px;
   border-radius: var(--radius-full);
+  font-weight: 700;
 }
 
 .modal-cta-footer {

@@ -1,26 +1,19 @@
 /* ==========================================================================
-   SparkX 3.0 — Contact & Venue Styles
+   SparkX 3.0 — Contact & Venue Styles (Clean White Theme)
    ========================================================================== */
 
+.contact-section {
+  background-color: #ffffff;
+}
+
 .contact-card-wrapper {
-  background: linear-gradient(135deg, rgba(14, 25, 52, 0.95) 0%, rgba(9, 16, 36, 0.98) 100%);
-  border: 1px solid var(--border-card);
+  background: #f8fafc;
+  border: 2px solid var(--border-card);
   border-radius: var(--radius-lg);
   padding: 48px;
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
-}
-
-.contact-glow-orb {
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
-  pointer-events: none;
+  box-shadow: var(--shadow-sm);
 }
 
 .contact-grid {
@@ -33,6 +26,7 @@
 
 .contact-heading {
   font-size: clamp(2rem, 3.5vw, 2.7rem);
+  color: #0b1a3d;
   margin: 8px 0 16px 0;
 }
 
@@ -47,8 +41,8 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: var(--theme-badge-bg);
+  border: 1px solid var(--theme-border);
   border-radius: var(--radius-sm);
   padding: 16px 20px;
   margin-bottom: 28px;
@@ -59,13 +53,14 @@
 }
 
 .contact-deadline-box strong {
-  color: var(--gold-light);
+  color: var(--theme-major);
   font-size: 1rem;
   display: block;
+  font-weight: 800;
 }
 
 .contact-deadline-box p {
-  color: #cbd5e1;
+  color: #334155;
   font-size: 0.85rem;
   margin-top: 2px;
 }
@@ -83,8 +78,8 @@
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
   padding: 8px 14px;
 }
@@ -92,38 +87,41 @@
 .direct-link-label {
   font-size: 0.8rem;
   color: var(--text-dim);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .direct-url-anchor {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--gold-light);
+  color: var(--theme-minor);
   font-family: var(--font-mono);
   font-size: 0.84rem;
-  font-weight: 500;
+  font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .direct-url-anchor:hover {
-  color: #ffffff;
+  color: var(--theme-major);
 }
 
 .official-contact-card {
-  background: rgba(0, 0, 0, 0.35);
-  border-left: 3px solid var(--gold);
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-left: 4px solid var(--theme-major);
   border-radius: var(--radius-sm);
   padding: 20px;
+  box-shadow: var(--shadow-sm);
 }
 
 .coord-label {
   font-size: 0.78rem;
   text-transform: uppercase;
-  color: var(--gold-light);
+  color: var(--theme-major);
   letter-spacing: 0.08em;
   margin-bottom: 8px;
+  font-weight: 800;
 }
 
 .coord-card-body {
@@ -136,10 +134,9 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 2px solid var(--gold);
+  border: 2px solid var(--theme-major);
   overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.35);
 }
 
 .coord-img {
@@ -150,13 +147,14 @@
 
 .coord-name {
   font-size: 1.15rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 800;
+  color: #0b1a3d;
 }
 
 .coord-role {
   font-size: 0.88rem;
-  color: var(--blue-neon);
+  color: var(--theme-minor);
+  font-weight: 700;
 }
 
 .coord-dept {
@@ -176,34 +174,37 @@
   align-items: center;
   gap: 6px;
   font-size: 0.85rem;
-  color: #e2e8f0;
+  color: #334155;
+  font-weight: 600;
 }
 
 .coord-link:hover {
-  color: var(--gold-light);
+  color: var(--theme-major);
 }
 
 .venue-card {
-  background: rgba(10, 19, 41, 0.8);
+  background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
   padding: 28px;
   display: flex;
   flex-direction: column;
   height: 100%;
+  box-shadow: var(--shadow-sm);
 }
 
 .venue-tag {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  color: var(--blue-neon);
+  color: var(--theme-minor);
   display: block;
   margin-bottom: 6px;
 }
 
 .venue-title {
   font-size: 1.4rem;
+  color: #0b1a3d;
   margin-bottom: 8px;
 }
 
@@ -234,7 +235,7 @@
 
 .venue-feat-item strong {
   font-size: 0.9rem;
-  color: #ffffff;
+  color: #0b1a3d;
   display: block;
 }
 
@@ -253,12 +254,13 @@
   text-transform: uppercase;
   color: var(--text-dim);
   display: block;
+  font-weight: 700;
 }
 
 .seal-name {
   font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--gold-light);
+  font-weight: 800;
+  color: var(--theme-major);
   display: block;
 }
 

@@ -1,6 +1,10 @@
 /* ==========================================================================
-   SparkX 3.0 — Leadership & Committee Styles
+   SparkX 3.0 — Leadership & Committee Styles (Clean White Theme)
    ========================================================================== */
+
+.committee-section {
+  background-color: #ffffff;
+}
 
 .committee-tier {
   margin-bottom: 48px;
@@ -8,8 +12,9 @@
 
 .tier-label {
   font-size: 1.35rem;
+  color: #0b1a3d;
   margin-bottom: 20px;
-  border-left: 3px solid var(--gold);
+  border-left: 4px solid var(--theme-major);
   padding-left: 12px;
 }
 
@@ -20,38 +25,45 @@
 }
 
 .patron-card {
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
   padding: 24px;
   display: flex;
   align-items: center;
   gap: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.patron-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--theme-major);
 }
 
 .patron-avatar, .leader-avatar, .expert-avatar, .faculty-avatar, .eval-avatar {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  background: #f1f5f9;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 2px solid var(--gold-light);
+  border: 2px solid var(--theme-major);
   overflow: hidden;
 }
 
 .expert-avatar {
   width: 64px;
   height: 64px;
-  border-color: var(--blue-neon);
+  border-color: var(--theme-minor);
 }
 
 .faculty-avatar, .eval-avatar {
   width: 48px;
   height: 48px;
-  border-color: rgba(245, 158, 11, 0.4);
+  border-color: var(--theme-border);
 }
 
 .patron-avatar.has-img, .leader-avatar.has-img, .expert-avatar.has-img, .faculty-avatar.has-img, .eval-avatar.has-img {
@@ -76,13 +88,13 @@
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.1rem;
-  color: #ffffff;
+  color: var(--theme-major);
 }
 
 .member-badge, .leader-badge {
   font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--gold-light);
+  font-weight: 800;
+  color: var(--theme-major);
   text-transform: uppercase;
   display: block;
   margin-bottom: 4px;
@@ -90,6 +102,7 @@
 
 .member-name, .leader-name {
   font-size: 1.15rem;
+  color: #0b1a3d;
   margin-bottom: 4px;
 }
 
@@ -111,11 +124,11 @@
 }
 
 .tier-pill-gold {
-  background: var(--gold);
-  color: #000;
-  font-weight: 700;
+  background: var(--theme-major);
+  color: #ffffff;
+  font-weight: 800;
   font-size: 0.75rem;
-  padding: 3px 10px;
+  padding: 3px 12px;
   border-radius: var(--radius-full);
 }
 
@@ -126,17 +139,17 @@
 }
 
 .expert-card {
-  background: linear-gradient(180deg, rgba(30, 58, 138, 0.25) 0%, rgba(14, 25, 52, 0.85) 100%);
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  background: #ffffff;
+  border: 2px solid var(--theme-minor);
   border-radius: var(--radius-md);
   padding: 28px;
   position: relative;
-  transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast);
 }
 
 .expert-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--blue-neon);
+  transform: translateY(-3px);
 }
 
 .expert-top {
@@ -148,11 +161,12 @@
 
 .expert-badge {
   font-size: 0.75rem;
-  font-weight: 700;
-  background: rgba(56, 189, 248, 0.15);
-  color: var(--blue-neon);
+  font-weight: 800;
+  background: #eff6ff;
+  color: #0047ba;
   padding: 4px 10px;
   border-radius: var(--radius-full);
+  border: 1px solid #bfdbfe;
 }
 
 .expert-globe-icon {
@@ -161,12 +175,13 @@
 
 .expert-name {
   font-size: 1.3rem;
+  color: #0b1a3d;
   margin-bottom: 4px;
 }
 
 .expert-role {
-  color: var(--gold-light);
-  font-weight: 600;
+  color: var(--theme-major);
+  font-weight: 700;
   font-size: 0.9rem;
   margin-bottom: 6px;
 }
@@ -190,13 +205,20 @@
 }
 
 .leader-card {
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
   padding: 24px;
   display: flex;
   align-items: center;
   gap: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.leader-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--theme-major);
 }
 
 .faculty-grid, .eval-grid {
@@ -206,22 +228,30 @@
 }
 
 .faculty-card, .eval-card {
-  background: rgba(14, 25, 52, 0.5);
-  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
   padding: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.faculty-card:hover, .eval-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--theme-major);
 }
 
 .faculty-role-tag, .eval-role-tag {
   font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--blue-neon);
+  font-weight: 800;
+  color: var(--theme-minor);
   display: block;
   margin-bottom: 4px;
 }
 
 .faculty-name, .eval-name {
   font-size: 1.05rem;
+  color: #0b1a3d;
   margin-bottom: 4px;
 }
 

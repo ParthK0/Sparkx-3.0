@@ -7,22 +7,21 @@ export function renderNavbar(): HTMLElement {
   nav.id = 'navbar';
 
   nav.innerHTML = `
-    <div class="top-announcement">
-      <div class="container announcement-inner">
-        <span class="announcement-badge">Official Announcement</span>
-        <span class="announcement-text">SparkX 3.0 Registration is Open • Grand Showcase: 25–26 November 2026 • Galgotias University</span>
-        <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="announcement-link">Register Now &rarr;</a>
-      </div>
-    </div>
-    
     <div class="main-nav-bar">
       <div class="container nav-content">
         <a href="#hero" class="brand-logo" aria-label="SparkX 3.0 Home">
           <img src="/images/galgotias%20univeristy.png" alt="Galgotias University" class="navbar-uni-logo" />
-          <div class="brand-badge">3.0</div>
+          <span class="nav-brand-pipe">|</span>
+          <div class="quanta-brand-box">
+            <svg class="quanta-star-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z" fill="#0891b2"/>
+              <circle cx="12" cy="12" r="3" fill="#06b6d4"/>
+            </svg>
+            <span class="quanta-text">uanta</span>
+          </div>
+          <span class="nav-brand-pipe">|</span>
           <div class="brand-text">
-            <span class="brand-title">SPARK<span class="gold-gradient">X</span></span>
-            <span class="brand-sub">Beyond Boundaries</span>
+            <span class="brand-title">Spark<span class="spark-x">X</span> 3.0</span>
           </div>
         </a>
 

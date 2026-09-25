@@ -1,0 +1,672 @@
+/* ==========================================================================
+   SparkX 3.0 — Flyer Poster Matching Stylesheet (Clean White & Solid Theme)
+   Faithfully reflects the official Galgotias University flyer UI
+   - India Mode: Red Major (#c0262d) shifting to Blue (#0047ba)
+   - International Mode: Blue Major (#0047ba) shifting to Red (#c0262d)
+   - Solid colors, non-vibrant, clean academic white
+   ========================================================================== */
+
+.flyer-section {
+  padding-top: 20px;
+  padding-bottom: 70px;
+  background-color: #ffffff;
+}
+
+.flyer-card-poster {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: var(--radius-lg);
+  padding: 44px 38px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+  border: 3px solid var(--theme-major);
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition-smooth);
+}
+
+/* Header Strip: Logo & Global Ideas */
+.flyer-header-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.flyer-uni-logo {
+  height: 54px;
+  width: auto;
+  object-fit: contain;
+}
+
+.flyer-global-impact-text {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  font-style: italic;
+  color: var(--theme-minor);
+  letter-spacing: -0.01em;
+  transition: color var(--transition-fast);
+}
+
+/* Title Block */
+.flyer-title-block {
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.flyer-main-title {
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 900;
+  color: #0b1a3d;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+
+.spark-x {
+  color: var(--theme-major);
+  display: inline-block;
+  font-size: 1.12em;
+  margin: 0 2px;
+}
+
+.flyer-edition-title {
+  color: var(--theme-minor);
+  transition: color var(--transition-smooth);
+}
+
+.flyer-challenge-pill {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  padding: 8px 24px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  background-color: var(--theme-major);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: background-color var(--transition-smooth);
+}
+
+.flyer-subline-focus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  color: var(--theme-minor);
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  transition: color var(--transition-fast);
+}
+
+.dot-sep {
+  color: var(--theme-major);
+}
+
+.flyer-date-giant-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: #f8fafc;
+  border: 2px solid var(--theme-major);
+  padding: 10px 28px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-smooth);
+}
+
+.calendar-icon-box {
+  color: var(--theme-major);
+  display: flex;
+  align-items: center;
+}
+
+.date-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+  font-weight: 900;
+  color: #0b1a3d;
+  letter-spacing: -0.01em;
+}
+
+/* Ribbon Banner: 30-Day Innovation Challenge */
+.flyer-ribbon-banner {
+  background-color: var(--theme-major);
+  border-radius: var(--radius-md);
+  padding: 18px 28px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: background-color var(--transition-smooth);
+}
+
+.ribbon-lightbulb {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+.ribbon-heading {
+  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.ribbon-sub {
+  font-size: 0.95rem;
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+/* Meta 3-Column Strip */
+.flyer-meta-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1.3fr 0.8fr;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.flyer-meta-col {
+  background: #f8fafc;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-col-tag {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--theme-major);
+  margin-bottom: 6px;
+  letter-spacing: 0.06em;
+}
+
+.launched-dept, .launched-school {
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.4;
+}
+
+.launched-uni {
+  font-size: 0.95rem;
+  color: #0f172a;
+  margin-top: 4px;
+}
+
+.reg-link-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  background: #f0f7ff;
+  border-color: #bfdbfe;
+}
+
+.link-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #dbeafe;
+  color: #0047ba;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.reg-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+  display: block;
+}
+
+.reg-url-highlight {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #0047ba;
+  word-break: break-all;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.qr-scan-card {
+  align-items: center;
+  text-align: center;
+  background: #f8fafc;
+  border-color: var(--border-card);
+}
+
+.qr-box {
+  width: 90px;
+  height: 90px;
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid var(--border-card);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-code-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.qr-btn-tag {
+  font-size: 0.78rem;
+  font-weight: 800;
+  background-color: var(--theme-major);
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.qr-btn-tag:hover {
+  opacity: 0.9;
+}
+
+/* Flyer Tables (Dates & Prizes) */
+.flyer-tables-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.flyer-table-box {
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.flyer-table-header-tab {
+  padding: 12px 18px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Solid headers matching flyer */
+.tab-cyan {
+  background-color: #0047ba; /* Solid Royal Blue */
+}
+
+.tab-purple {
+  background-color: #7c2d12; /* Solid Rich Rust / Burgundy */
+}
+
+[data-audience="india"] .tab-cyan {
+  background-color: #0047ba;
+}
+
+[data-audience="india"] .tab-purple {
+  background-color: #c0262d;
+}
+
+[data-audience="international"] .tab-cyan {
+  background-color: #c0262d;
+}
+
+[data-audience="international"] .tab-purple {
+  background-color: #0047ba;
+}
+
+.tab-icon {
+  font-size: 1.2rem;
+}
+
+.tab-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.flyer-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  text-align: left;
+}
+
+.flyer-table th {
+  background: #f1f5f9;
+  color: #1e293b;
+  font-weight: 800;
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--border-card);
+  font-size: 0.82rem;
+}
+
+.flyer-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: #334155;
+}
+
+.flyer-table tr:last-child td {
+  border-bottom: none;
+}
+
+.td-bold {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.tr-highlight td {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+[data-audience="international"] .tr-highlight td {
+  background: #eff6ff;
+  color: #0047ba;
+}
+
+.td-prize-inr {
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+.td-prize-usd {
+  color: #0047ba;
+  font-weight: 700;
+}
+
+/* Bottom 4-Card Grid */
+.flyer-four-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.flyer-mini-card {
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.flyer-mini-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.mini-card-header {
+  background-color: var(--theme-major);
+  color: #ffffff;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color var(--transition-smooth);
+}
+
+.queries-contact-card .mini-card-header {
+  background-color: var(--theme-minor);
+}
+
+.mini-icon {
+  font-size: 1.1rem;
+}
+
+.mini-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.mini-card-body {
+  padding: 16px;
+  font-size: 0.82rem;
+  color: #334155;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.mini-duration-lead {
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.duration-pill-highlight {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+[data-audience="international"] .duration-pill-highlight {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #0047ba;
+}
+
+.framework-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+}
+
+.framework-table th {
+  width: 40%;
+  text-align: left;
+  color: #64748b;
+  padding: 4px 0;
+  vertical-align: top;
+  font-weight: 700;
+}
+
+.framework-table td {
+  font-weight: 600;
+  color: #0f172a;
+  padding: 4px 0;
+}
+
+.deliverables-subcard {
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  margin-top: auto;
+}
+
+.deliv-sub-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--theme-major);
+  font-size: 0.82rem;
+  margin-bottom: 6px;
+  font-weight: 800;
+}
+
+.deliv-sub-list {
+  padding-left: 18px;
+  font-size: 0.78rem;
+  color: #475569;
+}
+
+.eval-plan-note {
+  margin-bottom: 10px;
+}
+
+.presentation-mode-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  margin-bottom: 12px;
+}
+
+.presentation-mode-table th {
+  background: #f1f5f9;
+  padding: 6px;
+  border: 1px solid var(--border-card);
+  font-weight: 700;
+}
+
+.presentation-mode-table td {
+  padding: 6px;
+  border: 1px solid var(--border-card);
+  font-weight: 600;
+}
+
+.badge-online {
+  color: #0047ba;
+  font-weight: 700;
+}
+
+.badge-offline {
+  color: #c0262d;
+  font-weight: 700;
+}
+
+.eval-criteria-subblock strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+.criteria-check-list {
+  padding-left: 18px;
+  font-size: 0.78rem;
+  color: #475569;
+}
+
+/* Queries / Contact Card */
+.queries-body {
+  gap: 12px;
+}
+
+.query-person {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.query-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--theme-major);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.query-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.query-name {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.query-role {
+  font-size: 0.75rem;
+  color: var(--theme-major);
+  font-weight: 700;
+}
+
+.query-dept {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.flyer-script-tagline {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--theme-minor);
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .flyer-tables-grid {
+    grid-template-columns: 1fr;
+  }
+  .flyer-four-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .flyer-meta-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .flyer-four-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .flyer-meta-row {
+    grid-template-columns: 1fr;
+  }
+  .flyer-card-poster {
+    padding: 24px 16px;
+  }
+  .flyer-ribbon-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}

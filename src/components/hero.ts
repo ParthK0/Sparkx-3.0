@@ -16,56 +16,41 @@ export function renderHero(): HTMLElement {
     </div>
 
     <div class="container hero-container">
-      <div class="hero-meta-badge">
-        <span class="live-dot"></span>
-        <span class="meta-tag">International Project Innovation Challenge</span>
-        <span class="meta-separator">•</span>
-        <span class="meta-date">25 & 26 November 2026</span>
-      </div>
-
-      <div class="hero-header-box">
-        <h1 class="hero-main-title">
-          SPARK<span class="gold-gradient">X</span> <span class="edition-num">3.0</span>
-        </h1>
-        <p class="hero-super-sub">Beyond Boundaries</p>
-        <p class="hero-theme-tagline">Global Ideas <span class="accent-bullet">•</span> Global Impact</p>
-      </div>
-
-      <p class="hero-description">
-        A structured student innovation and project exhibition program designed to cultivate creativity, technical skills, 
-        research aptitude, entrepreneurship, and real-world problem-solving. Transforming student ingenuity from 
-        <span class="text-glow">Idea &rarr; Product &rarr; Novel System &rarr; Research & Global Impact</span>.
-      </p>
-
-      <div class="hero-institution-strip">
-        <div class="inst-item">
-          <span class="inst-dept">Department of Artificial Intelligence & Data Science</span>
-          <span class="inst-school">School of Artificial Intelligence</span>
-        </div>
-        <div class="inst-divider"></div>
-        <div class="inst-item">
-          <span class="inst-uni">${EVENT_DETAILS.university}</span>
-          <span class="inst-loc">${EVENT_DETAILS.location}</span>
+      <!-- Official Galgotias University SparkX 3.0 Hero Banner: Responsive Desktop & Mobile -->
+      <div class="hero-home-poster-container">
+        <picture class="hero-home-picture">
+          <source media="(max-width: 768px)" srcset="/images/mobile.png" />
+          <source media="(min-width: 769px)" srcset="/images/desktop.png" />
+          <img 
+            src="/images/desktop.png" 
+            alt="Galgotias University SparkX 3.0 Beyond Boundaries — 30-Day Innovation Challenge" 
+            class="hero-home-banner-img"
+            loading="eager"
+          />
+        </picture>
+        <div class="hero-banner-quick-actions">
+          <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg banner-register-btn">
+            <span>Register on Official Form</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#audience-selector" class="btn btn-secondary btn-lg banner-choose-path-btn">
+            <span>Choose Indian / International Path</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+          </a>
         </div>
       </div>
 
-      <div class="hero-cta-group">
-        <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg shadow-gold">
-          <span>Register Now</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#challenges" class="btn btn-secondary btn-lg">
-          <span>Explore AI Challenges</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </a>
-      </div>
-
-      <!-- UX Milestone: Audience Selection Section -->
+      <!-- Interactive Path Selection matching Open For graphic from home page image -->
       <div class="participation-selector-wrapper" id="audience-selector">
+        <div class="open-for-graphic-bar">
+          <div class="open-for-divider-line"></div>
+          <span class="open-for-title-badge">OPEN FOR</span>
+          <div class="open-for-divider-line"></div>
+        </div>
+
         <div class="selector-header">
-          <span class="selector-eyebrow">Interactive Experience</span>
-          <h2 class="selector-title">Choose Your Participation Path</h2>
-          <p class="selector-subtitle">Select your origin to dynamically customize track eligibility, prize currencies, and showcase formats.</p>
+          <h2 class="selector-title">Select Your Participation Path</h2>
+          <p class="selector-subtitle">Customizes track eligibility, presentation mode (Offline at Galgotias vs Online Virtual), and prize currencies.</p>
         </div>
 
         <div class="participation-cards-grid">
@@ -116,6 +101,16 @@ export function renderHero(): HTMLElement {
               <span class="btn-arrow">&rarr;</span>
             </button>
           </div>
+        </div>
+
+        <div class="showcase-tagline-strip">
+          <span>SHOWCASE</span>
+          <span class="dot-sep">•</span>
+          <span>COLLABORATE</span>
+          <span class="dot-sep">•</span>
+          <span>INNOVATE</span>
+          <span class="dot-sep">•</span>
+          <span>CREATE GLOBAL IMPACT</span>
         </div>
 
         <div class="path-notice-pill">

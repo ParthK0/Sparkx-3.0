@@ -1,11 +1,12 @@
 /* ==========================================================================
-   SparkX 3.0 — Footer Styles
+   SparkX 3.0 — Footer Styles (Clean White Theme)
    ========================================================================== */
 
 .site-footer {
-  background: #030610;
-  border-top: 1px solid var(--border-subtle);
+  background: #f8fafc;
+  border-top: 2px solid var(--border-card);
   padding: 72px 0 32px 0;
+  color: #334155;
 }
 
 .footer-top-grid {
@@ -34,7 +35,9 @@
 
 .footer-col-title {
   font-size: 1.05rem;
+  color: #0b1a3d;
   margin-bottom: 16px;
+  font-weight: 800;
 }
 
 .footer-links-list {
@@ -46,12 +49,12 @@
 
 .footer-links-list a {
   font-size: 0.88rem;
-  color: var(--text-muted);
+  color: #475569;
   transition: color var(--transition-fast);
 }
 
 .footer-links-list a:hover {
-  color: #ffffff;
+  color: var(--theme-major);
 }
 
 .footer-aud-p {
@@ -68,24 +71,27 @@
 }
 
 .coordinator-compact-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: #ffffff;
+  border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
   padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  box-shadow: var(--shadow-sm);
 }
 
 .coord-compact-title {
   font-size: 0.72rem;
   text-transform: uppercase;
   color: var(--text-dim);
+  font-weight: 700;
 }
 
 .coord-compact-mail {
   font-size: 0.82rem;
-  color: var(--gold-light);
-  font-weight: 600;
+  color: var(--theme-major);
+  font-weight: 700;
 }
 
 .coord-compact-phone {
