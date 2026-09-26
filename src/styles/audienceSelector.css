@@ -1,0 +1,284 @@
+/* ==========================================================================
+   SparkX 3.0 — In-Page Audience Selector Section Styles
+   ========================================================================== */
+
+.audience-selector-section {
+  position: relative;
+  padding: 40px 0;
+  background-color: #f8fafc;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.selector-banner-wrapper {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.selector-banner-header {
+  margin-bottom: 28px;
+}
+
+.selector-eyebrow {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--theme-major);
+  margin-bottom: 6px;
+}
+
+.selector-main-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 900;
+  color: #0b1a3d;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.selector-main-subtitle {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Two Cards Grid */
+.selector-cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.selector-path-card {
+  background: #ffffff;
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  position: relative;
+  outline: none;
+}
+
+.selector-path-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border-color: var(--border-strong);
+}
+
+.selector-path-card:focus-visible {
+  outline: 3px solid var(--theme-minor);
+}
+
+/* Card 1: India */
+#selector-card-india {
+  border-top: 4px solid #ea580c;
+}
+
+#selector-card-india.is-active {
+  border-color: #c0262d;
+  border-top: 5px solid #ea580c;
+  box-shadow: 0 10px 28px rgba(192, 38, 45, 0.12);
+  background: linear-gradient(180deg, #fffaf7 0%, #ffffff 120px);
+}
+
+/* Card 2: International */
+#selector-card-intl {
+  border-top: 4px solid #0047ba;
+}
+
+#selector-card-intl.is-active {
+  border-color: #0047ba;
+  border-top: 5px solid #0047ba;
+  box-shadow: 0 10px 28px rgba(0, 71, 186, 0.12);
+  background: linear-gradient(180deg, #f6f9ff 0%, #ffffff 120px);
+}
+
+/* Card Header Badges */
+.path-card-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.path-flag {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.path-status-badge {
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.badge-india {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.badge-intl {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.path-active-indicator {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  display: none;
+}
+
+#selector-card-india.is-active .path-active-indicator {
+  display: inline-block;
+  background: #c0262d;
+  color: #ffffff;
+}
+
+#selector-card-intl.is-active .path-active-indicator {
+  display: inline-block;
+  background: #0047ba;
+  color: #ffffff;
+}
+
+/* Card Content */
+.path-card-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0b1a3d;
+  margin-bottom: 4px;
+}
+
+.path-card-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.path-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.path-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #334155;
+  line-height: 1.4;
+}
+
+.path-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+#selector-card-india .path-dot {
+  background-color: #ea580c;
+}
+
+#selector-card-intl .path-dot {
+  background-color: #0047ba;
+}
+
+/* Action button at card bottom */
+.path-card-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: #f8fafc;
+  border: 1px solid var(--border-card);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+}
+
+#selector-card-india .path-card-action {
+  color: #b91c1c;
+}
+
+#selector-card-india:hover .path-card-action,
+#selector-card-india.is-active .path-card-action {
+  background: #fef2f2;
+  border-color: #fca5a5;
+}
+
+#selector-card-intl .path-card-action {
+  color: #1d4ed8;
+}
+
+#selector-card-intl:hover .path-card-action,
+#selector-card-intl.is-active .path-card-action {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.action-btn-arrow {
+  font-size: 1.1rem;
+  transition: transform var(--transition-fast);
+}
+
+.selector-path-card:hover .action-btn-arrow {
+  transform: translateX(4px);
+}
+
+.selector-banner-footer {
+  margin-top: 14px;
+}
+
+.selector-switch-note {
+  font-size: 0.84rem;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .audience-selector-section {
+    padding: 30px 0;
+  }
+
+  .selector-cards-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .selector-path-card {
+    padding: 20px 18px;
+  }
+
+  .path-card-title {
+    font-size: 1.3rem;
+  }
+
+  .path-highlights li {
+    font-size: 0.82rem;
+  }
+}

@@ -7,6 +7,7 @@
 @import './styles/loadingGateway.css';
 @import './styles/navbar.css';
 @import './styles/hero.css';
+@import './styles/audienceSelector.css';
 @import './styles/countdown.css';
 @import './styles/flyerOverview.css';
 @import './styles/about.css';
@@ -16,11 +17,13 @@
 @import './styles/prizes.css';
 @import './styles/participation.css';
 @import './styles/timeline.css';
+@import './styles/whyParticipate.css';
 @import './styles/evaluation.css';
 @import './styles/committee.css';
 @import './styles/faq.css';
 @import './styles/contact.css';
 @import './styles/footer.css';
+@import './styles/stickyMobileBar.css';
 @import './styles/networkStatus.css';
 @import './styles/notFound.css';
 @import './styles/registerPage.css';

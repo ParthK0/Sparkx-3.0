@@ -59,7 +59,7 @@ export function renderChallengesEvaluationPage(activeTab: 'challenges' | 'evalua
     <!-- Bottom Footer Navigation -->
     <footer class="ch-eval-bottom-bar">
       <div class="container text-center">
-        <p>SparkX 3.0 Beyond Boundaries • School of Artificial Intelligence, Galgotias University</p>
+        <p>SparkX 3.0 Beyond Boundaries • Galgotias University</p>
         <div class="ch-eval-bottom-links">
           <a href="#" class="bottom-home-link">← Return to SparkX 3.0 Homepage</a>
         </div>

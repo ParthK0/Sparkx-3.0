@@ -1,16 +1,195 @@
 /* ==========================================================================
-   SparkX 3.0 — About & Program Objectives Styles (Clean White Theme)
+   SparkX 3.0 — About (Introduction) & Program Objectives Styles
+   Clean Academic White Theme with Rich Badges & Structured Flows
    ========================================================================== */
 
 .about-section {
   background-color: #ffffff;
 }
 
+/* ==========================================================================
+   1. Introduction Block
+   ========================================================================== */
+.about-intro-block {
+  margin-bottom: 48px;
+}
+
+.about-lead-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  margin-top: 24px;
+}
+
+.about-lead-text {
+  font-size: 1.06rem;
+  line-height: 1.8;
+  color: #1e293b;
+  margin-bottom: 28px;
+}
+
+.about-lead-text strong {
+  color: #0b1a3d;
+  font-weight: 800;
+}
+
+/* Progressive Innovation Journey Stepper */
+.journey-flow-box {
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.journey-flow-label {
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-heading);
+}
+
+.ideas-step-strip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1.5px solid var(--border-card);
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  color: var(--text-heading);
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.step-concept {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: #f8fafc;
+}
+
+.step-1 {
+  color: #c0262d;
+  background: #fef2f2;
+}
+
+.step-2 {
+  color: #d97706;
+  background: #fffbeb;
+}
+
+.step-3 {
+  color: #7c3aed;
+  background: #f5f3ff;
+}
+
+.step-4 {
+  color: #0d9488;
+  background: #f0fdfa;
+}
+
+.step-5 {
+  color: #0047ba;
+  background: #eff6ff;
+}
+
+.step-arr {
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Track Breakdown inside Introduction */
+.about-tracks-summary {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 24px;
+}
+
+.about-tracks-intro {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 18px;
+}
+
+.about-tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.about-track-pill {
+  background: #ffffff;
+  border: 1.5px solid var(--border-card);
+  border-radius: 14px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all var(--transition-fast);
+}
+
+.about-track-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.track-pro {
+  border-top: 4px solid #c0262d;
+}
+
+.track-novel {
+  border-top: 4px solid #d97706;
+}
+
+.track-sprint {
+  border-top: 4px solid #0047ba;
+}
+
+.track-pill-badge {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+.track-pill-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0b1a3d;
+}
+
+.track-pill-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   Core Pillars Grid
+   ========================================================================== */
 .pillars-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin-bottom: 60px;
+  margin-bottom: 56px;
 }
 
 .pillar-card {
@@ -43,26 +222,27 @@
 }
 
 .pillar-card:nth-child(3) {
-  border-top: 4px solid #d97706;
-}
-.pillar-card:nth-child(3) .pillar-icon-box {
-  background: #fffbeb;
-  border-color: #fef3c7;
-  color: #d97706;
-}
-
-.pillar-card:nth-child(4) {
   border-top: 4px solid #7c3aed;
 }
-.pillar-card:nth-child(4) .pillar-icon-box {
+.pillar-card:nth-child(3) .pillar-icon-box {
   background: #f5f3ff;
   border-color: #ede9fe;
   color: #7c3aed;
 }
 
+.pillar-card:nth-child(4) {
+  border-top: 4px solid #059669;
+}
+.pillar-card:nth-child(4) .pillar-icon-box {
+  background: #ecfdf5;
+  border-color: #d1fae5;
+  color: #059669;
+}
+
 .pillar-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
 }
 
 .pillar-icon-box {
@@ -73,11 +253,14 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  border: 1.5px solid;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
 }
 
 .pillar-title {
-  font-size: 1.35rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
   color: #0b1a3d;
   margin-bottom: 12px;
 }
@@ -85,77 +268,143 @@
 .pillar-desc {
   font-size: 0.9rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
+.pillar-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(148, 163, 184, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   2. Objectives Container (All 10 Official Mandates)
+   ========================================================================== */
 .objectives-container {
   background: #f8fafc;
-  border: 1px solid var(--border-card);
-  border-left: 5px solid var(--theme-major);
+  border: 1.5px solid var(--border-card);
   border-radius: var(--radius-lg);
-  padding: 40px;
+  padding: 44px 40px;
+  box-shadow: var(--shadow-sm);
 }
 
 .objectives-header {
-  margin-bottom: 32px;
+  margin-bottom: 36px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .objectives-title {
-  font-size: 1.6rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
   color: #0b1a3d;
-  margin-bottom: 6px;
+  font-weight: 800;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .objectives-sub {
+  font-size: 0.95rem;
   color: var(--text-muted);
-  font-size: 0.92rem;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 .objectives-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 16px 20px;
 }
 
-.objective-item {
+.objective-card {
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 16px 18px;
   display: flex;
   align-items: flex-start;
-  gap: 16px;
-  padding: 18px;
-  background: #ffffff;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
-  border-left: 4px solid var(--theme-minor);
-  box-shadow: var(--shadow-sm);
+  gap: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.obj-num {
+.objective-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--theme-major);
+  box-shadow: 0 6px 18px rgba(192, 38, 45, 0.08);
+}
+
+.obj-sparkle-icon {
+  font-size: 1.15rem;
+  color: #c0262d;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.obj-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.obj-seq {
   font-family: var(--font-mono);
-  font-size: 1rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  color: var(--theme-major);
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
 }
 
-.objective-item p {
-  font-size: 0.9rem;
-  color: #334155;
+.objective-card p {
+  font-size: 0.91rem;
+  font-weight: 500;
+  color: #1e293b;
   line-height: 1.5;
 }
 
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
 @media (max-width: 1024px) {
   .pillars-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .about-tracks-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
+  .about-lead-card {
+    padding: 24px 20px;
+  }
+
+  .about-lead-text {
+    font-size: 0.98rem;
+  }
+
+  .ideas-step-strip {
+    font-size: 0.82rem;
+    padding: 8px 14px;
+    gap: 6px;
+  }
+
   .pillars-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
+
   .objectives-grid {
     grid-template-columns: 1fr;
   }
+
   .objectives-container {
-    padding: 24px 16px;
+    padding: 28px 18px;
   }
 }

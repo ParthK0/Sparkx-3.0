@@ -10,7 +10,7 @@ export const EVENT_DETAILS = {
   registrationUrl: 'https://forms.gle/ci5yKTxQCprMmJj4A',
   university: 'Galgotias University',
   department: 'Department of Artificial Intelligence & Data Science',
-  school: 'School of Artificial Intelligence',
+  school: 'Galgotias University',
   location: 'Greater Noida, Uttar Pradesh, India',
   contactPerson: 'Dr. Vartika Puri',
   contactRole: 'Coordinator, 30-Day Innovation Challenge',
@@ -540,10 +540,10 @@ export const COMMITTEE: CommitteeMember[] = [
   {
     name: 'Prof. (Dr.) Manish Raj',
     role: 'Dean',
-    designation: 'Dean, School of Artificial Intelligence',
+    designation: 'Dean, Artificial Intelligence & Data Science',
     organization: 'Galgotias University, India',
     category: 'leadership',
-    badge: 'Dean SoAI',
+    badge: 'Dean',
     image: '/images/manish.jpg'
   },
   {
@@ -676,7 +676,7 @@ export const FAQS: FAQItem[] = [
   {
     category: 'general',
     question: 'What is SparkX 3.0 Beyond Boundaries?',
-    answer: 'SparkX 3.0 is a premier innovation and project exhibition hosted by the Department of Artificial Intelligence & Data Science, School of Artificial Intelligence at Galgotias University. It provides a progressive pathway from Idea → Product → Novel Product → Proposal & Implementation → Research/Innovation.'
+    answer: 'SparkX 3.0 is a premier innovation and project exhibition hosted by the Department of Artificial Intelligence & Data Science at Galgotias University in collaboration with Quanta. It provides a progressive pathway from Idea → Product → Novel Product → Proposal & Implementation → Research/Innovation.'
   },
   {
     category: 'general',

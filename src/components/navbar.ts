@@ -7,6 +7,9 @@ export function renderNavbar(): HTMLElement {
   nav.id = 'navbar';
 
   nav.innerHTML = `
+    <!-- Top-level Scroll Progress Indicator -->
+    <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
+
     <div class="main-nav-bar">
       <div class="container nav-content">
         <a href="#hero" class="brand-logo-link" aria-label="SparkX 3.0 Home">
@@ -18,13 +21,12 @@ export function renderNavbar(): HTMLElement {
         </a>
 
         <nav class="desktop-menu" aria-label="Main Navigation">
-          <a href="#about" class="nav-link">About</a>
-          <a href="#journey" class="nav-link">Journey</a>
-          <a href="#tracks" class="nav-link">Tracks</a>
-          <a href="#prizes" class="nav-link">Prizes</a>
-          <a href="#timeline" class="nav-link">Timeline</a>
-          <a href="#committee" class="nav-link">Leadership</a>
-          <a href="#faq" class="nav-link">FAQ</a>
+          <a href="#about" class="nav-link" data-section="about">About</a>
+          <a href="#journey" class="nav-link" data-section="journey">How It Works</a>
+          <a href="#tracks" class="nav-link" data-section="tracks">Tracks</a>
+          <a href="#prizes" class="nav-link" data-section="prizes">Prizes</a>
+          <a href="#timeline" class="nav-link" data-section="timeline">Timeline</a>
+          <a href="#faq" class="nav-link" data-section="faq">FAQ</a>
         </nav>
 
         <div class="nav-actions">
@@ -69,13 +71,12 @@ export function renderNavbar(): HTMLElement {
         </div>
 
         <nav class="mobile-nav-links">
-          <a href="#about" class="mob-link">About SparkX</a>
-          <a href="#journey" class="mob-link">Innovation Journey</a>
-          <a href="#tracks" class="mob-link">Program Tracks</a>
-          <a href="#prizes" class="mob-link">Prize Pools</a>
-          <a href="#timeline" class="mob-link">Important Dates</a>
-          <a href="#committee" class="mob-link">Organizing Leadership</a>
-          <a href="#faq" class="mob-link">Frequently Asked Questions</a>
+          <a href="#about" class="mob-link" style="--delay: 1">About SparkX</a>
+          <a href="#journey" class="mob-link" style="--delay: 2">How It Works</a>
+          <a href="#tracks" class="mob-link" style="--delay: 3">Program Tracks</a>
+          <a href="#prizes" class="mob-link" style="--delay: 4">Prize Pools</a>
+          <a href="#timeline" class="mob-link" style="--delay: 5">Important Dates</a>
+          <a href="#faq" class="mob-link" style="--delay: 6">Frequently Asked Questions</a>
         </nav>
 
         <div class="mobile-drawer-cta">
@@ -99,94 +100,124 @@ function setupNavbarInteractivity(nav: HTMLElement): void {
   const mobIndiaBtn = nav.querySelector('#mob-btn-india') as HTMLButtonElement;
   const mobIntlBtn = nav.querySelector('#mob-btn-intl') as HTMLButtonElement;
   const mobileToggle = nav.querySelector('#mobile-menu-btn') as HTMLButtonElement;
-  const drawer = nav.querySelector('#mobile-drawer') as HTMLElement;
+  const mobileDrawer = nav.querySelector('#mobile-drawer') as HTMLElement;
   const mobLinks = nav.querySelectorAll('.mob-link');
+  const desktopLinks = nav.querySelectorAll<HTMLAnchorElement>('.desktop-menu .nav-link');
+  const progressBar = nav.querySelector('#scroll-progress') as HTMLElement;
 
-  const updateButtons = (audience: 'india' | 'international') => {
-    if (audience === 'india') {
-      indiaBtn?.classList.add('active');
-      intlBtn?.classList.remove('active');
-      mobIndiaBtn?.classList.add('active');
-      mobIntlBtn?.classList.remove('active');
-    } else {
-      intlBtn?.classList.add('active');
-      indiaBtn?.classList.remove('active');
-      mobIntlBtn?.classList.add('active');
-      mobIndiaBtn?.classList.remove('active');
-    }
+  // Handle Pill Switchers
+  const updateButtons = (audience: string) => {
+    const isIndia = audience === 'india';
+
+    indiaBtn?.classList.toggle('active', isIndia);
+    intlBtn?.classList.toggle('active', !isIndia);
+
+    mobIndiaBtn?.classList.toggle('active', isIndia);
+    mobIntlBtn?.classList.toggle('active', !isIndia);
   };
 
   indiaBtn?.addEventListener('click', () => appState.setAudience('india'));
   intlBtn?.addEventListener('click', () => appState.setAudience('international'));
+
   mobIndiaBtn?.addEventListener('click', () => {
     appState.setAudience('india');
-    drawer.classList.remove('open');
-    mobileToggle.classList.remove('active');
+    closeMobileMenu();
   });
+
   mobIntlBtn?.addEventListener('click', () => {
     appState.setAudience('international');
-    drawer.classList.remove('open');
-    mobileToggle.classList.remove('active');
+    closeMobileMenu();
   });
 
-  // Mobile menu toggle
+  // Mobile Drawer Toggle
+  function openMobileMenu() {
+    mobileToggle?.classList.add('open');
+    mobileDrawer?.classList.add('open');
+    document.body.classList.add('no-scroll');
+  }
+
+  function closeMobileMenu() {
+    mobileToggle?.classList.remove('open');
+    mobileDrawer?.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+  }
+
   mobileToggle?.addEventListener('click', () => {
-    mobileToggle.classList.toggle('active');
-    drawer.classList.toggle('open');
+    const isOpen = mobileDrawer?.classList.contains('open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
   });
 
+  // Close drawer on link click
   mobLinks.forEach((link) => {
     link.addEventListener('click', () => {
-      drawer.classList.remove('open');
-      mobileToggle.classList.remove('active');
+      closeMobileMenu();
     });
   });
 
-  // Scroll listener for sticky blur & elevation
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+  // Close drawer on click outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (
+      mobileDrawer?.classList.contains('open') &&
+      !mobileDrawer.contains(target) &&
+      !mobileToggle?.contains(target)
+    ) {
+      closeMobileMenu();
+    }
+  });
+
+  // Subscribe to state changes
+  appState.subscribe(updateButtons);
+
+  // Scroll spy effect & scroll progress bar
+  const onScroll = () => {
+    const scrollY = window.scrollY;
+
+    // 1. Scrolled shadow & backdrop elevation
+    if (scrollY > 20) {
       nav.classList.add('scrolled');
     } else {
       nav.classList.remove('scrolled');
     }
-  }, { passive: true });
 
-  // Scroll spy for desktop menu active link highlighting
-  setupScrollSpy(nav);
+    // 2. Scroll Progress Bar
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (totalHeight > 0 && progressBar) {
+      const progress = Math.min(100, Math.max(0, (scrollY / totalHeight) * 100));
+      progressBar.style.width = `${progress}%`;
+    }
 
-  // Subscribe to app state
-  appState.subscribe(updateButtons);
-}
+    // 3. Active Nav Link Scrollspy
+    const sections = ['about', 'journey', 'tracks', 'prizes', 'timeline', 'faq'];
+    let currentActive = '';
+    const buffer = 160;
 
-function setupScrollSpy(nav: HTMLElement): void {
-  const links = nav.querySelectorAll<HTMLAnchorElement>('.desktop-menu .nav-link');
-
-  function updateActiveLink(): void {
-    const scrollPos = window.scrollY + 140;
-    let currentId = '';
-
-    links.forEach((link) => {
-      const href = link.getAttribute('href');
-      if (!href || !href.startsWith('#')) return;
-      const target = document.querySelector<HTMLElement>(href);
-      if (target) {
-        const top = target.offsetTop;
-        const height = target.offsetHeight;
-        if (scrollPos >= top && scrollPos < top + height) {
-          currentId = href;
+    for (const id of sections) {
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.offsetTop - buffer;
+        const height = el.offsetHeight;
+        if (scrollY >= top && scrollY < top + height) {
+          currentActive = id;
+          break;
         }
       }
-    });
+    }
 
-    links.forEach((link) => {
-      if (link.getAttribute('href') === currentId) {
+    desktopLinks.forEach((link) => {
+      const section = link.getAttribute('data-section');
+      if (section && section === currentActive) {
         link.classList.add('active');
       } else {
         link.classList.remove('active');
       }
     });
-  }
+  };
 
-  window.addEventListener('scroll', updateActiveLink, { passive: true });
-  setTimeout(updateActiveLink, 250);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 }

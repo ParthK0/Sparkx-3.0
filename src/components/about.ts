@@ -1,3 +1,6 @@
+import { appState } from '../state';
+import { Audience } from '../types';
+
 export function renderAbout(): HTMLElement {
   const section = document.createElement('section');
   section.className = 'about-section section-padding';
@@ -5,15 +8,42 @@ export function renderAbout(): HTMLElement {
 
   section.innerHTML = `
     <div class="container">
-      <div class="section-title-area text-center">
-        <span class="section-badge">About The Program</span>
-        <h2 class="section-heading">From Ideas to Impact</h2>
-        <p class="section-subheading">
-          SparkX 3.0 is a structured innovation program designed to help students transition from abstract concepts 
-          into functional, deployable systems while cultivating deep technical skills, research rigor, and entrepreneurial acumen.
-        </p>
+      <!-- Section 1: Introduction -->
+      <div class="about-intro-block">
+        <div class="section-title-area text-center">
+          <span class="section-badge">1. Introduction</span>
+          <h2 class="section-heading">About SparkX 3.0 International</h2>
+        </div>
+
+        <div class="about-lead-card">
+          <p class="about-lead-text">
+            <strong>SparkX 3.0 International</strong> is envisioned as a structured project exhibition and innovation program designed to cultivate creativity, technical skills, research aptitude, entrepreneurship, and real-world problem-solving among undergraduate students. Building upon the success of previous editions of SparkX, the third edition will adopt an innovation model involving B.Tech all-years students of Galgotias University, and other national or international institutions.
+          </p>
+
+          <!-- Progressive Innovation Journey Strip -->
+          <div class="journey-flow-box">
+            <span class="journey-flow-label">Progressive Innovation Journey:</span>
+            <div class="ideas-step-strip">
+              <span class="step-concept step-1">Idea</span>
+              <span class="step-arr">→</span>
+              <span class="step-concept step-2">Product</span>
+              <span class="step-arr">→</span>
+              <span class="step-concept step-3">Novel Product</span>
+              <span class="step-arr">→</span>
+              <span class="step-concept step-4">Proposal & Implementation</span>
+              <span class="step-arr">→</span>
+              <span class="step-concept step-5">Research / Innovation</span>
+            </div>
+          </div>
+
+          <!-- Academic Maturity & Track Breakdown -->
+          <div class="about-tracks-summary" id="about-tracks-summary">
+            <!-- Injected strictly based on active audience -->
+          </div>
+        </div>
       </div>
 
+      <!-- Core Pillars -->
       <div class="pillars-grid">
         <!-- Pillar 1 -->
         <div class="pillar-card">
@@ -64,50 +94,153 @@ export function renderAbout(): HTMLElement {
         </div>
       </div>
 
-      <!-- Official Objectives Accordion / List -->
-      <div class="objectives-container">
-        <div class="objectives-header">
-          <h3 class="objectives-title">Official Program Mandate & Core Objectives</h3>
-          <p class="objectives-sub">Institutional outcomes established by the School of Artificial Intelligence</p>
+      <!-- Section 2: Objectives -->
+      <div class="objectives-container" id="objectives">
+        <div class="objectives-header text-center">
+          <span class="section-badge">2. Objectives</span>
+          <h3 class="objectives-title">Program Mandate & Core Objectives</h3>
+          <p class="objectives-sub">
+            Ten institutional outcomes established to cultivate research rigor, engineering excellence, and startup incubation
+          </p>
         </div>
 
         <div class="objectives-grid">
-          <div class="objective-item">
-            <span class="obj-num">01</span>
-            <p>Foster a vibrant culture of innovation, research rigor, and tech entrepreneurship among young engineers.</p>
+          <div class="objective-card">
+            <div class="obj-sparkle-icon">✦</div>
+            <div class="obj-body">
+              <span class="obj-seq">01</span>
+              <p>Foster a strong culture of innovation, research, and entrepreneurship among students.</p>
+            </div>
           </div>
-          <div class="objective-item">
-            <span class="obj-num">02</span>
-            <p>Direct students toward identifying and resolving high-impact societal, industrial, and ecological challenges.</p>
+
+          <div class="objective-card">
+            <div class="obj-sparkle-icon">✦</div>
+            <div class="obj-body">
+              <span class="obj-seq">02</span>
+              <p>Encourage students to identify and solve real-world problems through technology.</p>
+            </div>
           </div>
-          <div class="objective-item">
-            <span class="obj-num">03</span>
-            <p>Mandate the production of functional, verifiable products and working prototypes rather than theoretical slide decks.</p>
+
+          <div class="objective-card">
+            <div class="obj-sparkle-icon">✦</div>
+            <div class="obj-body">
+              <span class="obj-seq">03</span>
+              <p>Develop working products and prototypes rather than theoretical ideas alone.</p>
+            </div>
           </div>
-          <div class="objective-item">
-            <span class="obj-num">04</span>
-            <p>Provide structured faculty mentorship, international advisory oversight, and industry-grade sprint reviews.</p>
+
+          <div class="objective-card">
+            <div class="obj-sparkle-icon">✦</div>
+            <div class="obj-body">
+              <span class="obj-seq">04</span>
+              <p>Provide students with structured faculty mentoring and expert guidance.</p>
+            </div>
           </div>
-          <div class="objective-item">
-            <span class="obj-num">05</span>
-            <p>Incentivize interdisciplinary collaboration spanning AI, Computer Science, Electronics, Mechanical, Biotech, and Management.</p>
+
+          <div class="objective-card">
+            <div class="obj-sparkle-icon">✦</div>
+            <div class="obj-body">
+              <span class="obj-seq">05</span>
+              <p>Encourage interdisciplinary and cross-domain collaboration.</p>
+            </div>
           </div>
-          <div class="objective-item">
-            <span class="obj-num">06</span>
-            <p>Establish a smooth graduation pathway connecting early-stage student experiments directly to final-year research capstones.</p>
+
+          <div class="objective-card">
+            <div class="obj-sparkle-icon">✦</div>
+            <div class="obj-body">
+              <span class="obj-seq">06</span>
+              <p>Develop students' abilities in problem identification, design, implementation, testing, and presentation.</p>
+            </div>
           </div>
-          <div class="objective-item">
-            <span class="obj-num">07</span>
-            <p>Propel top-tier student inventions toward international conference publications (IEEE/Scopus), patent filings, and seed funding.</p>
+
+          <div class="objective-card">
+            <div class="obj-sparkle-icon">✦</div>
+            <div class="obj-body">
+              <span class="obj-seq">07</span>
+              <p>Create a pathway from early-stage product development to advanced final-year research projects.</p>
+            </div>
           </div>
-          <div class="objective-item">
-            <span class="obj-num">08</span>
-            <p>Provide students exposure to rigorous professional jury evaluation and constructive critique from Silicon Valley veterans.</p>
+
+          <div class="objective-card">
+            <div class="obj-sparkle-icon">✦</div>
+            <div class="obj-body">
+              <span class="obj-seq">08</span>
+              <p>Motivate students towards research publications, patents, startups, and external competitions.</p>
+            </div>
+          </div>
+
+          <div class="objective-card">
+            <div class="obj-sparkle-icon">✦</div>
+            <div class="obj-body">
+              <span class="obj-seq">09</span>
+              <p>Provide students with exposure to professional project evaluation and constructive feedback.</p>
+            </div>
+          </div>
+
+          <div class="objective-card">
+            <div class="obj-sparkle-icon">✦</div>
+            <div class="obj-body">
+              <span class="obj-seq">10</span>
+              <p>Strengthen the university's innovation, research, and entrepreneurship ecosystem.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   `;
 
+  setupAboutSegregation(section);
+
   return section;
+}
+
+function setupAboutSegregation(section: HTMLElement): void {
+  const container = section.querySelector('#about-tracks-summary') as HTMLElement;
+  if (!container) return;
+
+  const update = (audience: Audience) => {
+    if (audience === 'india') {
+      container.innerHTML = `
+        <p class="about-tracks-intro">
+          The three tracks for Indian participants are designed according to academic maturity and technical capabilities:
+        </p>
+        <div class="about-tracks-grid">
+          <div class="about-track-pill track-pro">
+            <span class="track-pill-badge">7th Semester</span>
+            <strong class="track-pill-title">SparkX 3.0 — Pro</strong>
+            <span class="track-pill-desc">Advanced Project Proposal, Implementation & Research (Patents & Publications)</span>
+          </div>
+
+          <div class="about-track-pill track-novel">
+            <span class="track-pill-badge">3rd & 5th Semester</span>
+            <strong class="track-pill-title">SparkX 3.0 — Novel</strong>
+            <span class="track-pill-desc">Novel Product-Based Innovation & Working Prototype Differentiation</span>
+          </div>
+
+          <div class="about-track-pill track-sprint">
+            <span class="track-pill-badge">All UG/PG Batches</span>
+            <strong class="track-pill-title">SparkX 3.0 — 30-Day Innovation Sprint</strong>
+            <span class="track-pill-desc">Predefined Real-World AI Systems & High-Intensity Prototyping</span>
+          </div>
+        </div>
+      `;
+    } else {
+      container.innerHTML = `
+        <p class="about-tracks-intro">
+          The dedicated pathway for international university teams competing globally:
+        </p>
+        <div class="about-tracks-grid" style="grid-template-columns: 1fr;">
+          <div class="about-track-pill track-sprint" style="grid-column: 1 / -1; border-color: rgba(59, 130, 246, 0.4); background: linear-gradient(135deg, rgba(59, 130, 246, 0.04), rgba(15, 23, 42, 0.02));">
+            <span class="track-pill-badge badge-blue">Global University Category • 100% Online</span>
+            <strong class="track-pill-title">SparkX 3.0 International — Global 30-Day AI Innovation Challenge</strong>
+            <span class="track-pill-desc">
+              Open to undergraduate and postgraduate teams worldwide. Compete virtually across 4 high-impact AI domains (Event Copilot, Career Readiness, Lab SPOC, Campus Copilot). Submit GitHub repository, working demo & defend live before an international jury on 26 Nov 2026. Zero travel required.
+            </span>
+          </div>
+        </div>
+      `;
+    }
+  };
+
+  appState.subscribe(update);
 }

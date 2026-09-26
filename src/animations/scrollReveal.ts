@@ -48,6 +48,8 @@ export function initScrollReveal(): void {
   // Auto-mark standalone section headers and cards as .reveal
   const standaloneSelectors = [
     '.section-title-area',
+    '.about-lead-card',
+    '.journey-flow-box',
     '.countdown-card-wrapper',
     '.journey-step-card',
     '.timeline-node',
@@ -55,6 +57,9 @@ export function initScrollReveal(): void {
     '.committee-card',
     '.faq-item',
     '.contact-grid',
+    '.hero-challenge-banner-wrap',
+    '.hero-audience-strip-wrap',
+    '.hero-date-venue-bar',
   ];
 
   standaloneSelectors.forEach((sel) => {
@@ -67,6 +72,8 @@ export function initScrollReveal(): void {
   // Auto-mark grid containers as .reveal-stagger
   const gridSelectors = [
     '.pillars-grid',
+    '.about-tracks-grid',
+    '.objectives-grid',
     '.tracks-cards-grid',
     '.prizes-cards-grid',
     '.challenges-grid',
@@ -74,6 +81,8 @@ export function initScrollReveal(): void {
     '.eval-grid',
     '.committee-grid',
     '.stats-grid',
+    '.audience-options-grid',
+    '.why-grid',
   ];
 
   gridSelectors.forEach((sel) => {

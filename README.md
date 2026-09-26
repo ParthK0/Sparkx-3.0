@@ -2,8 +2,7 @@
 ### International Project Innovation Challenge | Galgotias University
 
 > **Global Ideas • Global Impact**  
-> **Dates:** 25 & 26 November 2026  
-> **Organized by:** Department of Artificial Intelligence & Data Science, School of Artificial Intelligence, Galgotias University, Greater Noida, UP, India
+> **Organized by:** Department of Artificial Intelligence & Data Science, Galgotias University in collaboration with Quanta
 
 ---
 

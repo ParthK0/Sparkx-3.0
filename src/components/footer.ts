@@ -115,7 +115,7 @@ export function renderFooter(): HTMLElement {
 
       <div class="footer-bottom-bar">
         <p class="footer-copy">
-          &copy; 2026 SparkX 3.0 International. School of Artificial Intelligence, Galgotias University. All rights reserved.
+          &copy; 2026 SparkX 3.0 International. Galgotias University. All rights reserved.
         </p>
         <div class="footer-legal">
           <a href="${GOOGLE_MAPS_URL}" target="_blank" rel="noopener noreferrer" class="footer-loc-link" title="Open Galgotias University on Google Maps">
@@ -127,16 +127,37 @@ export function renderFooter(): HTMLElement {
     </div>
   `;
 
+  const btnIndia = footer.querySelector('#footer-btn-india') as HTMLButtonElement;
+  const btnIntl = footer.querySelector('#footer-btn-intl') as HTMLButtonElement;
+
+  const updateFooterButtons = (audience: string) => {
+    const isIndia = audience === 'india';
+    if (isIndia) {
+      btnIndia?.classList.add('btn-primary', 'active');
+      btnIndia?.classList.remove('btn-secondary');
+      btnIntl?.classList.remove('btn-primary', 'active');
+      btnIntl?.classList.add('btn-secondary');
+    } else {
+      btnIntl?.classList.add('btn-primary', 'active');
+      btnIntl?.classList.remove('btn-secondary');
+      btnIndia?.classList.remove('btn-primary', 'active');
+      btnIndia?.classList.add('btn-secondary');
+    }
+  };
+
   // Attach audience switcher listeners
-  footer.querySelector('#footer-btn-india')?.addEventListener('click', () => {
+  btnIndia?.addEventListener('click', () => {
     appState.setAudience('india');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  footer.querySelector('#footer-btn-intl')?.addEventListener('click', () => {
+  btnIntl?.addEventListener('click', () => {
     appState.setAudience('international');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  appState.subscribe(updateFooterButtons);
+  updateFooterButtons(appState.currentAudience);
 
   return footer;
 }
