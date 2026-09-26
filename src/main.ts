@@ -4,21 +4,16 @@ import { renderLoadingScreen } from './components/loadingScreen';
 import { renderAudienceGateway, openAudienceGateway } from './components/audienceGateway';
 import { renderNavbar } from './components/navbar';
 import { renderHero, startHeroTypewriter } from './components/hero';
-import { renderAudienceSelector } from './components/audienceSelector';
 import { renderStatsBar } from './components/statsBar';
 import { renderAbout } from './components/about';
-import { renderJourney } from './components/journey';
-import { renderTracks } from './components/tracks';
-import { renderChallenges } from './components/challenges';
-import { renderPrizes } from './components/prizes';
-import { renderParticipationMode } from './components/participationMode';
+import { renderProNovelOverview } from './components/proNovelOverview';
+import { render30DayChallengeOverview } from './components/thirtyDayOverview';
 import { renderTimeline } from './components/timeline';
 import { renderWhyParticipate } from './components/whyParticipate';
 import { renderCountdown } from './components/countdown';
 import { renderEvaluation } from './components/evaluation';
 import { renderCommittee } from './components/committee';
 import { renderFAQ } from './components/faq';
-import { renderContact } from './components/contact';
 import { renderFooter } from './components/footer';
 import { renderBackToTop } from './components/backToTop';
 import { renderStickyMobileBar } from './components/stickyMobileBar';
@@ -64,22 +59,13 @@ function mountHomeView(targetAnchor?: string): void {
   // 3. From Ideas to Impact
   main.appendChild(renderAbout());
 
-  // 4. The 5-Stage Innovation Journey & What You'll Build
-  main.appendChild(renderJourney());
+  // 4. SparkX 3.0 — Pro & Novel Challenges (Indian Semester Tracks)
+  main.appendChild(renderProNovelOverview());
 
-  // 5. Participation Tracks
-  main.appendChild(renderTracks());
+  // 5. SparkX 3.0 — 30-Day Innovation Challenge (AI Domains Overview)
+  main.appendChild(render30DayChallengeOverview());
 
-  // 6. AI Challenge Domains
-  main.appendChild(renderChallenges());
-
-  // 7. Segregated Prizes (Indian vs International)
-  main.appendChild(renderPrizes());
-
-  // 8. How It Works (Physical On-Campus vs Virtual flow)
-  main.appendChild(renderParticipationMode());
-
-  // 9. Audience-Aware Timeline
+  // 6. Audience-Aware Timeline
   main.appendChild(renderTimeline());
 
   // 10. Countdown to Grand Showcase
@@ -96,7 +82,6 @@ function mountHomeView(targetAnchor?: string): void {
 
   // 14. FAQ & Inquiries
   main.appendChild(renderFAQ());
-  main.appendChild(renderContact());
 
   app.appendChild(main);
   app.appendChild(renderFooter());
@@ -158,11 +143,11 @@ function mountRegisterView(): void {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function mountChallengesEvalView(activeTab: 'challenges' | 'evaluation'): void {
+function mountChallengesEvalView(activeTab: 'tracks' | 'challenges' | 'evaluation' = 'tracks', targetChallengeId?: string): void {
   const app = document.querySelector<HTMLDivElement>('#app');
   if (!app) return;
   app.innerHTML = '';
-  app.appendChild(renderChallengesEvaluationPage(activeTab));
+  app.appendChild(renderChallengesEvaluationPage(activeTab, targetChallengeId));
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -185,7 +170,7 @@ function initApp(): void {
   router.init({
     onMountHome: (targetAnchor) => mountHomeView(targetAnchor),
     onMountRegister: () => mountRegisterView(),
-    onMountChallengesEval: (tab) => mountChallengesEvalView(tab),
+    onMountChallengesEval: (tab, targetChallengeId) => mountChallengesEvalView(tab, targetChallengeId),
     onMountNotFound: (path) => mountNotFoundView(path),
   });
 

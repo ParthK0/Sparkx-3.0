@@ -12,12 +12,12 @@ export function renderAbout(): HTMLElement {
       <div class="about-intro-block">
         <div class="section-title-area text-center">
           <span class="section-badge">1. Introduction</span>
-          <h2 class="section-heading">About SparkX 3.0 International</h2>
+          <h2 class="section-heading">About SparkX 3.0 & 30-Day Innovation Challenge</h2>
         </div>
 
         <div class="about-lead-card">
           <p class="about-lead-text">
-            <strong>SparkX 3.0 International</strong> is envisioned as a structured project exhibition and innovation program designed to cultivate creativity, technical skills, research aptitude, entrepreneurship, and real-world problem-solving among undergraduate students. Building upon the success of previous editions of SparkX, the third edition will adopt an innovation model involving B.Tech all-years students of Galgotias University, and other national or international institutions.
+            <strong>SparkX 3.0 Beyond Boundaries</strong> brings together two specialized innovation pathways: <strong>SparkX 3.0</strong> is the premier national project innovation challenge organized exclusively for <strong>Indian students</strong> across Galgotias University and colleges nationwide. Running alongside it is the <strong>30-Day Innovation Challenge</strong>, an intensive real-world AI systems sprint open to <strong>both Indian and International students</strong> worldwide.
           </p>
 
           <!-- Progressive Innovation Journey Strip -->
@@ -206,20 +206,20 @@ function setupAboutSegregation(section: HTMLElement): void {
         </p>
         <div class="about-tracks-grid">
           <div class="about-track-pill track-pro">
-            <span class="track-pill-badge">7th Semester</span>
+            <span class="track-pill-badge">7th Semester (India Only)</span>
             <strong class="track-pill-title">SparkX 3.0 — Pro</strong>
             <span class="track-pill-desc">Advanced Project Proposal, Implementation & Research (Patents & Publications)</span>
           </div>
 
           <div class="about-track-pill track-novel">
-            <span class="track-pill-badge">3rd & 5th Semester</span>
+            <span class="track-pill-badge">3rd & 5th Semester (India Only)</span>
             <strong class="track-pill-title">SparkX 3.0 — Novel</strong>
             <span class="track-pill-desc">Novel Product-Based Innovation & Working Prototype Differentiation</span>
           </div>
 
           <div class="about-track-pill track-sprint">
-            <span class="track-pill-badge">All UG/PG Batches</span>
-            <strong class="track-pill-title">SparkX 3.0 — 30-Day Innovation Sprint</strong>
+            <span class="track-pill-badge">Open for Indian & International</span>
+            <strong class="track-pill-title">30-Day Innovation Challenge</strong>
             <span class="track-pill-desc">Predefined Real-World AI Systems & High-Intensity Prototyping</span>
           </div>
         </div>
@@ -231,10 +231,10 @@ function setupAboutSegregation(section: HTMLElement): void {
         </p>
         <div class="about-tracks-grid" style="grid-template-columns: 1fr;">
           <div class="about-track-pill track-sprint" style="grid-column: 1 / -1; border-color: rgba(59, 130, 246, 0.4); background: linear-gradient(135deg, rgba(59, 130, 246, 0.04), rgba(15, 23, 42, 0.02));">
-            <span class="track-pill-badge badge-blue">Global University Category • 100% Online</span>
-            <strong class="track-pill-title">SparkX 3.0 International — Global 30-Day AI Innovation Challenge</strong>
+            <span class="track-pill-badge badge-blue">Global Category • Open to International & Indian Students • 100% Online</span>
+            <strong class="track-pill-title">Global 30-Day AI Innovation Challenge</strong>
             <span class="track-pill-desc">
-              Open to undergraduate and postgraduate teams worldwide. Compete virtually across 4 high-impact AI domains (Event Copilot, Career Readiness, Lab SPOC, Campus Copilot). Submit GitHub repository, working demo & defend live before an international jury on 26 Nov 2026. Zero travel required.
+              <strong>Notice:</strong> The on-campus SparkX 3.0 Pro & Novel tracks are reserved exclusively for Indian students. International teams participate worldwide in the <strong>30-Day Innovation Challenge</strong> across 4 high-impact AI domains (Event Copilot, Career Readiness, Lab SPOC, Campus Copilot). Submit GitHub repository, working demo & defend live before an international jury on 26 Nov 2026. Zero travel required.
             </span>
           </div>
         </div>

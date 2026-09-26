@@ -58,17 +58,20 @@
    - 🌍 International Section: Blue Major (#0047ba) shifting to Red (#c0262d)
    ========================================================================== */
 
-:root, [data-audience="india"] {
-  --theme-major: #c0262d;             /* Solid Galgotias Crimson Red */
+:root,
+[data-audience="india"] {
+  --theme-major: #c0262d;
+  /* Solid Galgotias Crimson Red */
   --theme-major-dark: #991b1b;
   --theme-major-light: #ef4444;
-  --theme-minor: #0047ba;             /* Solid Royal Blue */
+  --theme-minor: #0047ba;
+  /* Solid Royal Blue */
   --theme-minor-dark: #1e3a8a;
   --theme-minor-light: #2563eb;
 
   --theme-gradient: linear-gradient(135deg, #c0262d 0%, #0047ba 100%);
   --theme-gradient-reverse: linear-gradient(135deg, #0047ba 0%, #c0262d 100%);
-  
+
   --theme-header-tab: #c0262d;
   --theme-ribbon-bg: #b91c1c;
   --theme-border: #c0262d;
@@ -82,10 +85,12 @@
 }
 
 [data-audience="international"] {
-  --theme-major: #0047ba;             /* Solid Royal Blue */
+  --theme-major: #0047ba;
+  /* Solid Royal Blue */
   --theme-major-dark: #1e3a8a;
   --theme-major-light: #2563eb;
-  --theme-minor: #c0262d;             /* Solid Galgotias Crimson Red */
+  --theme-minor: #c0262d;
+  /* Solid Galgotias Crimson Red */
   --theme-minor-dark: #991b1b;
   --theme-minor-light: #ef4444;
 
@@ -105,7 +110,9 @@
 }
 
 /* Reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -165,7 +172,12 @@ body {
 }
 
 /* Headings & Text */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.25;
@@ -201,8 +213,15 @@ a {
 }
 
 .section-padding {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
 }
 
 .text-center {
@@ -214,16 +233,16 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 18px;
+  padding: 5px 15px;
   border-radius: var(--radius-full);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   background: var(--theme-badge-bg);
   color: var(--theme-badge-color);
   border: 1px solid var(--theme-border);
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   transition: all var(--transition-smooth);
 }
 
@@ -234,20 +253,20 @@ a {
 }
 
 .section-heading {
-  font-size: clamp(2.1rem, 4vw, 2.85rem);
+  font-size: clamp(1.85rem, 3.4vw, 2.5rem);
   letter-spacing: -0.02em;
   color: var(--text-heading);
-  margin-bottom: 14px;
+  margin-bottom: 8px;
 }
 
 .section-subheading {
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-size: clamp(0.92rem, 1.5vw, 1.05rem);
   color: var(--text-muted);
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 48px;
-  line-height: 1.65;
+  margin-bottom: 24px;
+  line-height: 1.6;
 }
 
 /* Solid Buttons */
@@ -326,7 +345,7 @@ a {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -335,15 +354,15 @@ a {
   transform: translateY(0);
 }
 
-.reveal-stagger > * {
+.reveal-stagger>* {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
-.reveal-stagger.visible > * {
+.reveal-stagger.visible>* {
   opacity: 1;
   transform: translateY(0);
 }
@@ -367,10 +386,10 @@ a {
 .stat-number,
 .back-to-top {
   transition: background-color 0.35s ease,
-              border-color 0.35s ease,
-              color 0.35s ease,
-              box-shadow 0.35s ease,
-              transform 0.2s ease;
+    border-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.2s ease;
 }
 
 /* ==========================================================================
@@ -396,8 +415,8 @@ a {
   transform: translateY(16px);
   pointer-events: none;
   transition: opacity 0.3s ease,
-              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.35s ease;
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.35s ease;
   z-index: 99;
 }
 
@@ -423,6 +442,15 @@ a {
   stroke: #ffffff;
 }
 
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 74px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
 /* ==========================================================================
    ENHANCEMENTS: Animated Stats Bar
    ========================================================================== */
@@ -431,7 +459,7 @@ a {
   background: #f8fafc;
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 36px 0;
+  padding: 24px 0;
   position: relative;
   overflow: hidden;
 }
@@ -545,10 +573,12 @@ a {
     transform: scale(1) translate(0, 0);
     opacity: 0.3;
   }
+
   50% {
     transform: scale(1.12) translate(15px, 20px);
     opacity: 0.45;
   }
+
   100% {
     transform: scale(0.95) translate(-10px, 10px);
     opacity: 0.32;
@@ -560,10 +590,12 @@ a {
     transform: scale(1) translate(0, 0);
     opacity: 0.3;
   }
+
   50% {
     transform: scale(1.15) translate(-20px, -15px);
     opacity: 0.48;
   }
+
   100% {
     transform: scale(0.92) translate(15px, -10px);
     opacity: 0.28;
@@ -586,8 +618,8 @@ a {
 .objective-card,
 .pillar-card {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease;
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
 }
 
 /* Pulsing Live Beacon Indicator (Used for active statuses & timeline) */
@@ -617,6 +649,7 @@ a {
     transform: scale(0.85);
     opacity: 1;
   }
+
   100% {
     transform: scale(2.2);
     opacity: 0;
@@ -625,14 +658,18 @@ a {
 
 /* Accessible Motion Preference: Reduce Animations if User Prefers */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 
-  .reveal, .reveal-stagger > * {
+  .reveal,
+  .reveal-stagger>* {
     opacity: 1 !important;
     transform: none !important;
   }

@@ -1,0 +1,805 @@
+/* ==========================================================================
+   SparkX 3.0 — Dedicated Detail Portal Styles (Tracks, Challenges, Evaluation)
+   Clean, responsive, high-end academic design with interactive tabs.
+   ========================================================================== */
+
+.sparkx-detail-portal {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky Top Navigation Bar */
+.portal-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.portal-topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Brand Link */
+.portal-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.portal-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.portal-brand-title {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #0b1a3d;
+  line-height: 1.2;
+}
+
+.portal-brand-sub {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0284c7;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Navigation Tabs */
+.portal-tabs-nav {
+  display: flex;
+  background: #e2e8f0;
+  padding: 4px;
+  border-radius: 999px;
+  gap: 4px;
+}
+
+.portal-tab-btn {
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #475569;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.portal-tab-btn:hover {
+  color: #0b1a3d;
+}
+
+.portal-tab-btn.active {
+  background: #ffffff;
+  color: #0b1a3d;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.portal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Main Content Area */
+.portal-main {
+  flex-grow: 1;
+  padding: 40px 0 60px 0;
+}
+
+.portal-tab-pane {
+  display: none;
+}
+
+.portal-tab-pane.active {
+  display: block;
+  animation: fadeInPane 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInPane {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Portal Hero Header */
+.portal-hero-header {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 36px 40px;
+  margin-bottom: 36px;
+  box-shadow: 0 4px 20px rgba(11, 26, 61, 0.04);
+}
+
+.portal-hero-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.portal-hero-title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #0b1a3d;
+  margin: 0 0 10px 0;
+}
+
+.portal-hero-lead {
+  font-size: 1.05rem;
+  color: #475569;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   TAB 1: Program Tracks Styles
+   ========================================================================== */
+
+.detailed-tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.detailed-track-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 4px 16px rgba(11, 26, 61, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.detailed-track-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 30px rgba(11, 26, 61, 0.06);
+}
+
+.detailed-track-card.track-pro {
+  border-left: 6px solid #f59e0b;
+}
+
+.detailed-track-card.track-novel {
+  border-left: 6px solid #10b981;
+}
+
+.detailed-track-card.track-challenge30 {
+  border-left: 6px solid #0284c7;
+}
+
+.track-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.track-detail-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.track-sec-number {
+  background: #f1f5f9;
+  color: #0b1a3d;
+  font-weight: 900;
+  font-size: 0.95rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.track-detail-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #0b1a3d;
+  margin: 0;
+}
+
+.track-detail-sub {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0284c7;
+  margin-top: 4px;
+}
+
+.track-eligibility-badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.track-description-full {
+  font-size: 1rem;
+  color: #334155;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+/* Two Column Spec Grid in Track Card */
+.track-spec-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.track-spec-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.track-spec-box-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #0b1a3d;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.track-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.track-checklist li {
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.track-checklist li svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: #059669;
+}
+
+/* Framework Bar */
+.track-framework-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+
+.framework-col-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #64748b;
+  display: block;
+}
+
+.framework-col-val {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0b1a3d;
+  display: block;
+  margin-top: 2px;
+}
+
+/* Track Card Bottom Actions */
+.track-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 20px;
+}
+
+.track-prizes-pill-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.track-prize-badge {
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+.badge-gold-pill {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.badge-blue-pill {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+/* ==========================================================================
+   TAB 2: AI Challenge Domains (Annexure)
+   ========================================================================== */
+
+.challenges-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.challenge-detail-fullcard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 4px 18px rgba(11, 26, 61, 0.04);
+  scroll-margin-top: 90px;
+  transition: all 0.3s ease;
+}
+
+.challenge-detail-fullcard.highlighted {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2), 0 12px 36px rgba(11, 26, 61, 0.08);
+}
+
+.ch-detail-header {
+  margin-bottom: 24px;
+}
+
+.ch-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.ch-detail-num {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #0284c7;
+  line-height: 1;
+}
+
+.ch-detail-title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #0b1a3d;
+  margin: 0 0 6px 0;
+}
+
+.ch-detail-tagline {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #0284c7;
+  margin-bottom: 12px;
+}
+
+.ch-detail-desc {
+  font-size: 1rem;
+  color: #334155;
+  line-height: 1.65;
+  max-width: 900px;
+}
+
+/* Stack Pills */
+.ch-stack-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 16px 0 24px 0;
+}
+
+.stack-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.stack-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: #1e293b;
+}
+
+/* Modules Grid inside Challenge */
+.ch-modules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.module-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.module-box-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0b1a3d;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.module-box-title span.mod-num {
+  color: #0284c7;
+  font-weight: 900;
+}
+
+.module-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.module-items-list li {
+  font-size: 0.84rem;
+  color: #475569;
+  line-height: 1.45;
+  position: relative;
+  padding-left: 14px;
+}
+
+.module-items-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #0284c7;
+  font-weight: bold;
+}
+
+/* Expected Outputs Box */
+.expected-outputs-box {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.expected-outputs-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #065f46;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.expected-outputs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 16px;
+}
+
+.expected-outputs-list li {
+  font-size: 0.85rem;
+  color: #047857;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.expected-outputs-list li svg {
+  flex-shrink: 0;
+  color: #059669;
+}
+
+/* ==========================================================================
+   TAB 3: Evaluation & Event Plan Styles
+   ========================================================================== */
+
+.eval-criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.eval-criterion-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(11, 26, 61, 0.04);
+}
+
+.eval-crit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.eval-crit-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0b1a3d;
+  margin: 0;
+}
+
+.eval-crit-weight {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #0284c7;
+  background: #e0f2fe;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.eval-crit-desc {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* 2-Day Event Schedule Timeline */
+.event-plan-section {
+  margin-bottom: 40px;
+}
+
+.event-days-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.event-day-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 4px 16px rgba(11, 26, 61, 0.04);
+}
+
+.event-day-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.event-day-badge {
+  font-size: 0.85rem;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: #0b1a3d;
+  color: #ffffff;
+}
+
+.event-day-date {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.event-day-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0b1a3d;
+  margin: 0 0 20px 0;
+}
+
+.event-sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.session-item {
+  background: #f8fafc;
+  border-left: 3px solid #0284c7;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+}
+
+.session-time-mode {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.session-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0b1a3d;
+  margin-bottom: 4px;
+}
+
+.session-desc {
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Special Opportunities Section (7th Sem / Pro) */
+.special-opps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.special-opp-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(11, 26, 61, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.special-opp-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.special-opp-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #0284c7;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.special-opp-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0b1a3d;
+  margin: 0 0 10px 0;
+}
+
+.special-opp-desc {
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .track-spec-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .track-framework-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ch-modules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eval-criteria-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .event-days-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .special-opps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .portal-topbar-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .portal-tabs-nav {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .portal-hero-header {
+    padding: 24px;
+  }
+
+  .portal-hero-title {
+    font-size: 1.5rem;
+  }
+
+  .detailed-track-card,
+  .challenge-detail-fullcard {
+    padding: 20px;
+  }
+
+  .eval-criteria-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .special-opps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .expected-outputs-list {
+    grid-template-columns: 1fr;
+  }
+}

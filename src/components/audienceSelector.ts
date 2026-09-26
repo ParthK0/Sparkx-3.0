@@ -31,17 +31,17 @@ export function renderAudienceSelector(): HTMLElement {
           <div class="selector-path-card" id="selector-card-india" role="button" tabindex="0" aria-label="Select Indian Student Track">
             <div class="path-card-badge-row">
               <span class="path-flag">🇮🇳</span>
-              <span class="path-status-badge badge-india">National Campus Track</span>
+              <span class="path-status-badge badge-india">SparkX 3.0 & 30-Day Sprint</span>
               <span class="path-active-indicator">Selected Mode ✓</span>
             </div>
 
             <h3 class="path-card-title">Indian Students</h3>
-            <p class="path-card-subtitle">Campus-based innovation tracks for universities across India</p>
+            <p class="path-card-subtitle">Eligible for both SparkX 3.0 (Pro/Novel) & the 30-Day Innovation Challenge</p>
 
             <ul class="path-highlights">
               <li>
                 <span class="path-dot"></span>
-                <span><strong>Tracks:</strong> SparkX Pro (7th Sem), SparkX Novel (3rd/5th Sem), 30-Day Sprint</span>
+                <span><strong>Eligible Tracks:</strong> SparkX 3.0 (Indian Students Only) + 30-Day AI Challenge</span>
               </li>
               <li>
                 <span class="path-dot"></span>
@@ -63,21 +63,25 @@ export function renderAudienceSelector(): HTMLElement {
           <div class="selector-path-card" id="selector-card-intl" role="button" tabindex="0" aria-label="Select International Student Track">
             <div class="path-card-badge-row">
               <span class="path-flag">🌍</span>
-              <span class="path-status-badge badge-intl">Global Virtual Track</span>
+              <span class="path-status-badge badge-intl">30-Day AI Challenge</span>
               <span class="path-active-indicator">Selected Mode ✓</span>
             </div>
 
             <h3 class="path-card-title">International Students</h3>
-            <p class="path-card-subtitle">Global 30-Day Innovation Challenge for foreign university teams</p>
+            <p class="path-card-subtitle">Global 30-Day Innovation Challenge (SparkX 3.0 is for Indian students only)</p>
 
             <ul class="path-highlights">
               <li>
                 <span class="path-dot"></span>
-                <span><strong>Tracks:</strong> 4 Predefined High-Impact AI Problem Domains</span>
+                <span><strong>Eligible Track:</strong> 30-Day Innovation Challenge (4 AI Problem Domains)</span>
               </li>
               <li>
                 <span class="path-dot"></span>
-                <span><strong>Format:</strong> 100% Online Virtual Demo & Global Jury Defense</span>
+                <span><strong>Scope:</strong> SparkX 3.0 is for Indian students; 30-Day Challenge is open worldwide</span>
+              </li>
+              <li>
+                <span class="path-dot"></span>
+                <span><strong>Format:</strong> 100% Online Virtual Demo & Global Jury Defense (Zero Travel)</span>
               </li>
               <li>
                 <span class="path-dot"></span>

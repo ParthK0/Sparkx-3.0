@@ -6,13 +6,84 @@
 
 .hero-section {
   position: relative;
-  min-height: calc(100vh - 72px);
-  padding-top: calc(72px + 28px);
-  padding-bottom: 56px;
+  min-height: auto;
+  padding-top: 14px;
+  padding-bottom: 36px;
   background-color: #ffffff;
   overflow: hidden;
   display: flex;
+  align-items: flex-start;
+}
+
+/* ==========================================================================
+   Floating Home Navigation Bar (Hero Pill that merges into top Navbar)
+   ========================================================================== */
+.hero-floating-nav-bar {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.4s ease;
+  will-change: transform, opacity;
+  pointer-events: auto;
+}
+
+.hero-floating-nav-bar.merged {
+  transform: translate(-50%, -24px) scale(0.96);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hero-floating-nav-pill {
+  display: inline-flex;
   align-items: center;
+  gap: 22px;
+  padding: 8px 26px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(203, 213, 225, 0.9);
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.hero-float-link {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+  text-decoration: none;
+  padding: 4px 2px;
+  position: relative;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
+}
+
+.hero-float-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--theme-major), var(--theme-minor));
+  border-radius: 2px;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-float-link:hover {
+  color: var(--theme-major);
+  transform: translateY(-1px);
+}
+
+.hero-float-link:hover::after,
+.hero-float-link.active::after {
+  width: 100%;
+  left: 0;
 }
 
 .hero-bg-fx {
@@ -65,12 +136,12 @@
    ========================================================================== */
 .hero-right-full-stage {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  transform: none;
   right: 0;
   width: 58vw;
   max-width: 1060px;
-  height: 82%; /* Reduced visible height by ~18% (15–20% vertical crop) */
+  height: 95%;
   pointer-events: none;
   z-index: 1;
   display: flex;
@@ -91,7 +162,8 @@
 
 .hero-right-picture {
   width: 100%;
-  height: calc(100% / 0.82); /* Preserves exact full original scale and aspect ratio */
+  height: calc(100% / 0.82);
+  /* Preserves exact full original scale and aspect ratio */
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -146,7 +218,7 @@
 }
 
 .badge-campus-info {
-  top: 24px;
+  top: 18px;
   right: 48px;
   animation-delay: 0s;
 }
@@ -204,7 +276,7 @@
 .hero-content-stage {
   max-width: 610px;
   text-align: left;
-  transform: translateX(-40px);
+  transform: none;
   transition: transform var(--transition-smooth);
 }
 
@@ -215,9 +287,9 @@
   gap: 12px;
   background: #ffffff;
   border: 1.5px solid var(--border-card);
-  padding: 6px 16px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   font-family: var(--font-display);
   font-size: 0.82rem;
   letter-spacing: 0.08em;
@@ -247,14 +319,14 @@
 
 /* Hero Title Block & Official SparkX Logo */
 .hero-title-block {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .hero-logo-lockup {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   flex-wrap: wrap;
 }
 
@@ -298,7 +370,7 @@
   font-size: clamp(0.85rem, 1.6vw, 1.05rem);
   font-weight: 700;
   color: var(--theme-major);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
 }
 
@@ -307,9 +379,11 @@
   font-size: 0.75rem;
 }
 
+
+
 /* Hero Element 1: 30-Day Innovation Challenge Banner */
 .hero-challenge-banner-wrap {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   max-width: 520px;
 }
 
@@ -329,7 +403,7 @@
 
 /* Hero Element 2: Open for Indian & International Students Strip */
 .hero-audience-strip-wrap {
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   max-width: 520px;
   background: #ffffff;
   border: 1.5px solid var(--border-card);
@@ -360,8 +434,8 @@
   background: #f8fafc;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
-  padding: 12px 18px;
-  margin-bottom: 24px;
+  padding: 10px 16px;
+  margin-bottom: 18px;
   max-width: 520px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
@@ -499,7 +573,7 @@
 
   .hero-content-stage {
     max-width: 550px;
-    transform: translateX(-20px);
+    transform: none;
   }
 
   .badge-campus-info {
@@ -515,7 +589,7 @@
 
 @media (max-width: 991px) {
   .hero-section {
-    padding-top: calc(64px + 24px);
+    padding-top: 68px;
     padding-bottom: 48px;
     min-height: auto;
     display: block;
@@ -593,8 +667,33 @@
 
 @media (max-width: 640px) {
   .hero-section {
-    padding-top: calc(56px + 20px);
+    padding-top: 56px;
     padding-bottom: 36px;
+  }
+
+  .hero-floating-nav-bar {
+    top: 10px;
+    width: calc(100% - 24px);
+    max-width: 440px;
+  }
+
+  .hero-floating-nav-pill {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 6px 14px;
+    gap: 14px;
+    justify-content: flex-start;
+  }
+
+  .hero-floating-nav-pill::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-float-link {
+    font-size: 0.8rem;
+    padding: 3px 2px;
   }
 
   .hero-top-eyebrow {

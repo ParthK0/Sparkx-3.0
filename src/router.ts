@@ -6,11 +6,12 @@
 import { analytics } from './utils/analytics';
 
 export type AppViewType = 'home' | 'register' | 'challenges-evaluation' | '404';
+export type PortalTab = 'tracks' | 'challenges' | 'evaluation';
 
 export interface RouteHandler {
   onMountHome: (targetAnchor?: string) => void;
   onMountRegister: () => void;
-  onMountChallengesEval: (activeTab: 'challenges' | 'evaluation') => void;
+  onMountChallengesEval: (activeTab: PortalTab, targetChallengeId?: string) => void;
   onMountNotFound: (path: string) => void;
 }
 
@@ -18,11 +19,11 @@ const KNOWN_HOME_ANCHORS = new Set([
   'hero',
   'stats',
   'about',
-  'journey',
-  'tracks',
+  'pro-novel',
+  'thirty-day-challenge',
   'challenges',
+  'tracks',
   'prizes',
-  'participation',
   'timeline',
   'countdown',
   'evaluation',
@@ -80,6 +81,23 @@ export class AppRouter {
     }
 
     // 3. Dedicated Challenges & Evaluation Portal
+    if (hash.startsWith('#/challenges/')) {
+      const challengeId = hash.replace('#/challenges/', '').trim().toLowerCase();
+      this.setView('challenges-evaluation');
+      this.handler.onMountChallengesEval('challenges', challengeId);
+      document.title = 'AI Challenge Domain Blueprint | SparkX 3.0';
+      analytics.track('Navigation', `Route: /challenges/${challengeId}`);
+      return;
+    }
+
+    if (hash === '#/tracks' || hash === '#/program-tracks') {
+      this.setView('challenges-evaluation');
+      this.handler.onMountChallengesEval('tracks');
+      document.title = 'Program Tracks & Curriculum | SparkX 3.0';
+      analytics.track('Navigation', 'Route: /tracks');
+      return;
+    }
+
     if (hash === '#/challenges' || hash === '#/problem-statements') {
       this.setView('challenges-evaluation');
       this.handler.onMountChallengesEval('challenges');
@@ -88,18 +106,18 @@ export class AppRouter {
       return;
     }
 
-    if (hash === '#/evaluation' || hash === '#/rubric') {
+    if (hash === '#/evaluation' || hash === '#/rubric' || hash === '#/schedule') {
       this.setView('challenges-evaluation');
       this.handler.onMountChallengesEval('evaluation');
-      document.title = 'Evaluation Rubric & Deliverables | SparkX 3.0';
+      document.title = 'Evaluation Rubric & Schedule | SparkX 3.0';
       analytics.track('Navigation', 'Route: /evaluation');
       return;
     }
 
     if (hash === '#/challenges-evaluation') {
       this.setView('challenges-evaluation');
-      this.handler.onMountChallengesEval('challenges');
-      document.title = 'Challenges & Evaluation | SparkX 3.0';
+      this.handler.onMountChallengesEval('tracks');
+      document.title = 'Program Tracks & Challenges | SparkX 3.0';
       analytics.track('Navigation', 'Route: /challenges-evaluation');
       return;
     }

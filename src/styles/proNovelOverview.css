@@ -1,0 +1,269 @@
+/* ==========================================================================
+   SparkX 3.0 — Pro & Novel Challenges Styles
+   Clean, modern, premium aesthetic matching SparkX theme.
+   ========================================================================== */
+
+.pro-novel-section {
+  background-color: #fafbfc;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.pro-novel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 860px) {
+  .pro-novel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pn-card {
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg, 16px);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.pn-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d97706, #f59e0b);
+}
+
+.pn-card-pro::before {
+  background: linear-gradient(90deg, #d97706, #f59e0b);
+}
+
+.pn-card-novel::before {
+  background: linear-gradient(90deg, #059669, #10b981);
+}
+
+.pn-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e1;
+}
+
+.pn-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.pn-track-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pn-badge-track {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: #f1f5f9;
+  color: #334155;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.pn-badge-sem {
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.pn-card-novel .pn-badge-sem {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.pn-mode-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f8fafc;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.pn-card-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-heading, #0f172a);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.pn-card-focus {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #d97706;
+  margin-bottom: 12px;
+}
+
+.pn-card-novel .pn-card-focus {
+  color: #059669;
+}
+
+.pn-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 14px;
+}
+
+.pn-meta-box {
+  background: #f8fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pn-meta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pn-meta-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+}
+
+.pn-meta-val {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.45;
+}
+
+/* Respective Prize Box */
+.pn-prize-box {
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+
+.pn-prize-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #334155;
+  margin-bottom: 12px;
+}
+
+.pn-prize-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.pn-tier-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 6px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.pn-tier-item.gold {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.pn-tier-item.silver {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.pn-tier-item.bronze {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.pn-tier-rank {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 2px;
+}
+
+.pn-tier-amount {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.pn-tier-item.gold .pn-tier-amount {
+  color: #b45309;
+}
+
+.pn-card-footer {
+  margin-top: auto;
+}
+
+.pn-bottom-notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 0.86rem;
+  color: #475569;
+  flex-wrap: wrap;
+}
+
+.pn-detail-link {
+  font-weight: 700;
+  color: var(--primary-color, #2563eb);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.pn-detail-link:hover {
+  text-decoration: underline;
+}

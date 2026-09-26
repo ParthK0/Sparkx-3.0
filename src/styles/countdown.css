@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .countdown-section {
-  padding: 20px 0 60px;
+  padding: 10px 0 28px;
   background-color: #ffffff;
 }
 
@@ -11,7 +11,7 @@
   background: #f8fafc;
   border: 1.5px solid var(--border-card);
   border-radius: var(--radius-lg);
-  padding: 40px 32px;
+  padding: 24px 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   text-align: center;
   position: relative;
@@ -41,21 +41,21 @@
 .countdown-headline {
   font-size: clamp(1.8rem, 3.2vw, 2.5rem);
   color: #0b1a3d;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .countdown-sub {
   color: var(--text-muted);
   font-size: 0.95rem;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
 }
 
 .countdown-grid {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 12px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 

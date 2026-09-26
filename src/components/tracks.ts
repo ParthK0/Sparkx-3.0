@@ -85,16 +85,16 @@ function setupTracksSegregation(section: HTMLElement): void {
     if (currentAudience === 'india') {
       // 1. Indian Title
       titleArea.innerHTML = `
-        <span class="section-badge badge-gold">🇮🇳 Indian Student Tracks</span>
-        <h2 class="section-heading">Indian Participant Innovation Tracks</h2>
+        <span class="section-badge badge-gold">🇮🇳 Indian Student Challenges</span>
+        <h2 class="section-heading">SparkX 3.0 & 30-Day Sprint (Indian Challenges)</h2>
         <p class="section-subheading">
-          Structured semester-aligned pathways tailored exclusively for students studying at Galgotias University and colleges across India.
+          Indian students are eligible for both SparkX 3.0 (7th Sem Pro & 3rd/5th Sem Novel) and the 30-Day Innovation Sprint.
         </p>
       `;
 
       // 2. Indian Filter Chips
       filterBar.innerHTML = `
-        <button type="button" class="filter-chip ${activeFilter === 'all' ? 'active' : ''}" data-filter="all">All Indian Tracks</button>
+        <button type="button" class="filter-chip ${activeFilter === 'all' ? 'active' : ''}" data-filter="all">All Indian Challenges</button>
         <button type="button" class="filter-chip ${activeFilter === 'pro' ? 'active' : ''}" data-filter="pro">SparkX Pro (7th Sem)</button>
         <button type="button" class="filter-chip ${activeFilter === 'novel' ? 'active' : ''}" data-filter="novel">SparkX Novel (3rd & 5th Sem)</button>
         <button type="button" class="filter-chip ${activeFilter === '30day' ? 'active' : ''}" data-filter="30day">30-Day Innovation Sprint</button>
@@ -126,8 +126,8 @@ function setupTracksSegregation(section: HTMLElement): void {
             </div>
 
             <div class="track-card-footer">
-              <a href="#journey" class="btn btn-secondary w-full">
-                <span>View Track Details</span>
+              <a href="#/tracks" class="btn btn-secondary w-full">
+                <span>View Challenge Details</span>
                 <span class="btn-arr">&rarr;</span>
               </a>
             </div>
@@ -141,7 +141,7 @@ function setupTracksSegregation(section: HTMLElement): void {
         <span class="section-badge badge-blue">🌍 International Participation Track</span>
         <h2 class="section-heading">Global 30-Day Innovation Challenge</h2>
         <p class="section-subheading">
-          Open to students worldwide. Compete virtually in pre-defined high-impact AI domains to construct deployable systems.
+          <strong>Eligibility Notice:</strong> SparkX 3.0 on-campus tracks are exclusively for Indian students. International teams participate worldwide in the 30-Day AI Innovation Challenge (100% Virtual).
         </p>
       `;
 
@@ -179,7 +179,7 @@ function setupTracksSegregation(section: HTMLElement): void {
             </div>
 
             <div class="track-card-footer">
-              <a href="#/challenges" class="btn btn-primary w-full">
+              <a href="#/challenges/${ch.id}" class="btn btn-primary w-full">
                 <span>View Challenge Blueprint</span>
                 <span class="btn-arr">&rarr;</span>
               </a>

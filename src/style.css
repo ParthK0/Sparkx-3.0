@@ -13,6 +13,9 @@
 @import './styles/about.css';
 @import './styles/journey.css';
 @import './styles/tracks.css';
+@import './styles/challengesOverview.css';
+@import './styles/proNovelOverview.css';
+@import './styles/thirtyDayOverview.css';
 @import './styles/challenges.css';
 @import './styles/prizes.css';
 @import './styles/participation.css';
@@ -28,3 +31,4 @@
 @import './styles/notFound.css';
 @import './styles/registerPage.css';
 @import './styles/challengesEvaluationPage.css';
+@import './styles/challengesDetail.css';

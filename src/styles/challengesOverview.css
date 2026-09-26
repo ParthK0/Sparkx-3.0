@@ -1,0 +1,373 @@
+/* ==========================================================================
+   SparkX 3.0 — Challenges Overview (Compact Scannable Homepage Section)
+   ========================================================================== */
+
+.challenges-overview-section {
+  background: #ffffff;
+  position: relative;
+}
+
+.challenges-overview-header {
+  margin-bottom: 2.5rem;
+}
+
+/* Quick Metrics Bar */
+.ch-overview-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.ch-metric-item {
+  background: #f8fafc;
+  border: 1px solid var(--border-card, #e2e8f0);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ch-metric-item:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+}
+
+.ch-metric-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-dim, #64748b);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.ch-metric-value {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #0b1a3d;
+  margin: 4px 0 2px 0;
+  display: block;
+}
+
+.ch-metric-sub {
+  font-size: 0.76rem;
+  color: #0284c7;
+  font-weight: 700;
+}
+
+/* Cards Grid */
+.ch-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.ch-overview-grid.grid-4-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Card Styling */
+.ch-ov-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 4px 16px rgba(11, 26, 61, 0.04);
+}
+
+.ch-ov-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(11, 26, 61, 0.08);
+  border-color: #cbd5e1;
+}
+
+.ch-ov-card.card-accent-gold {
+  border-top: 4px solid #f59e0b;
+}
+
+.ch-ov-card.card-accent-blue {
+  border-top: 4px solid #0284c7;
+}
+
+.ch-ov-card.card-accent-emerald {
+  border-top: 4px solid #10b981;
+}
+
+.ch-ov-card.card-accent-purple {
+  border-top: 4px solid #8b5cf6;
+}
+
+/* Header & Badges */
+.ch-ov-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ch-ov-number {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #0284c7;
+  line-height: 1;
+}
+
+.ch-ov-pill {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.pill-gold {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.pill-blue {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.pill-emerald {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.pill-purple {
+  background: #f5f3ff;
+  color: #5b21b6;
+  border: 1px solid #ddd6fe;
+}
+
+/* Card Body */
+.ch-ov-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0b1a3d;
+  line-height: 1.35;
+  margin: 0 0 6px 0;
+}
+
+.ch-ov-tagline {
+  font-size: 0.84rem;
+  color: #0284c7;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.ch-ov-desc {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.55;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+/* Features / Highlights list */
+.ch-ov-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ch-ov-highlights li {
+  font-size: 0.82rem;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.ch-ov-highlights li svg {
+  flex-shrink: 0;
+  color: #10b981;
+}
+
+/* Mini Prize Box in Card */
+.ch-ov-prize-strip {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.prize-strip-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.prize-strip-val {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #0b1a3d;
+}
+
+/* Card Footer */
+.ch-ov-footer {
+  margin-top: auto;
+}
+
+/* Consolidated Prize Summary Strip */
+.ch-prize-summary-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 32px;
+}
+
+.prize-summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.prize-summary-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0b1a3d;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prize-table-responsive {
+  overflow-x: auto;
+}
+
+.ch-overview-prize-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+.ch-overview-prize-table th {
+  background: #f1f5f9;
+  color: #475569;
+  font-weight: 800;
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 2px solid #cbd5e1;
+  white-space: nowrap;
+}
+
+.ch-overview-prize-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #1e293b;
+  vertical-align: middle;
+}
+
+.ch-overview-prize-table tr:last-child td {
+  border-bottom: none;
+}
+
+.ch-overview-prize-table tr:hover td {
+  background: #ffffff;
+}
+
+.prize-cell-1st {
+  font-weight: 800;
+  color: #d97706;
+}
+
+.prize-cell-2nd {
+  font-weight: 700;
+  color: #475569;
+}
+
+.prize-cell-3rd {
+  font-weight: 700;
+  color: #b45309;
+}
+
+/* Bottom Portal Callout */
+.ch-portal-callout {
+  background: linear-gradient(135deg, #0b1a3d 0%, #1e293b 100%);
+  border-radius: 16px;
+  padding: 28px 32px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  box-shadow: 0 12px 30px rgba(11, 26, 61, 0.15);
+}
+
+.ch-portal-callout-text h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  color: #ffffff;
+}
+
+.ch-portal-callout-text p {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin: 0;
+  max-width: 600px;
+}
+
+.ch-portal-callout-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .ch-overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ch-overview-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .ch-overview-grid,
+  .ch-overview-grid.grid-4-cols {
+    grid-template-columns: 1fr;
+  }
+  .ch-overview-metrics {
+    grid-template-columns: 1fr;
+  }
+  .ch-portal-callout {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ch-portal-callout-actions {
+    width: 100%;
+  }
+  .ch-portal-callout-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

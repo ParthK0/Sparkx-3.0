@@ -5,6 +5,7 @@ export function renderNavbar(): HTMLElement {
   const nav = document.createElement('header');
   nav.className = 'site-header';
   nav.id = 'navbar';
+  nav.setAttribute('aria-hidden', 'true');
 
   nav.innerHTML = `
     <!-- Top-level Scroll Progress Indicator -->
@@ -22,9 +23,8 @@ export function renderNavbar(): HTMLElement {
 
         <nav class="desktop-menu" aria-label="Main Navigation">
           <a href="#about" class="nav-link" data-section="about">About</a>
-          <a href="#journey" class="nav-link" data-section="journey">How It Works</a>
-          <a href="#tracks" class="nav-link" data-section="tracks">Tracks</a>
-          <a href="#prizes" class="nav-link" data-section="prizes">Prizes</a>
+          <a href="#pro-novel" class="nav-link" data-section="pro-novel">Pro & Novel</a>
+          <a href="#thirty-day-challenge" class="nav-link" data-section="thirty-day-challenge">30-Day Challenge</a>
           <a href="#timeline" class="nav-link" data-section="timeline">Timeline</a>
           <a href="#faq" class="nav-link" data-section="faq">FAQ</a>
         </nav>
@@ -72,11 +72,10 @@ export function renderNavbar(): HTMLElement {
 
         <nav class="mobile-nav-links">
           <a href="#about" class="mob-link" style="--delay: 1">About SparkX</a>
-          <a href="#journey" class="mob-link" style="--delay: 2">How It Works</a>
-          <a href="#tracks" class="mob-link" style="--delay: 3">Program Tracks</a>
-          <a href="#prizes" class="mob-link" style="--delay: 4">Prize Pools</a>
-          <a href="#timeline" class="mob-link" style="--delay: 5">Important Dates</a>
-          <a href="#faq" class="mob-link" style="--delay: 6">Frequently Asked Questions</a>
+          <a href="#pro-novel" class="mob-link" style="--delay: 2">Pro & Novel</a>
+          <a href="#thirty-day-challenge" class="mob-link" style="--delay: 3">30-Day Challenge</a>
+          <a href="#timeline" class="mob-link" style="--delay: 4">Important Dates</a>
+          <a href="#faq" class="mob-link" style="--delay: 5">Frequently Asked Questions</a>
         </nav>
 
         <div class="mobile-drawer-cta">
@@ -129,17 +128,27 @@ function setupNavbarInteractivity(nav: HTMLElement): void {
     closeMobileMenu();
   });
 
+  const brandLogo = nav.querySelector('.brand-logo-link') as HTMLAnchorElement;
+  brandLogo?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
   // Mobile Drawer Toggle
   function openMobileMenu() {
     mobileToggle?.classList.add('open');
     mobileDrawer?.classList.add('open');
+    nav.classList.add('is-visible', 'menu-open');
+    nav.setAttribute('aria-hidden', 'false');
     document.body.classList.add('no-scroll');
   }
 
   function closeMobileMenu() {
     mobileToggle?.classList.remove('open');
     mobileDrawer?.classList.remove('open');
+    nav.classList.remove('menu-open');
     document.body.classList.remove('no-scroll');
+    onScroll();
   }
 
   mobileToggle?.addEventListener('click', () => {
@@ -173,15 +182,25 @@ function setupNavbarInteractivity(nav: HTMLElement): void {
   // Subscribe to state changes
   appState.subscribe(updateButtons);
 
+  // Scroll reveal threshold (px from top before navbar slides in)
+  const SCROLL_THRESHOLD = 70;
+
   // Scroll spy effect & scroll progress bar
   const onScroll = () => {
     const scrollY = window.scrollY;
+    const isMobileMenuOpen = mobileDrawer?.classList.contains('open');
 
-    // 1. Scrolled shadow & backdrop elevation
-    if (scrollY > 20) {
-      nav.classList.add('scrolled');
+    const heroFloatingNav = document.getElementById('hero-floating-nav');
+
+    // 1. Reveal or hide navbar & merge floating hero bar smoothly
+    if (scrollY > SCROLL_THRESHOLD || isMobileMenuOpen) {
+      nav.classList.add('is-visible', 'scrolled');
+      nav.setAttribute('aria-hidden', 'false');
+      heroFloatingNav?.classList.add('merged');
     } else {
-      nav.classList.remove('scrolled');
+      nav.classList.remove('is-visible', 'scrolled');
+      nav.setAttribute('aria-hidden', 'true');
+      heroFloatingNav?.classList.remove('merged');
     }
 
     // 2. Scroll Progress Bar
@@ -192,7 +211,7 @@ function setupNavbarInteractivity(nav: HTMLElement): void {
     }
 
     // 3. Active Nav Link Scrollspy
-    const sections = ['about', 'journey', 'tracks', 'prizes', 'timeline', 'faq'];
+    const sections = ['about', 'pro-novel', 'thirty-day-challenge', 'timeline', 'faq'];
     let currentActive = '';
     const buffer = 160;
 
@@ -209,6 +228,16 @@ function setupNavbarInteractivity(nav: HTMLElement): void {
     }
 
     desktopLinks.forEach((link) => {
+      const section = link.getAttribute('data-section');
+      if (section && section === currentActive) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    const floatLinks = heroFloatingNav?.querySelectorAll<HTMLAnchorElement>('.hero-float-link');
+    floatLinks?.forEach((link) => {
       const section = link.getAttribute('data-section');
       if (section && section === currentActive) {
         link.classList.add('active');

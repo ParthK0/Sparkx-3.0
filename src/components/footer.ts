@@ -59,8 +59,7 @@ export function renderFooter(): HTMLElement {
             <li><a href="#hero">Home & Registration</a></li>
             <li><a href="#about">About SparkX 3.0</a></li>
             <li><a href="#journey">Innovation Journey</a></li>
-            <li><a href="#tracks">Program Tracks</a></li>
-            <li><a href="#challenges">Predefined AI Challenges</a></li>
+            <li><a href="#challenges">Program Challenges</a></li>
             <li><a href="#prizes">Prize Pools & Honors</a></li>
           </ul>
         </div>
@@ -157,7 +156,7 @@ export function renderFooter(): HTMLElement {
   });
 
   appState.subscribe(updateFooterButtons);
-  updateFooterButtons(appState.currentAudience);
+  updateFooterButtons(appState.getAudience());
 
   return footer;
 }

@@ -25,6 +25,17 @@ export function renderHero(): HTMLElement {
       <div class="grid-overlay"></div>
     </div>
 
+    <!-- Floating Home Bar inside Hero Page (Smoothly merges into top navbar on scroll) -->
+    <nav class="hero-floating-nav-bar" id="hero-floating-nav" aria-label="Hero Quick Navigation">
+      <div class="hero-floating-nav-pill">
+        <a href="#about" class="hero-float-link" data-section="about">About</a>
+        <a href="#pro-novel" class="hero-float-link" data-section="pro-novel">Pro & Novel</a>
+        <a href="#thirty-day-challenge" class="hero-float-link" data-section="thirty-day-challenge">30-Day Challenge</a>
+        <a href="#timeline" class="hero-float-link" data-section="timeline">Timeline</a>
+        <a href="#faq" class="hero-float-link" data-section="faq">FAQ</a>
+      </div>
+    </nav>
+
     <!-- Complete Full Right-Side Campus Graphic Stage (h1.webp) -->
     <div class="hero-right-full-stage" aria-hidden="true">
       <div class="hero-right-stage-wrapper">
@@ -89,8 +100,8 @@ export function renderHero(): HTMLElement {
             />
             <span class="hero-intl-tag" id="hero-title-tag">BEYOND BOUNDARIES</span>
           </div>
-          <h1 class="sr-only">SparkX 3.0 International — International Project Innovation Challenge</h1>
-          <p class="hero-nature-title">International Project Innovation Challenge</p>
+          <h1 class="sr-only">SparkX 3.0 Beyond Boundaries — National & International Innovation Challenge</h1>
+          <p class="hero-nature-title">National & International Innovation Challenge</p>
         </div>
 
         <!-- Pillars Sub-tagline (Common) -->
@@ -103,6 +114,7 @@ export function renderHero(): HTMLElement {
           <span class="strip-bullet">•</span>
           <span>Entrepreneurship</span>
         </div>
+
 
         <!-- Hero Element 1: 30-Day Innovation Challenge Banner -->
         <div class="hero-challenge-banner-wrap">
@@ -138,14 +150,27 @@ export function renderHero(): HTMLElement {
             </span>
           </a>
 
-          <a href="#tracks" class="btn btn-hero-secondary" id="hero-explore-btn">
-            <span id="hero-explore-btn-text">EXPLORE TRACKS</span>
+          <a href="#challenges" class="btn btn-hero-secondary" id="hero-explore-btn">
+            <span id="hero-explore-btn-text">EXPLORE CHALLENGES</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
           </a>
         </div>
       </div>
     </div>
   `;
+
+  // Smooth scroll click handlers for floating bar links
+  const floatLinks = section.querySelectorAll<HTMLAnchorElement>('.hero-float-link');
+  floatLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('data-section');
+      if (targetId) {
+        const targetEl = document.getElementById(targetId);
+        targetEl?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
 
   setupHeroSegregation(section);
 
@@ -192,8 +217,8 @@ function setupHeroSegregation(section: HTMLElement): void {
         </div>
       `;
 
-      if (registerBtnText) registerBtnText.textContent = 'REGISTER FOR INDIAN TRACKS';
-      if (exploreBtnText) exploreBtnText.textContent = 'EXPLORE INDIAN TRACKS';
+      if (registerBtnText) registerBtnText.textContent = 'REGISTER (SPARKX 3.0 & 30-DAY SPRINT)';
+      if (exploreBtnText) exploreBtnText.textContent = 'EXPLORE CHALLENGES';
     } else {
       floatingPrize.innerHTML = `
         <span class="badge-icon-pill">🏆</span>
@@ -225,7 +250,7 @@ function setupHeroSegregation(section: HTMLElement): void {
         </div>
       `;
 
-      if (registerBtnText) registerBtnText.textContent = 'REGISTER FOR GLOBAL CHALLENGE';
+      if (registerBtnText) registerBtnText.textContent = 'REGISTER (30-DAY AI CHALLENGE)';
       if (exploreBtnText) exploreBtnText.textContent = 'EXPLORE 4 AI CHALLENGES';
     }
   };
