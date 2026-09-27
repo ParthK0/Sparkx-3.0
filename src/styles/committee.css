@@ -7,31 +7,31 @@
 }
 
 .committee-tier {
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 
 .tier-label {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   color: #0b1a3d;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   border-left: 4px solid var(--theme-major);
-  padding-left: 12px;
+  padding-left: 10px;
 }
 
 .patrons-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 14px;
 }
 
 .patron-card {
   background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
-  padding: 24px;
+  padding: 16px 18px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 14px;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
@@ -135,14 +135,14 @@
 .intl-experts-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 14px;
 }
 
 .expert-card {
   background: #ffffff;
   border: 2px solid var(--theme-minor);
   border-radius: var(--radius-md);
-  padding: 28px;
+  padding: 18px 20px;
   position: relative;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-fast);
@@ -201,17 +201,17 @@
 .leadership-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 14px;
 }
 
 .leader-card {
   background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
-  padding: 24px;
+  padding: 16px 18px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 14px;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
@@ -224,14 +224,14 @@
 .faculty-grid, .eval-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
+  gap: 12px;
 }
 
 .faculty-card, .eval-card {
   background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
-  padding: 16px;
+  padding: 12px 14px;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-fast), border-color var(--transition-fast);
 }

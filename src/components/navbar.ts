@@ -5,8 +5,12 @@ export function renderNavbar(): HTMLElement {
   const nav = document.createElement('header');
   nav.className = 'site-header';
   nav.id = 'navbar';
+  nav.setAttribute('aria-hidden', 'true');
 
   nav.innerHTML = `
+    <!-- Top-level Scroll Progress Indicator -->
+    <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
+
     <div class="main-nav-bar">
       <div class="container nav-content">
         <a href="#hero" class="brand-logo-link" aria-label="SparkX 3.0 Home">
@@ -18,13 +22,11 @@ export function renderNavbar(): HTMLElement {
         </a>
 
         <nav class="desktop-menu" aria-label="Main Navigation">
-          <a href="#about" class="nav-link">About</a>
-          <a href="#journey" class="nav-link">Journey</a>
-          <a href="#tracks" class="nav-link">Tracks</a>
-          <a href="#prizes" class="nav-link">Prizes</a>
-          <a href="#timeline" class="nav-link">Timeline</a>
-          <a href="#committee" class="nav-link">Leadership</a>
-          <a href="#faq" class="nav-link">FAQ</a>
+          <a href="#about" class="nav-link" data-section="about">About</a>
+          <a href="#pro-novel" class="nav-link" data-section="pro-novel">Pro & Novel</a>
+          <a href="#thirty-day-challenge" class="nav-link" data-section="thirty-day-challenge">30-Day Challenge</a>
+          <a href="#timeline" class="nav-link" data-section="timeline">Timeline</a>
+          <a href="#faq" class="nav-link" data-section="faq">FAQ</a>
         </nav>
 
         <div class="nav-actions">
@@ -69,13 +71,11 @@ export function renderNavbar(): HTMLElement {
         </div>
 
         <nav class="mobile-nav-links">
-          <a href="#about" class="mob-link">About SparkX</a>
-          <a href="#journey" class="mob-link">Innovation Journey</a>
-          <a href="#tracks" class="mob-link">Program Tracks</a>
-          <a href="#prizes" class="mob-link">Prize Pools</a>
-          <a href="#timeline" class="mob-link">Important Dates</a>
-          <a href="#committee" class="mob-link">Organizing Leadership</a>
-          <a href="#faq" class="mob-link">Frequently Asked Questions</a>
+          <a href="#about" class="mob-link" style="--delay: 1">About SparkX</a>
+          <a href="#pro-novel" class="mob-link" style="--delay: 2">Pro & Novel</a>
+          <a href="#thirty-day-challenge" class="mob-link" style="--delay: 3">30-Day Challenge</a>
+          <a href="#timeline" class="mob-link" style="--delay: 4">Important Dates</a>
+          <a href="#faq" class="mob-link" style="--delay: 5">Frequently Asked Questions</a>
         </nav>
 
         <div class="mobile-drawer-cta">
@@ -99,94 +99,154 @@ function setupNavbarInteractivity(nav: HTMLElement): void {
   const mobIndiaBtn = nav.querySelector('#mob-btn-india') as HTMLButtonElement;
   const mobIntlBtn = nav.querySelector('#mob-btn-intl') as HTMLButtonElement;
   const mobileToggle = nav.querySelector('#mobile-menu-btn') as HTMLButtonElement;
-  const drawer = nav.querySelector('#mobile-drawer') as HTMLElement;
+  const mobileDrawer = nav.querySelector('#mobile-drawer') as HTMLElement;
   const mobLinks = nav.querySelectorAll('.mob-link');
+  const desktopLinks = nav.querySelectorAll<HTMLAnchorElement>('.desktop-menu .nav-link');
+  const progressBar = nav.querySelector('#scroll-progress') as HTMLElement;
 
-  const updateButtons = (audience: 'india' | 'international') => {
-    if (audience === 'india') {
-      indiaBtn?.classList.add('active');
-      intlBtn?.classList.remove('active');
-      mobIndiaBtn?.classList.add('active');
-      mobIntlBtn?.classList.remove('active');
-    } else {
-      intlBtn?.classList.add('active');
-      indiaBtn?.classList.remove('active');
-      mobIntlBtn?.classList.add('active');
-      mobIndiaBtn?.classList.remove('active');
-    }
+  // Handle Pill Switchers
+  const updateButtons = (audience: string) => {
+    const isIndia = audience === 'india';
+
+    indiaBtn?.classList.toggle('active', isIndia);
+    intlBtn?.classList.toggle('active', !isIndia);
+
+    mobIndiaBtn?.classList.toggle('active', isIndia);
+    mobIntlBtn?.classList.toggle('active', !isIndia);
   };
 
   indiaBtn?.addEventListener('click', () => appState.setAudience('india'));
   intlBtn?.addEventListener('click', () => appState.setAudience('international'));
+
   mobIndiaBtn?.addEventListener('click', () => {
     appState.setAudience('india');
-    drawer.classList.remove('open');
-    mobileToggle.classList.remove('active');
+    closeMobileMenu();
   });
+
   mobIntlBtn?.addEventListener('click', () => {
     appState.setAudience('international');
-    drawer.classList.remove('open');
-    mobileToggle.classList.remove('active');
+    closeMobileMenu();
   });
 
-  // Mobile menu toggle
+  const brandLogo = nav.querySelector('.brand-logo-link') as HTMLAnchorElement;
+  brandLogo?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Mobile Drawer Toggle
+  function openMobileMenu() {
+    mobileToggle?.classList.add('open');
+    mobileDrawer?.classList.add('open');
+    nav.classList.add('is-visible', 'menu-open');
+    nav.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll');
+  }
+
+  function closeMobileMenu() {
+    mobileToggle?.classList.remove('open');
+    mobileDrawer?.classList.remove('open');
+    nav.classList.remove('menu-open');
+    document.body.classList.remove('no-scroll');
+    onScroll();
+  }
+
   mobileToggle?.addEventListener('click', () => {
-    mobileToggle.classList.toggle('active');
-    drawer.classList.toggle('open');
+    const isOpen = mobileDrawer?.classList.contains('open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
   });
 
+  // Close drawer on link click
   mobLinks.forEach((link) => {
     link.addEventListener('click', () => {
-      drawer.classList.remove('open');
-      mobileToggle.classList.remove('active');
+      closeMobileMenu();
     });
   });
 
-  // Scroll listener for sticky blur & elevation
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
+  // Close drawer on click outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (
+      mobileDrawer?.classList.contains('open') &&
+      !mobileDrawer.contains(target) &&
+      !mobileToggle?.contains(target)
+    ) {
+      closeMobileMenu();
     }
-  }, { passive: true });
+  });
 
-  // Scroll spy for desktop menu active link highlighting
-  setupScrollSpy(nav);
-
-  // Subscribe to app state
+  // Subscribe to state changes
   appState.subscribe(updateButtons);
-}
 
-function setupScrollSpy(nav: HTMLElement): void {
-  const links = nav.querySelectorAll<HTMLAnchorElement>('.desktop-menu .nav-link');
+  // Scroll reveal threshold (px from top before navbar slides in)
+  const SCROLL_THRESHOLD = 70;
 
-  function updateActiveLink(): void {
-    const scrollPos = window.scrollY + 140;
-    let currentId = '';
+  // Scroll spy effect & scroll progress bar
+  const onScroll = () => {
+    const scrollY = window.scrollY;
+    const isMobileMenuOpen = mobileDrawer?.classList.contains('open');
 
-    links.forEach((link) => {
-      const href = link.getAttribute('href');
-      if (!href || !href.startsWith('#')) return;
-      const target = document.querySelector<HTMLElement>(href);
-      if (target) {
-        const top = target.offsetTop;
-        const height = target.offsetHeight;
-        if (scrollPos >= top && scrollPos < top + height) {
-          currentId = href;
+    const heroFloatingNav = document.getElementById('hero-floating-nav');
+
+    // 1. Reveal or hide navbar & merge floating hero bar smoothly
+    if (scrollY > SCROLL_THRESHOLD || isMobileMenuOpen) {
+      nav.classList.add('is-visible', 'scrolled');
+      nav.setAttribute('aria-hidden', 'false');
+      heroFloatingNav?.classList.add('merged');
+    } else {
+      nav.classList.remove('is-visible', 'scrolled');
+      nav.setAttribute('aria-hidden', 'true');
+      heroFloatingNav?.classList.remove('merged');
+    }
+
+    // 2. Scroll Progress Bar
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (totalHeight > 0 && progressBar) {
+      const progress = Math.min(100, Math.max(0, (scrollY / totalHeight) * 100));
+      progressBar.style.width = `${progress}%`;
+    }
+
+    // 3. Active Nav Link Scrollspy
+    const sections = ['about', 'pro-novel', 'thirty-day-challenge', 'timeline', 'faq'];
+    let currentActive = '';
+    const buffer = 160;
+
+    for (const id of sections) {
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.offsetTop - buffer;
+        const height = el.offsetHeight;
+        if (scrollY >= top && scrollY < top + height) {
+          currentActive = id;
+          break;
         }
       }
-    });
+    }
 
-    links.forEach((link) => {
-      if (link.getAttribute('href') === currentId) {
+    desktopLinks.forEach((link) => {
+      const section = link.getAttribute('data-section');
+      if (section && section === currentActive) {
         link.classList.add('active');
       } else {
         link.classList.remove('active');
       }
     });
-  }
 
-  window.addEventListener('scroll', updateActiveLink, { passive: true });
-  setTimeout(updateActiveLink, 250);
+    const floatLinks = heroFloatingNav?.querySelectorAll<HTMLAnchorElement>('.hero-float-link');
+    floatLinks?.forEach((link) => {
+      const section = link.getAttribute('data-section');
+      if (section && section === currentActive) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 }

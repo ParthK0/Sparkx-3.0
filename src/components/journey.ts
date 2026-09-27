@@ -6,25 +6,24 @@ export function renderJourney(): HTMLElement {
   section.innerHTML = `
     <div class="container">
       <div class="section-title-area text-center">
-        <span class="section-badge">Methodology</span>
-        <h2 class="section-heading">The Progressive Innovation Journey</h2>
+        <span class="section-badge">How It Works</span>
+        <h2 class="section-heading">The 5-Stage Innovation Journey</h2>
         <p class="section-subheading">
-          SparkX 3.0 provides a systematic 5-stage pipeline guiding teams from ambiguous initial questions into battle-tested, validated systems.
+          Wondering what happens after you register? Follow this clear, structured pipeline from problem definition to final showcase.
         </p>
       </div>
 
+      <!-- 5-Stage Pipeline -->
       <div class="journey-track-wrapper">
         <div class="journey-step-card">
           <div class="step-badge-circle">01</div>
           <div class="step-card-content">
             <span class="step-subtitle">Phase 1</span>
             <h3 class="step-title">Identify</h3>
+            <p class="step-summary-highlight">Find the problem</p>
             <p class="step-text">
-              Uncover an authentic, high-friction problem in industry, society, or medicine. Frame a crisp problem statement and research gap.
+              Uncover an authentic problem in industry or society. Frame a crisp problem statement, target audience, and research gap.
             </p>
-            <div class="step-outcome">
-              <span class="outcome-tag">Output: Problem Pitch & Scope</span>
-            </div>
           </div>
           <div class="step-arrow">&rarr;</div>
         </div>
@@ -34,12 +33,10 @@ export function renderJourney(): HTMLElement {
           <div class="step-card-content">
             <span class="step-subtitle">Phase 2</span>
             <h3 class="step-title">Design</h3>
+            <p class="step-summary-highlight">Architect the solution</p>
             <p class="step-text">
-              Architect the system schema, select the model architectures (LLMs, Computer Vision, RAG), specify API contracts, and map the user journey.
+              Design the technical schema, select AI/ML models (LLMs, Computer Vision, RAG), specify API contracts, and map the user flow.
             </p>
-            <div class="step-outcome">
-              <span class="outcome-tag">Output: System Blueprint</span>
-            </div>
           </div>
           <div class="step-arrow">&rarr;</div>
         </div>
@@ -49,12 +46,10 @@ export function renderJourney(): HTMLElement {
           <div class="step-card-content">
             <span class="step-subtitle">Phase 3</span>
             <h3 class="step-title">Build</h3>
+            <p class="step-summary-highlight">Create the prototype</p>
             <p class="step-text">
-              Execute during the 30-Day Sprint. Code the front-end, train or fine-tune models, connect persistent databases, and configure cloud pipelines.
+              Execute during the 30-Day Sprint. Code the front-end, train/fine-tune models, connect persistent databases, and deploy.
             </p>
-            <div class="step-outcome">
-              <span class="outcome-tag">Output: Working Prototype</span>
-            </div>
           </div>
           <div class="step-arrow">&rarr;</div>
         </div>
@@ -64,12 +59,10 @@ export function renderJourney(): HTMLElement {
           <div class="step-card-content">
             <span class="step-subtitle">Phase 4</span>
             <h3 class="step-title">Validate</h3>
+            <p class="step-summary-highlight">Test & improve</p>
             <p class="step-text">
-              Benchmark against baseline models. Conduct rigorous user testing, latency profiling, error analysis, and collect verifiable performance metrics.
+              Conduct user testing, latency profiling, error analysis, and collect verifiable performance metrics against standard benchmarks.
             </p>
-            <div class="step-outcome">
-              <span class="outcome-tag">Output: Empirical Benchmark</span>
-            </div>
           </div>
           <div class="step-arrow">&rarr;</div>
         </div>
@@ -79,57 +72,62 @@ export function renderJourney(): HTMLElement {
           <div class="step-card-content">
             <span class="step-subtitle">Phase 5</span>
             <h3 class="step-title">Showcase</h3>
+            <p class="step-summary-highlight">Present your innovation</p>
             <p class="step-text">
               Demonstrate the live system before an international jury of professors and industry founders during the 25–26 November Grand Exhibition.
             </p>
-            <div class="step-outcome">
-              <span class="outcome-tag">Output: Jury Defense & Awards</span>
-            </div>
           </div>
         </div>
       </div>
 
-      <!-- Expected Submission Breakdown Card -->
-      <div class="submission-expectations-box">
+      <!-- What You'll Build & Submit -->
+      <div class="submission-expectations-box" id="what-you-build">
         <div class="expectations-header">
           <div class="exp-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <div>
-            <h4 class="exp-title">What Every Team Must Build & Submit</h4>
-            <p class="exp-sub">No theoretical presentations. Every submission is judged on tangible execution:</p>
+            <h4 class="exp-title">What You'll Build & Submit</h4>
+            <p class="exp-sub">No theoretical slide decks. Every submission is judged on tangible technical execution:</p>
           </div>
         </div>
 
         <div class="expectations-grid">
           <div class="exp-item">
-            <span class="exp-dot"></span>
+            <span class="exp-num-badge">01</span>
             <div>
-              <strong>1. Functional Prototype / Working App:</strong>
-              <p>An accessible live web app, mobile app, desktop tool, or hardware-software system.</p>
+              <strong>Working Prototype</strong>
+              <p>A functional web application, mobile app, desktop tool, or hardware-software solution.</p>
             </div>
           </div>
           <div class="exp-item">
-            <span class="exp-dot"></span>
+            <span class="exp-num-badge">02</span>
             <div>
-              <strong>2. Intelligent AI/ML Core:</strong>
-              <p>Integrated machine learning, NLP, computer vision, or LLM agent with grounded inference.</p>
+              <strong>AI / ML Core</strong>
+              <p>An intelligent component with meaningful machine learning, NLP, computer vision, or LLM agent integration.</p>
             </div>
           </div>
           <div class="exp-item">
-            <span class="exp-dot"></span>
+            <span class="exp-num-badge">03</span>
             <div>
-              <strong>3. Robust Backend & Database:</strong>
-              <p>Structured database (SQL/NoSQL/Vector), documented APIs, and secure authentication.</p>
+              <strong>Backend & Data Architecture</strong>
+              <p>Structured database (SQL/NoSQL/Vector), documented REST/GraphQL APIs, and secure architecture.</p>
             </div>
           </div>
           <div class="exp-item">
-            <span class="exp-dot"></span>
+            <span class="exp-num-badge">04</span>
             <div>
-              <strong>4. Decision-Support Analytics:</strong>
-              <p>Administrative telemetry, user feedback analytics, or performance dashboards.</p>
+              <strong>Evidence & Analytics</strong>
+              <p>Rigorous test results, telemetry, empirical benchmarks, and an end-to-end working demonstration.</p>
             </div>
           </div>
+        </div>
+
+        <div class="expectations-footer text-center" style="margin-top: 24px;">
+          <a href="#/evaluation" class="btn btn-outline-theme btn-sm">
+            <span>See Full Submission Requirements & Rubric</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
     </div>

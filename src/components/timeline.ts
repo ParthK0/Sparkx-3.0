@@ -1,5 +1,6 @@
 import { TIMELINE, EVENT_DETAILS } from '../data/content';
-import { TimelineMilestone } from '../types';
+import { TimelineMilestone, Audience } from '../types';
+import { appState } from '../state';
 
 export interface EvaluatedMilestone extends TimelineMilestone {
   computedStatus: 'completed' | 'active' | 'upcoming';
@@ -99,15 +100,15 @@ export function renderTimeline(): HTMLElement {
   section.id = 'timeline';
 
   const dateState = evaluateMilestones();
-  const { milestones, activeIndex, coveragePercent, activeMilestone, todayStr } = dateState;
+  const { activeIndex, coveragePercent, activeMilestone, todayStr } = dateState;
 
   section.innerHTML = `
     <div class="container">
-      <div class="section-title-area text-center">
-        <span class="section-badge">Master Schedule & Real-Time Tracker</span>
-        <h2 class="section-heading">Key Program Milestones</h2>
-        <p class="section-subheading">
-          Follow the journey of SparkX 3.0 in real time. The schedule dynamically tracks current active phases from registration opening to the grand international jury showcase.
+      <div class="section-title-area text-center" id="timeline-title-area">
+        <span class="section-badge" id="timeline-badge">Master Schedule & Real-Time Tracker</span>
+        <h2 class="section-heading" id="timeline-heading">Key Program Milestones</h2>
+        <p class="section-subheading" id="timeline-subheading">
+          Follow the journey of SparkX 3.0 in real time. The schedule dynamically tracks current active phases.
         </p>
       </div>
 
@@ -146,78 +147,14 @@ export function renderTimeline(): HTMLElement {
           </div>
         </div>
 
-        <div class="timeline-nodes-wrapper">
-          ${milestones.map((item, index) => {
-            const isFinished = item.computedStatus === 'completed';
-            const isActive = item.computedStatus === 'active';
-            
-            return `
-              <div class="timeline-node ${isActive ? 'current-node active-phase-node' : ''} ${isFinished ? 'done-node' : 'upcoming-node'}" data-index="${index}">
-                <div class="node-marker">
-                  <div class="node-bullet ${isActive ? 'active-bullet' : ''} ${isFinished ? 'done-bullet' : ''}">
-                    ${isFinished 
-                      ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>` 
-                      : `<span class="bullet-num">${index + 1}</span>`
-                    }
-                    ${isActive ? `<span class="bullet-pulse-wave"></span>` : ''}
-                  </div>
-                </div>
-
-                <div class="node-card ${isActive ? 'active-card' : ''} ${isFinished ? 'done-card' : ''}">
-                  <div class="node-header-status">
-                    ${isActive 
-                      ? `<span class="node-status-tag active-tag"><span class="live-pulse-dot"></span> LIVE NOW</span>` 
-                      : (isFinished ? `<span class="node-status-tag done-tag">✓ COMPLETED</span>` : `<span class="node-status-tag upcoming-tag">UPCOMING</span>`)
-                    }
-                    <div class="node-date-badge ${isActive ? 'active-date-badge' : ''}">${item.date}</div>
-                  </div>
-
-                  <h3 class="node-title ${isActive ? 'active-title' : ''}">${item.title}</h3>
-                  <p class="node-description">${item.description}</p>
-                  
-                  ${item.phaseLabel ? `<div class="node-phase-caption">${item.phaseLabel}</div>` : ''}
-
-                  ${item.note ? `
-                    <div class="node-reconcile-note">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-                      <span>${item.note}</span>
-                    </div>
-                  ` : ''}
-
-                  ${isActive ? `
-                    <div class="active-node-cta">
-                      <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="active-cta-btn">
-                        <span>Register Your Team Now</span>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                      </a>
-                    </div>
-                  ` : ''}
-                </div>
-              </div>
-            `;
-          }).join('')}
+        <div class="timeline-nodes-wrapper" id="timeline-nodes-wrapper">
+          <!-- Dynamically injected based on active audience -->
         </div>
       </div>
 
       <!-- Schedule Callout Cards -->
-      <div class="timeline-meta-grid">
-        <div class="timeline-day-card">
-          <div class="day-badge">Day 1 • 25 Nov 2026</div>
-          <h4 class="day-title">Project Innovation Challenge</h4>
-          <p class="day-desc">
-            Spotlight on on-campus student teams: <strong>SparkX Pro</strong> (7th Semester research capstones) 
-            and <strong>SparkX Novel</strong> (3rd & 5th Semester product innovations). Live hardware & software stalls.
-          </p>
-        </div>
-
-        <div class="timeline-day-card day-highlight">
-          <div class="day-badge badge-blue">Day 2 • 26 Nov 2026</div>
-          <h4 class="day-title">International Innovation Challenge</h4>
-          <p class="day-desc">
-            Grand international finals: Virtual presentations for global university teams alongside final rounds of the 
-            <strong>30-Day AI Software Solution Sprint</strong> before the international jury panel.
-          </p>
-        </div>
+      <div class="timeline-meta-grid" id="timeline-meta-grid">
+        <!-- Dynamically injected based on active audience -->
       </div>
 
       <div class="timeline-bottom-cta">
@@ -229,8 +166,189 @@ export function renderTimeline(): HTMLElement {
   `;
 
   setupTimelineProgress(section, coveragePercent, activeIndex);
+  setupTimelineSegregation(section, dateState);
 
   return section;
+}
+
+function setupTimelineSegregation(
+  section: HTMLElement,
+  dateState: ReturnType<typeof evaluateMilestones>
+): void {
+  const badge = section.querySelector('#timeline-badge') as HTMLElement;
+  const heading = section.querySelector('#timeline-heading') as HTMLElement;
+  const subheading = section.querySelector('#timeline-subheading') as HTMLElement;
+  const nodesWrapper = section.querySelector('#timeline-nodes-wrapper') as HTMLElement;
+  const metaGrid = section.querySelector('#timeline-meta-grid') as HTMLElement;
+
+  const { milestones } = dateState;
+
+  const update = (audience: Audience) => {
+    const isIndian = audience === 'india';
+
+    if (isIndian) {
+      if (badge) {
+        badge.className = 'section-badge badge-gold';
+        badge.textContent = '🇮🇳 Indian National Schedule';
+      }
+      if (heading) heading.textContent = 'Indian Participant Program Milestones';
+      if (subheading) {
+        subheading.textContent =
+          'Follow the national journey from registration and concept approval to the on-campus Grand Exhibition at Galgotias University.';
+      }
+
+      const indianMilestones = milestones.map((m, idx) => {
+        let title = m.title;
+        let desc = m.description;
+        if (idx === 0) {
+          title = 'Registration Opens';
+          desc = 'Online registration begins for Indian tracks (SparkX Pro 7th Sem & SparkX Novel 3rd/5th Sem) and the National 30-Day Innovation Sprint.';
+        } else if (idx === 1) {
+          title = 'Registration & Concept Submission Deadline';
+          desc = 'Indian teams must submit their team roster, challenge selection, and initial project concept/synopsis.';
+        } else if (idx === 2) {
+          title = 'Idea Screening & Faculty Approvals';
+          desc = 'Institutional screening committee reviews all submissions and issues official approvals to build.';
+        } else if (idx === 3) {
+          title = '30-Day Prototyping Sprint';
+          desc = 'Intense development sprint where teams build functional hardware/software prototypes with faculty mentorship.';
+        } else if (idx === 4) {
+          title = 'SparkX 3.0 Grand Exhibition Showcase';
+          desc = 'Day 1 (25 Nov): SparkX Pro & Novel on-campus showcase. Day 2 (26 Nov): Grand offline evaluations & award distribution at Galgotias University campus.';
+        }
+        return { ...m, title, description: desc };
+      });
+
+      renderNodes(nodesWrapper, indianMilestones);
+
+      metaGrid.innerHTML = `
+        <div class="timeline-day-card">
+          <div class="day-badge badge-gold">Day 1 • 25 Nov 2026</div>
+          <h4 class="day-title">On-Campus Project Exhibition</h4>
+          <p class="day-desc">
+            Spotlight on Indian student teams: <strong>SparkX Pro</strong> (7th Semester research capstones) and 
+            <strong>SparkX Novel</strong> (3rd & 5th Semester product innovations). Multi-floor physical stalls at Galgotias University.
+          </p>
+        </div>
+
+        <div class="timeline-day-card day-highlight">
+          <div class="day-badge badge-gold">Day 2 • 26 Nov 2026</div>
+          <h4 class="day-title">National Finals & Grand Awards</h4>
+          <p class="day-desc">
+            Final round demonstrations for the <strong>30-Day AI Sprint</strong>, live jury evaluation, and on-campus INR cash prize & trophy distribution at Galgotias University.
+          </p>
+        </div>
+      `;
+    } else {
+      if (badge) {
+        badge.className = 'section-badge badge-blue';
+        badge.textContent = '🌍 International Virtual Schedule';
+      }
+      if (heading) heading.textContent = 'International 30-Day Sprint Milestones';
+      if (subheading) {
+        subheading.textContent =
+          'Follow the 100% remote timeline for international university teams from digital registration to the virtual jury showcase.';
+      }
+
+      const intlMilestones = milestones.map((m, idx) => {
+        let title = m.title;
+        let desc = m.description;
+        if (idx === 0) {
+          title = 'Global Registration Opens';
+          desc = 'Online registration begins for international university teams in the Global 30-Day AI Innovation Challenge.';
+        } else if (idx === 1) {
+          title = 'Global Registration & AI Concept Deadline';
+          desc = 'Foreign teams submit their roster (1–4 members), AI challenge selection, and architecture synopsis.';
+        } else if (idx === 2) {
+          title = 'Digital Idea Screening & Approvals';
+          desc = 'International committee reviews project proposals and issues official confirmations to proceed.';
+        } else if (idx === 3) {
+          title = '30-Day Global AI Innovation Sprint';
+          desc = 'Intense 30-day remote sprint: Teams build functional AI prototypes, commit code to public GitHub, and prepare video demo.';
+        } else if (idx === 4) {
+          title = 'SparkX 3.0 International Virtual Finals';
+          desc = '100% Online video conference evaluations and global jury defense on 26 November 2026. Zero travel required.';
+        }
+        return { ...m, title, description: desc };
+      });
+
+      renderNodes(nodesWrapper, intlMilestones);
+
+      metaGrid.innerHTML = `
+        <div class="timeline-day-card">
+          <div class="day-badge badge-blue">15 Oct – 15 Nov 2026</div>
+          <h4 class="day-title">Global AI Sprint on GitHub</h4>
+          <p class="day-desc">
+            International teams develop complete end-to-end applications across the 4 AI problem domains, maintaining commit history on public GitHub with comprehensive user manuals.
+          </p>
+        </div>
+
+        <div class="timeline-day-card day-highlight">
+          <div class="day-badge badge-blue">Day 2 • 26 Nov 2026</div>
+          <h4 class="day-title">International Virtual Jury Showcase</h4>
+          <p class="day-desc">
+            Grand international finals conducted 100% online via secure video conference. Foreign teams present live working demos and defend their architecture before the global jury. Zero travel required.
+          </p>
+        </div>
+      `;
+    }
+  };
+
+  appState.subscribe(update);
+}
+
+function renderNodes(wrapper: HTMLElement, items: EvaluatedMilestone[]): void {
+  wrapper.innerHTML = items
+    .map((item, index) => {
+      const isFinished = item.computedStatus === 'completed';
+      const isActive = item.computedStatus === 'active';
+
+      return `
+        <div class="timeline-node ${isActive ? 'current-node active-phase-node' : ''} ${isFinished ? 'done-node' : 'upcoming-node'}" data-index="${index}">
+          <div class="node-marker">
+            <div class="node-bullet ${isActive ? 'active-bullet' : ''} ${isFinished ? 'done-bullet' : ''}">
+              ${isFinished
+                ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`
+                : `<span class="bullet-num">${index + 1}</span>`
+              }
+              ${isActive ? `<span class="bullet-pulse-wave"></span>` : ''}
+            </div>
+          </div>
+
+          <div class="node-card ${isActive ? 'active-card' : ''} ${isFinished ? 'done-card' : ''}">
+            <div class="node-header-status">
+              ${isActive
+                ? `<span class="node-status-tag active-tag"><span class="live-pulse-dot"></span> LIVE NOW</span>`
+                : (isFinished ? `<span class="node-status-tag done-tag">✓ COMPLETED</span>` : `<span class="node-status-tag upcoming-tag">UPCOMING</span>`)
+              }
+              <div class="node-date-badge ${isActive ? 'active-date-badge' : ''}">${item.date}</div>
+            </div>
+
+            <h3 class="node-title ${isActive ? 'active-title' : ''}">${item.title}</h3>
+            <p class="node-description">${item.description}</p>
+            
+            ${item.phaseLabel ? `<div class="node-phase-caption">${item.phaseLabel}</div>` : ''}
+
+            ${item.note ? `
+              <div class="node-reconcile-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                <span>${item.note}</span>
+              </div>
+            ` : ''}
+
+            ${isActive ? `
+              <div class="active-node-cta">
+                <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="active-cta-btn">
+                  <span>Register Your Team Now</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    })
+    .join('');
 }
 
 function setupTimelineProgress(section: HTMLElement, targetCoverage: number, activeIndex: number): void {

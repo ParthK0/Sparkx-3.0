@@ -17,7 +17,7 @@
   background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
-  padding: 24px 20px;
+  padding: 24px 18px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -68,53 +68,75 @@
 .journey-step-card.highlight-step {
   border: 2px solid var(--theme-major);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(180deg, #fffaf7 0%, #ffffff 80px);
 }
 
 .step-badge-circle {
   font-family: var(--font-mono);
   font-weight: 900;
-  font-size: 1.15rem;
-  margin-bottom: 12px;
+  font-size: 1.25rem;
+  margin-bottom: 8px;
 }
 
 .step-subtitle {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   color: var(--text-dim);
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.06em;
   display: block;
 }
 
 .step-title {
+  font-family: var(--font-display);
   font-size: 1.35rem;
+  font-weight: 800;
   color: #0b1a3d;
+  margin-bottom: 4px;
+}
+
+.step-summary-highlight {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--theme-major);
   margin-bottom: 10px;
 }
 
+.journey-step-card:nth-child(2) .step-summary-highlight {
+  color: #d97706;
+}
+
+.journey-step-card:nth-child(3) .step-summary-highlight {
+  color: #0047ba;
+}
+
+.journey-step-card:nth-child(4) .step-summary-highlight {
+  color: #7c3aed;
+}
+
+.journey-step-card:nth-child(5) .step-summary-highlight {
+  color: #c0262d;
+}
+
 .step-text {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
   line-height: 1.5;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   flex-grow: 1;
 }
 
-.outcome-tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--theme-minor);
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  padding: 4px 8px;
-  border-radius: 4px;
+.step-arrow {
+  display: none;
 }
 
+/* Submission Expectations Box ("What You'll Build") */
 .submission-expectations-box {
   background: #f8fafc;
   border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
-  padding: 32px;
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
 }
 
 .expectations-header {
@@ -125,24 +147,27 @@
 }
 
 .exp-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   background: #dcfce7;
   color: #16a34a;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .exp-title {
-  font-size: 1.3rem;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
   color: #0b1a3d;
 }
 
 .exp-sub {
   color: var(--text-muted);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
 }
 
 .expectations-grid {
@@ -154,27 +179,46 @@
 .exp-item {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 14px;
   background: #ffffff;
-  padding: 16px;
-  border-radius: var(--radius-sm);
+  padding: 20px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
 }
 
-.exp-dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--theme-major);
-  border-radius: 50%;
-  margin-top: 6px;
+.exp-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.exp-num-badge {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: var(--text-heading);
   flex-shrink: 0;
 }
 
+.exp-item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0b1a3d;
+  margin-bottom: 6px;
+}
+
 .exp-item p {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: #334155;
   line-height: 1.5;
+  margin: 0;
 }
 
 @media (max-width: 1024px) {
@@ -189,5 +233,8 @@
   }
   .expectations-grid {
     grid-template-columns: 1fr;
+  }
+  .submission-expectations-box {
+    padding: 24px 16px;
   }
 }

@@ -68,7 +68,7 @@ export function renderRegisterPage(): HTMLElement {
             <div class="info-icon">🇮🇳</div>
             <div class="info-content">
               <h4>Indian Participants</h4>
-              <p>Both SparkX Pro (Final Year Capstone) and NextGen (Pre-Final Year) tracks available with on-campus presentation.</p>
+              <p>Eligible for SparkX 3.0 (Pro & Novel semester tracks) and the 30-Day Innovation Sprint with on-campus physical showcase.</p>
             </div>
           </div>
 
@@ -76,7 +76,7 @@ export function renderRegisterPage(): HTMLElement {
             <div class="info-icon">🌍</div>
             <div class="info-content">
               <h4>International Participants</h4>
-              <p>Hybrid / Online track available with international jury review and zero mandatory travel requirement.</p>
+              <p>Participate exclusively in the 30-Day Innovation Challenge (SparkX 3.0 is for Indian students only) with 100% online showcase.</p>
             </div>
           </div>
 

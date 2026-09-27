@@ -14,6 +14,7 @@ export function renderNetworkStatus(): HTMLElement {
 
   let dismissTimeout: ReturnType<typeof setTimeout> | null = null;
 
+  // Auto-dismiss offline banner after 5 seconds so it never permanently occupies the screen
   function showStatus(isOnline: boolean) {
     if (dismissTimeout) {
       clearTimeout(dismissTimeout);
@@ -27,11 +28,11 @@ export function renderNetworkStatus(): HTMLElement {
         <div class="network-indicator-content">
           <div class="network-icon">⚠️</div>
           <div class="network-msg">
-            <strong>Connection Lost</strong>
-            <span>You are currently offline. Showing cached SparkX 3.0 content.</span>
+            <strong>Connection Notice</strong>
+            <span>You appear to be offline. Content remains accessible.</span>
           </div>
-          <button type="button" class="network-retry-btn" id="network-retry-btn" aria-label="Retry connection">
-            Retry
+          <button type="button" class="network-retry-btn" id="network-retry-btn" aria-label="Dismiss notice">
+            Dismiss
           </button>
         </div>
       `;
@@ -40,14 +41,13 @@ export function renderNetworkStatus(): HTMLElement {
 
       const retryBtn = container.querySelector('#network-retry-btn');
       retryBtn?.addEventListener('click', () => {
-        if (navigator.onLine) {
-          showStatus(true);
-        } else {
-          // Shake animation
-          container.classList.add('shake');
-          setTimeout(() => container.classList.remove('shake'), 500);
-        }
+        container.classList.remove('visible');
       });
+
+      // Auto dismiss after 5 seconds to prevent permanent UI obstruction
+      dismissTimeout = setTimeout(() => {
+        container.classList.remove('visible');
+      }, 5000);
     } else {
       document.body.classList.remove('is-offline');
       container.className = 'sparkx-network-indicator status-online visible';
@@ -55,29 +55,24 @@ export function renderNetworkStatus(): HTMLElement {
         <div class="network-indicator-content">
           <div class="network-icon">🟢</div>
           <div class="network-msg">
-            <strong>Connection Restored</strong>
-            <span>You are back online!</span>
+            <strong>Connection Active</strong>
+            <span>Online connectivity confirmed.</span>
           </div>
         </div>
       `;
 
       analytics.track('System', 'Online State Restored');
 
-      // Auto dismiss after 3 seconds
+      // Auto dismiss after 2.5 seconds
       dismissTimeout = setTimeout(() => {
         container.classList.remove('visible');
-      }, 3200);
+      }, 2500);
     }
   }
 
-  // Setup event listeners
+  // Setup event listeners - only trigger on genuine online/offline transitions, not on startup
   window.addEventListener('offline', () => showStatus(false));
   window.addEventListener('online', () => showStatus(true));
-
-  // Initial check on load
-  if (!navigator.onLine) {
-    showStatus(false);
-  }
 
   return container;
 }

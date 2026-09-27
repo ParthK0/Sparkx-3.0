@@ -12,8 +12,8 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 36px;
+  gap: 10px;
+  margin-bottom: 22px;
 }
 
 .status-bar-pill {
@@ -67,14 +67,14 @@
 
 .timeline-container {
   position: relative;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 
 /* Track Bar with Real-Time Date Coverage */
 .timeline-track-bar-container {
   position: relative;
   width: 100%;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 .timeline-track-bar {
@@ -252,7 +252,7 @@
   background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
-  padding: 20px 16px;
+  padding: 16px 14px;
   flex-grow: 1;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);

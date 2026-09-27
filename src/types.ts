@@ -66,3 +66,52 @@ export interface FAQItem {
   answer: string;
   category: 'general' | 'indian' | 'international' | 'submission';
 }
+
+export interface TrackDetail {
+  id: string;
+  name: string;
+  sectionNumber: string;
+  targetGroup: string;
+  primaryFocus: string;
+  expectedOutput: string;
+  description: string;
+  eligibility: string;
+  audienceBadge: string;
+  highlights: string[];
+  deliverables: string[];
+  prizes: {
+    india: { first: string; second: string; third: string };
+    abroad?: { first: string; second: string; third: string };
+  };
+  framework?: {
+    teamSize: string;
+    eligibility: string;
+    techStack: string;
+    mode: string;
+    duration?: string;
+  };
+}
+
+export interface PrizeTableRow {
+  track: string;
+  targetGroup: string;
+  primaryFocus: string;
+  expectedOutput: string;
+  prizeIndia: { first: string; second: string; third: string };
+  prizeAbroad: { first: string; second: string; third: string } | null;
+}
+
+export interface EventPlanDay {
+  day: string;
+  date: string;
+  title: string;
+  sessions: { time?: string; title: string; desc: string; mode: string }[];
+}
+
+export interface SpecialOpportunity {
+  icon: string;
+  title: string;
+  description: string;
+  tag: string;
+}
+

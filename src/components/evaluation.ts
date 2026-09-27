@@ -83,51 +83,54 @@ export function renderEvaluation(): HTMLElement {
   return section;
 }
 
-function setupOpportunities(section: HTMLElement): void {
-  const oppBox = section.querySelector('#opportunities-box') as HTMLElement;
+export function setupOpportunities(section: HTMLElement): void {
+  const oppBoxes = section.querySelectorAll<HTMLElement>('.opportunities-box');
+  if (!oppBoxes.length) return;
 
   const update = (audience: Audience) => {
-    if (audience === 'india') {
-      oppBox.innerHTML = `
-        <div class="opp-inner-card">
-          <div class="opp-badge badge-gold">For Indian Pro & Novel Teams</div>
-          <h3 class="opp-heading">Your Project Can Go Beyond SparkX</h3>
-          <p class="opp-sub">
-            Outstanding capstones and student inventions are supported with continuous institutional backing towards:
-          </p>
+    oppBoxes.forEach((oppBox) => {
+      if (audience === 'india') {
+        oppBox.innerHTML = `
+          <div class="opp-inner-card">
+            <div class="opp-badge badge-gold">For Indian Pro & Novel Teams</div>
+            <h3 class="opp-heading">Your Project Can Go Beyond SparkX</h3>
+            <p class="opp-sub">
+              Outstanding capstones and student inventions are supported with continuous institutional backing towards:
+            </p>
 
-          <div class="opp-chips-grid">
-            <div class="opp-chip"><span>📄</span> Research Paper Development</div>
-            <div class="opp-chip"><span>🏛️</span> IEEE / Scopus Journal Publications</div>
-            <div class="opp-chip"><span>💡</span> Patent Filing & IP Support</div>
-            <div class="opp-chip"><span>🚀</span> University E-Cell Startup Incubation</div>
-            <div class="opp-chip"><span>🤝</span> Industry Collaboration & Pilots</div>
-            <div class="opp-chip"><span>🏆</span> External Hackathons & Grants</div>
-            <div class="opp-chip"><span>🎓</span> Higher Study & Global Research Fast-Track</div>
-            <div class="opp-chip"><span>⚙️</span> Prototype Enhancement Labs</div>
+            <div class="opp-chips-grid">
+              <div class="opp-chip"><span>📄</span> Research Paper Development</div>
+              <div class="opp-chip"><span>🏛️</span> IEEE / Scopus Journal Publications</div>
+              <div class="opp-chip"><span>💡</span> Patent Filing & IP Support</div>
+              <div class="opp-chip"><span>🚀</span> University E-Cell Startup Incubation</div>
+              <div class="opp-chip"><span>🤝</span> Industry Collaboration & Pilots</div>
+              <div class="opp-chip"><span>🏆</span> External Hackathons & Grants</div>
+              <div class="opp-chip"><span>🎓</span> Higher Study & Global Research Fast-Track</div>
+              <div class="opp-chip"><span>⚙️</span> Prototype Enhancement Labs</div>
+            </div>
           </div>
-        </div>
-      `;
-    } else {
-      oppBox.innerHTML = `
-        <div class="opp-inner-card card-blue-theme">
-          <div class="opp-badge badge-blue">For International Participants</div>
-          <h3 class="opp-heading">Beyond a Competition: A Global Launchpad</h3>
-          <p class="opp-sub">
-            SparkX 3.0 opens lasting pathways for international students to collaborate across borders and build recognized portfolios:
-          </p>
+        `;
+      } else {
+        oppBox.innerHTML = `
+          <div class="opp-inner-card card-blue-theme">
+            <div class="opp-badge badge-blue">For International Participants</div>
+            <h3 class="opp-heading">Beyond a Competition: A Global Launchpad</h3>
+            <p class="opp-sub">
+              SparkX 3.0 opens lasting pathways for international students to collaborate across borders and build recognized portfolios:
+            </p>
 
-          <div class="opp-chips-grid">
-            <div class="opp-chip"><span>🌍</span> Cross-Border Research Collaboration</div>
-            <div class="opp-chip"><span>📑</span> Joint Co-Authored Publications</div>
-            <div class="opp-chip"><span>🌐</span> Cross-Cultural Tech Exchange</div>
-            <div class="opp-chip"><span>🚀</span> Globally Scalable Startup Mentorship</div>
-            <div class="opp-chip"><span>💼</span> Silicon Valley & Global Industry Exposure</div>
-            <div class="opp-chip"><span>🏅</span> Verified Institutional Digital Badges</div>
+            <div class="opp-chips-grid">
+              <div class="opp-chip"><span>🌍</span> Cross-Border Research Collaboration</div>
+              <div class="opp-chip"><span>📑</span> Joint Co-Authored Publications</div>
+              <div class="opp-chip"><span>🌐</span> Cross-Cultural Tech Exchange</div>
+              <div class="opp-chip"><span>🚀</span> Globally Scalable Startup Mentorship</div>
+              <div class="opp-chip"><span>💼</span> Silicon Valley & Global Industry Exposure</div>
+              <div class="opp-chip"><span>🏅</span> Verified Institutional Digital Badges</div>
+            </div>
           </div>
-        </div>
-      `;
-    }
+        `;
+      }
+    });
   };
 
   appState.subscribe(update);

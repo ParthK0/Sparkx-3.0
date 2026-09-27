@@ -10,12 +10,12 @@
   background: #f8fafc;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
-  padding: 36px;
-  margin-bottom: 56px;
+  padding: 22px 20px;
+  margin-bottom: 28px;
 }
 
 .deliv-header {
-  margin-bottom: 28px;
+  margin-bottom: 16px;
 }
 
 .deliv-badge {
@@ -39,14 +39,14 @@
 .deliv-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 14px;
 }
 
 .deliv-card {
   background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
-  padding: 20px;
+  padding: 16px;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
@@ -78,32 +78,32 @@
 }
 
 .rubric-block {
-  margin-bottom: 56px;
+  margin-bottom: 28px;
 }
 
 .rubric-heading {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #0b1a3d;
   margin-bottom: 6px;
 }
 
 .rubric-sub {
   color: var(--text-muted);
-  font-size: 0.92rem;
-  margin-bottom: 28px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
 }
 
 .criteria-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 14px;
 }
 
 .criterion-card {
   background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
-  padding: 20px;
+  padding: 16px;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-fast), border-color var(--transition-fast);
 }

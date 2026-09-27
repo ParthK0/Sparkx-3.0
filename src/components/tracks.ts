@@ -1,7 +1,9 @@
 /* ==========================================================================
-   SparkX 3.0 — Strictly Segregated Tracks Component
+   SparkX 3.0 — Strictly Segregated Tracks Component (Simplified & Scannable)
    If Indian is selected -> Shows ONLY Indian semester tracks & national sprint.
    If International is selected -> Shows ONLY the International 30-Day AI Innovation Challenge.
+   Cards are streamlined to eliminate text-heaviness on homepage while offering
+   quick module expansion / direct link to challenge portal.
    ========================================================================== */
 
 import { appState } from '../state';
@@ -36,8 +38,8 @@ export function renderTracks(): HTMLElement {
           <div>
             <h4 class="inter-title">Interdisciplinary Innovation Welcome</h4>
             <p class="inter-desc">
-              SparkX 3.0 encourages cross-domain collaboration across Computer Science, Artificial Intelligence, Electronics & Communication, 
-              Mechanical, Civil, Biotechnology, Applied Sciences, and Management disciplines.
+              SparkX 3.0 encourages cross-domain collaboration across Computer Science, Artificial Intelligence, Electronics, 
+              Mechanical, Civil, Biotechnology, and Management disciplines.
             </p>
           </div>
         </div>
@@ -83,16 +85,16 @@ function setupTracksSegregation(section: HTMLElement): void {
     if (currentAudience === 'india') {
       // 1. Indian Title
       titleArea.innerHTML = `
-        <span class="section-badge badge-gold">🇮🇳 Indian Student Tracks</span>
-        <h2 class="section-heading">Indian Participant Innovation Tracks</h2>
+        <span class="section-badge badge-gold">🇮🇳 Indian Student Challenges</span>
+        <h2 class="section-heading">SparkX 3.0 & 30-Day Sprint (Indian Challenges)</h2>
         <p class="section-subheading">
-          Structured semester-aligned pathways tailored exclusively for students studying at Galgotias University and colleges across India.
+          Indian students are eligible for both SparkX 3.0 (7th Sem Pro & 3rd/5th Sem Novel) and the 30-Day Innovation Sprint.
         </p>
       `;
 
       // 2. Indian Filter Chips
       filterBar.innerHTML = `
-        <button type="button" class="filter-chip ${activeFilter === 'all' ? 'active' : ''}" data-filter="all">All Indian Tracks</button>
+        <button type="button" class="filter-chip ${activeFilter === 'all' ? 'active' : ''}" data-filter="all">All Indian Challenges</button>
         <button type="button" class="filter-chip ${activeFilter === 'pro' ? 'active' : ''}" data-filter="pro">SparkX Pro (7th Sem)</button>
         <button type="button" class="filter-chip ${activeFilter === 'novel' ? 'active' : ''}" data-filter="novel">SparkX Novel (3rd & 5th Sem)</button>
         <button type="button" class="filter-chip ${activeFilter === '30day' ? 'active' : ''}" data-filter="30day">30-Day Innovation Sprint</button>
@@ -116,29 +118,17 @@ function setupTracksSegregation(section: HTMLElement): void {
             <h3 class="track-title">${track.name}</h3>
             <p class="track-subtitle">${track.subtitle}</p>
 
-            <div class="track-focus-box">
-              <span class="focus-label">Core Focus:</span>
-              <span class="focus-value">${track.focus}</span>
-            </div>
-
             <p class="track-description">${track.description}</p>
 
-            <div class="track-expected-output">
-              <span class="output-label">Expected Output:</span>
-              <p class="output-text">${track.expectedOutput}</p>
-            </div>
-
-            <div class="track-components-list">
-              <span class="components-heading">Deliverables & Pillars:</span>
-              <ul>
-                ${track.components.map(comp => `<li><span class="bullet-check">✦</span> ${comp}</li>`).join('')}
-              </ul>
+            <div class="track-modules-count-chip">
+              <span class="chip-icon">⚡</span>
+              <span><strong>${track.components.length} Key Deliverables</strong></span>
             </div>
 
             <div class="track-card-footer">
-              <a href="#journey" class="btn btn-secondary w-full">
-                <span>Explore Track Roadmap</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <a href="#/tracks" class="btn btn-secondary w-full">
+                <span>View Challenge Details</span>
+                <span class="btn-arr">&rarr;</span>
               </a>
             </div>
           </div>
@@ -151,7 +141,7 @@ function setupTracksSegregation(section: HTMLElement): void {
         <span class="section-badge badge-blue">🌍 International Participation Track</span>
         <h2 class="section-heading">Global 30-Day Innovation Challenge</h2>
         <p class="section-subheading">
-          Open to students worldwide. Compete virtually in pre-defined high-impact AI domains to construct deployable systems.
+          <strong>Eligibility Notice:</strong> SparkX 3.0 on-campus tracks are exclusively for Indian students. International teams participate worldwide in the 30-Day AI Innovation Challenge (100% Virtual).
         </p>
       `;
 
@@ -181,29 +171,17 @@ function setupTracksSegregation(section: HTMLElement): void {
             <h3 class="track-title">${ch.title}</h3>
             <p class="track-subtitle">${ch.tagline}</p>
 
-            <div class="track-focus-box">
-              <span class="focus-label">Track Focus:</span>
-              <span class="focus-value">End-to-End AI Solution</span>
-            </div>
-
             <p class="track-description">${ch.description}</p>
 
-            <div class="track-expected-output">
-              <span class="output-label">Submission Deliverable:</span>
-              <p class="output-text">Working Prototype, Public GitHub Repository & User Manual</p>
-            </div>
-
-            <div class="track-components-list">
-              <span class="components-heading">Target Modules:</span>
-              <ul>
-                ${ch.modules.map(m => `<li><span class="bullet-check">✦</span> ${m.title}</li>`).join('')}
-              </ul>
+            <div class="track-modules-count-chip chip-blue">
+              <span class="chip-icon">🤖</span>
+              <span><strong>${ch.modules.length} Specialized AI Modules</strong></span>
             </div>
 
             <div class="track-card-footer">
-              <a href="#challenges" class="btn btn-primary w-full">
-                <span>View Full Challenge Blueprint</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <a href="#/challenges/${ch.id}" class="btn btn-primary w-full">
+                <span>View Challenge Blueprint</span>
+                <span class="btn-arr">&rarr;</span>
               </a>
             </div>
           </div>
