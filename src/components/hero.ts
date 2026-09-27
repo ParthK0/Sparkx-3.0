@@ -25,6 +25,23 @@ export function renderHero(): HTMLElement {
       <div class="grid-overlay"></div>
     </div>
 
+    <!-- Dedicated Mobile Campus Background (mob2.png strictly for mobile view) -->
+    <div class="hero-mobile-bg" aria-hidden="true">
+      <picture class="hero-mobile-bg-picture">
+        <source srcset="/images/elements/mob2.webp" type="image/webp" />
+        <img 
+          src="/images/elements/mob2.png" 
+          alt="Galgotias University AI and Data Science Campus" 
+          class="hero-mobile-bg-img"
+          loading="eager"
+          fetchpriority="high"
+          width="1024"
+          height="1536"
+        />
+      </picture>
+      <div class="hero-mobile-bg-overlay"></div>
+    </div>
+
     <!-- Floating Home Bar inside Hero Page (Smoothly merges into top navbar on scroll) -->
     <nav class="hero-floating-nav-bar" id="hero-floating-nav" aria-label="Hero Quick Navigation">
       <div class="hero-floating-nav-pill">
@@ -178,24 +195,27 @@ export function renderHero(): HTMLElement {
 }
 
 function setupHeroSegregation(section: HTMLElement): void {
-  const floatingPrize = section.querySelector('#hero-floating-prize') as HTMLElement;
-  const dvBar = section.querySelector('#hero-date-venue-bar') as HTMLElement;
-  const registerBtnText = section.querySelector('#hero-register-btn-text') as HTMLElement;
-  const exploreBtnText = section.querySelector('#hero-explore-btn-text') as HTMLElement;
+  const floatingPrize = section.querySelector('#hero-floating-prize') as HTMLElement | null;
+  const dvBar = section.querySelector('#hero-date-venue-bar') as HTMLElement | null;
+  const registerBtnText = section.querySelector('#hero-register-btn-text') as HTMLElement | null;
+  const exploreBtnText = section.querySelector('#hero-explore-btn-text') as HTMLElement | null;
 
   const update = (audience: Audience) => {
     const isIndian = audience === 'india';
 
     if (isIndian) {
-      floatingPrize.innerHTML = `
+      if (floatingPrize) {
+        floatingPrize.innerHTML = `
         <span class="badge-icon-pill">🏆</span>
         <div class="badge-text-cluster">
           <span class="badge-accent-title">INR 1.5+ Lakhs</span>
           <span class="badge-accent-subtitle">Total Prize Pool Across Indian Tracks</span>
         </div>
       `;
+      }
 
-      dvBar.innerHTML = `
+      if (dvBar) {
+        dvBar.innerHTML = `
         <div class="hero-date-venue-item">
           <span class="dv-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="18" y2="10"/></svg>
@@ -216,19 +236,23 @@ function setupHeroSegregation(section: HTMLElement): void {
           </div>
         </div>
       `;
+      }
 
       if (registerBtnText) registerBtnText.textContent = 'REGISTER (SPARKX 3.0 & 30-DAY SPRINT)';
       if (exploreBtnText) exploreBtnText.textContent = 'EXPLORE CHALLENGES';
     } else {
-      floatingPrize.innerHTML = `
+      if (floatingPrize) {
+        floatingPrize.innerHTML = `
         <span class="badge-icon-pill">🏆</span>
         <div class="badge-text-cluster">
           <span class="badge-accent-title">USD 330+ Cash</span>
           <span class="badge-accent-subtitle">Global Cash Awards & Silicon Valley Mentors</span>
         </div>
       `;
+      }
 
-      dvBar.innerHTML = `
+      if (dvBar) {
+        dvBar.innerHTML = `
         <div class="hero-date-venue-item">
           <span class="dv-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="18" y2="10"/></svg>
@@ -249,6 +273,7 @@ function setupHeroSegregation(section: HTMLElement): void {
           </div>
         </div>
       `;
+      }
 
       if (registerBtnText) registerBtnText.textContent = 'REGISTER (30-DAY AI CHALLENGE)';
       if (exploreBtnText) exploreBtnText.textContent = 'EXPLORE 4 AI CHALLENGES';

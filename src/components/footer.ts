@@ -70,7 +70,7 @@ export function renderFooter(): HTMLElement {
           <ul class="footer-links-list">
             <li><a href="#how-it-works">How Participation Works</a></li>
             <li><a href="#timeline">Important Dates & Schedule</a></li>
-            <li><a href="#evaluation">Evaluation Rubric & Deliverables</a></li>
+            <li><a href="#/evaluation">Evaluation Rubric & Deliverables</a></li>
             <li><a href="#committee">Leadership & Committee</a></li>
             <li><a href="#faq">Frequently Asked Questions</a></li>
             <li><a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer">Official Registration Form (Google Form)</a></li>

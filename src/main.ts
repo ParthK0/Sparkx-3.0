@@ -11,7 +11,6 @@ import { render30DayChallengeOverview } from './components/thirtyDayOverview';
 import { renderTimeline } from './components/timeline';
 import { renderWhyParticipate } from './components/whyParticipate';
 import { renderCountdown } from './components/countdown';
-import { renderEvaluation } from './components/evaluation';
 import { renderCommittee } from './components/committee';
 import { renderFAQ } from './components/faq';
 import { renderFooter } from './components/footer';
@@ -74,10 +73,7 @@ function mountHomeView(targetAnchor?: string): void {
   // 11. Why Participate
   main.appendChild(renderWhyParticipate());
 
-  // 12. Evaluation Rubric Callout
-  main.appendChild(renderEvaluation());
-
-  // 13. Academic Leadership & Committee
+  // 12. Academic Leadership & Committee
   main.appendChild(renderCommittee());
 
   // 14. FAQ & Inquiries

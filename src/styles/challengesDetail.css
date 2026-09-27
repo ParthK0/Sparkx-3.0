@@ -81,10 +81,30 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  text-decoration: none;
 }
 
 .portal-tab-btn:hover {
   color: #0b1a3d;
+}
+
+.portal-home-tab-btn {
+  color: #334155;
+  text-decoration: none;
+}
+
+.portal-home-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--theme-major, #c0262d);
+}
+
+.portal-home-tab-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.portal-home-tab-btn:hover svg {
+  transform: translateX(-1px);
 }
 
 .portal-tab-btn.active {
@@ -776,6 +796,13 @@
   .portal-tabs-nav {
     overflow-x: auto;
     width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px;
+  }
+
+  .portal-tabs-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .portal-hero-header {

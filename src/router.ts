@@ -26,7 +26,6 @@ const KNOWN_HOME_ANCHORS = new Set([
   'prizes',
   'timeline',
   'countdown',
-  'evaluation',
   'committee',
   'faq',
   'contact',
@@ -106,7 +105,7 @@ export class AppRouter {
       return;
     }
 
-    if (hash === '#/evaluation' || hash === '#/rubric' || hash === '#/schedule') {
+    if (hash === '#/evaluation' || hash === '#evaluation' || hash === '#/rubric' || hash === '#/schedule') {
       this.setView('challenges-evaluation');
       this.handler.onMountChallengesEval('evaluation');
       document.title = 'Evaluation Rubric & Schedule | SparkX 3.0';

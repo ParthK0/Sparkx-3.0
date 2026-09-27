@@ -1,0 +1,99 @@
+/* ==========================================================================
+   SparkX 3.0 — Smooth Page Transitions
+   Seamless cross-fade, gentle upward float, and hardware-accelerated transitions
+   ========================================================================== */
+
+/* Native View Transitions API (Chrome 111+, Edge, Safari 18+) */
+::view-transition-old(root) {
+  animation: pageFadeOut 0.22s cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+::view-transition-new(root) {
+  animation: pageFadeIn 0.28s cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+@keyframes pageFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.996);
+    filter: blur(2px);
+  }
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.996);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Fallback Smooth CSS Transitions for #app */
+#app {
+  transition: opacity 0.22s cubic-bezier(0.2, 0, 0, 1),
+    transform 0.22s cubic-bezier(0.2, 0, 0, 1),
+    filter 0.22s ease;
+  will-change: opacity, transform;
+}
+
+#app.page-transition-exit {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.996);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+#app.page-transition-enter {
+  opacity: 0;
+  transform: translateY(12px) scale(0.996);
+  filter: blur(2px);
+}
+
+/* Tab panes transition enhancement */
+.portal-tab-pane {
+  display: none;
+}
+
+.portal-tab-pane.active {
+  display: block;
+  animation: tabPaneFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes tabPaneFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced Motion Preference Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+
+  #app,
+  #app.page-transition-exit,
+  #app.page-transition-enter,
+  .portal-tab-pane.active {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

@@ -10,9 +10,11 @@ import {
   PRIZE_TABLE_DATA,
   EVENT_EXECUTION_PLAN,
   EVALUATION_RUBRIC_CRITERIA,
+  EVALUATION_CRITERIA,
   SPECIAL_OPPORTUNITIES,
   EVENT_DETAILS
 } from '../data/content';
+import { setupOpportunities } from './evaluation';
 import { analytics } from '../utils/analytics';
 
 export type PortalTab = 'tracks' | 'challenges' | 'evaluation';
@@ -31,20 +33,20 @@ export function renderChallengesEvaluationPage(
     <!-- Top Sticky Bar -->
     <header class="portal-topbar">
       <div class="container portal-topbar-inner">
-        <a href="#" class="portal-brand" id="portal-brand-link" aria-label="Return to Homepage">
+        <a href="#" class="brand-logo-link" id="portal-brand-link" aria-label="SparkX 3.0 Home">
           <div class="brand-logo-box">
             <img src="/images/galgotias%20univeristy.png" alt="Galgotias University" class="navbar-uni-logo" />
             <div class="brand-logo-divider"></div>
             <img src="/images/sparkx.png" alt="SparkX 3.0" class="navbar-sparkx-logo" />
           </div>
-          <div class="portal-brand-text">
-            <span class="portal-brand-title">SparkX 3.0</span>
-            <span class="portal-brand-sub">Beyond Boundaries Portal</span>
-          </div>
         </a>
 
-        <!-- 3 Portal Switcher Tabs -->
-        <nav class="portal-tabs-nav" role="tablist" aria-label="Portal Navigation">
+        <!-- Navigation Tabs with Home Merged Inside -->
+        <nav class="portal-tabs-nav" role="navigation" aria-label="Portal Navigation">
+          <a href="#" class="portal-tab-btn portal-home-tab-btn" id="portal-tab-home" aria-label="Return to Homepage">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Home</span>
+          </a>
           <button type="button" role="tab" class="portal-tab-btn ${activeTab === 'tracks' ? 'active' : ''}" id="tab-btn-tracks" data-tab="tracks">
             <span>🎓 Program Challenges</span>
           </button>
@@ -57,12 +59,9 @@ export function renderChallengesEvaluationPage(
         </nav>
 
         <div class="portal-actions">
-          <a href="#" class="btn btn-secondary btn-sm" id="portal-back-home">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            <span>Home</span>
-          </a>
-          <a href="#/register" class="btn btn-primary btn-sm">
+          <a href="#/register" class="btn btn-primary btn-sm register-btn-nav">
             <span>Register Now</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
           </a>
         </div>
       </div>
@@ -306,6 +305,78 @@ export function renderChallengesEvaluationPage(
               </article>
             `).join('')}
           </div>
+
+          <!-- ============================================================ -->
+          <!-- Evaluation Rubric & Deliverables Section -->
+          <!-- ============================================================ -->
+          <div class="evaluation-section ch-eval-embedded-section mt-14" id="ch-evaluation-rubric">
+            <div class="section-title-area text-center mb-8">
+              <span class="section-badge badge-emerald">Jury Standard</span>
+              <h2 class="section-heading text-2xl md:text-3xl font-black text-slate-900 mt-2 mb-2">Evaluation Rubric & Deliverables</h2>
+              <p class="section-subheading max-w-3xl mx-auto text-slate-600">
+                Projects are assessed comprehensively on engineering execution, originality, research depth, and deployment viability.
+              </p>
+            </div>
+
+            <!-- Deliverables Strip -->
+            <div class="deliverables-box">
+              <div class="deliv-header">
+                <span class="deliv-badge">Mandatory Checklist</span>
+                <h3 class="deliv-title">What Every Team Must Submit</h3>
+                <p class="deliv-sub">Submissions missing any of these items will be disqualified from final prize consideration:</p>
+              </div>
+
+              <div class="deliv-grid">
+                <div class="deliv-card">
+                  <div class="deliv-icon">📑</div>
+                  <h4 class="deliv-name">1. Project Presentation</h4>
+                  <p class="deliv-info">Slide deck covering problem statement, literature gap, architectural methodology, and results.</p>
+                </div>
+
+                <div class="deliv-card highlight-card">
+                  <div class="deliv-icon">⚡</div>
+                  <h4 class="deliv-name">2. Working Prototype / Live Demo</h4>
+                  <p class="deliv-info">Functional software or hardware system with active inference, UI workflows, and zero mock simulations.</p>
+                </div>
+
+                <div class="deliv-card">
+                  <div class="deliv-icon">💻</div>
+                  <h4 class="deliv-name">3. Public GitHub Repository</h4>
+                  <p class="deliv-info">Well-structured source code with clear commit history, modular architecture, and MIT/Apache license.</p>
+                </div>
+
+                <div class="deliv-card">
+                  <div class="deliv-icon">📖</div>
+                  <h4 class="deliv-name">4. Comprehensive User Manual</h4>
+                  <p class="deliv-info">Setup guide, API documentation, environment variables, dependencies, and test suite instructions.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Evaluation Criteria Grid -->
+            <div class="rubric-block">
+              <h3 class="rubric-heading">Judging & Assessment Criteria</h3>
+              <p class="rubric-sub">Standardized criteria evaluated by academic mentors, faculty conveners, and international guests:</p>
+
+              <div class="criteria-grid">
+                ${EVALUATION_CRITERIA.map((crit, idx) => `
+                  <div class="criterion-card">
+                    <div class="crit-top">
+                      <span class="crit-num">0${idx + 1}</span>
+                      <span class="crit-metric">${crit.metric}</span>
+                    </div>
+                    <h4 class="crit-title">${crit.title}</h4>
+                    <p class="crit-desc">${crit.desc}</p>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Dynamic Beyond SparkX Opportunities Section -->
+            <div class="opportunities-box" id="portal-opportunities-box">
+              <!-- Rendered based on Indian vs International -->
+            </div>
+          </div>
         </section>
 
         <!-- ============================================================ -->
@@ -353,8 +424,43 @@ export function renderChallengesEvaluationPage(
             </div>
           </div>
 
+          <!-- Deliverables Strip inside pane-evaluation -->
+          <div class="deliverables-box mt-10 mb-8">
+            <div class="deliv-header">
+              <span class="deliv-badge">Mandatory Checklist</span>
+              <h3 class="deliv-title">What Every Team Must Submit</h3>
+              <p class="deliv-sub">Submissions missing any of these items will be disqualified from final prize consideration:</p>
+            </div>
+
+            <div class="deliv-grid">
+              <div class="deliv-card">
+                <div class="deliv-icon">📑</div>
+                <h4 class="deliv-name">1. Project Presentation</h4>
+                <p class="deliv-info">Slide deck covering problem statement, literature gap, architectural methodology, and results.</p>
+              </div>
+
+              <div class="deliv-card highlight-card">
+                <div class="deliv-icon">⚡</div>
+                <h4 class="deliv-name">2. Working Prototype / Live Demo</h4>
+                <p class="deliv-info">Functional software or hardware system with active inference, UI workflows, and zero mock simulations.</p>
+              </div>
+
+              <div class="deliv-card">
+                <div class="deliv-icon">💻</div>
+                <h4 class="deliv-name">3. Public GitHub Repository</h4>
+                <p class="deliv-info">Well-structured source code with clear commit history, modular architecture, and MIT/Apache license.</p>
+              </div>
+
+              <div class="deliv-card">
+                <div class="deliv-icon">📖</div>
+                <h4 class="deliv-name">4. Comprehensive User Manual</h4>
+                <p class="deliv-info">Setup guide, API documentation, environment variables, dependencies, and test suite instructions.</p>
+              </div>
+            </div>
+          </div>
+
           <!-- Section 4.2: Evaluation Rubric -->
-          <div class="mt-12 mb-10">
+          <div class="mt-8 mb-10">
             <h2 class="font-black text-xl text-slate-900 mb-4 flex items-center gap-2">
               <span>⚖️</span>
               <span>Jury Evaluation Rubric & Weightage Distribution</span>
@@ -412,8 +518,51 @@ export function renderChallengesEvaluationPage(
   `;
 
   setupPortalTabSwitching(container, activeTab, targetChallengeId);
+  setupOpportunities(container);
 
   return container;
+}
+
+export function switchPortalTab(tab: PortalTab, targetChallengeId?: string, shouldScroll = true): boolean {
+  const container = document.querySelector<HTMLElement>('#challenges-detail-portal');
+  if (!container) return false;
+
+  const tabBtnTracks = container.querySelector('#tab-btn-tracks') as HTMLButtonElement;
+  const tabBtnChallenges = container.querySelector('#tab-btn-challenges') as HTMLButtonElement;
+  const tabBtnEvaluation = container.querySelector('#tab-btn-evaluation') as HTMLButtonElement;
+
+  const paneTracks = container.querySelector('#pane-tracks') as HTMLElement;
+  const paneChallenges = container.querySelector('#pane-challenges') as HTMLElement;
+  const paneEvaluation = container.querySelector('#pane-evaluation') as HTMLElement;
+
+  if (!paneTracks || !paneChallenges || !paneEvaluation) return false;
+
+  // Reset buttons
+  tabBtnTracks?.classList.toggle('active', tab === 'tracks');
+  tabBtnChallenges?.classList.toggle('active', tab === 'challenges');
+  tabBtnEvaluation?.classList.toggle('active', tab === 'evaluation');
+
+  // Reset panes with transition
+  paneTracks.classList.toggle('active', tab === 'tracks');
+  paneChallenges.classList.toggle('active', tab === 'challenges');
+  paneEvaluation.classList.toggle('active', tab === 'evaluation');
+
+  analytics.track('Navigation', 'Portal Tab Switched', tab);
+
+  if (targetChallengeId && tab === 'challenges') {
+    setTimeout(() => {
+      const el = container.querySelector(`#challenge-${targetChallengeId}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.classList.add('highlighted');
+        setTimeout(() => el.classList.remove('highlighted'), 3000);
+      }
+    }, 100);
+  } else if (shouldScroll) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  return true;
 }
 
 function setupPortalTabSwitching(
@@ -425,43 +574,21 @@ function setupPortalTabSwitching(
   const tabBtnChallenges = container.querySelector('#tab-btn-challenges') as HTMLButtonElement;
   const tabBtnEvaluation = container.querySelector('#tab-btn-evaluation') as HTMLButtonElement;
 
-  const paneTracks = container.querySelector('#pane-tracks') as HTMLElement;
-  const paneChallenges = container.querySelector('#pane-challenges') as HTMLElement;
-  const paneEvaluation = container.querySelector('#pane-evaluation') as HTMLElement;
-
-  function switchTab(tab: PortalTab, shouldScroll = true) {
-    // Reset buttons
-    tabBtnTracks?.classList.toggle('active', tab === 'tracks');
-    tabBtnChallenges?.classList.toggle('active', tab === 'challenges');
-    tabBtnEvaluation?.classList.toggle('active', tab === 'evaluation');
-
-    // Reset panes
-    paneTracks?.classList.toggle('active', tab === 'tracks');
-    paneChallenges?.classList.toggle('active', tab === 'challenges');
-    paneEvaluation?.classList.toggle('active', tab === 'evaluation');
-
-    // Update URL hash without causing full reload if already on portal
-    if (tab === 'tracks') {
-      window.location.hash = '#/tracks';
-    } else if (tab === 'challenges') {
-      window.location.hash = '#/challenges';
-    } else if (tab === 'evaluation') {
-      window.location.hash = '#/evaluation';
-    }
-
-    analytics.track('Navigation', 'Portal Tab Switched', tab);
-
-    if (shouldScroll) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }
-
-  tabBtnTracks?.addEventListener('click', () => switchTab('tracks'));
-  tabBtnChallenges?.addEventListener('click', () => switchTab('challenges'));
-  tabBtnEvaluation?.addEventListener('click', () => switchTab('evaluation'));
+  tabBtnTracks?.addEventListener('click', () => {
+    switchPortalTab('tracks');
+    window.location.hash = '#/tracks';
+  });
+  tabBtnChallenges?.addEventListener('click', () => {
+    switchPortalTab('challenges');
+    window.location.hash = '#/challenges';
+  });
+  tabBtnEvaluation?.addEventListener('click', () => {
+    switchPortalTab('evaluation');
+    window.location.hash = '#/evaluation';
+  });
 
   // Home links navigation
-  const homeLinks = container.querySelectorAll('#portal-brand-link, #portal-back-home, .bottom-home-link');
+  const homeLinks = container.querySelectorAll('#portal-brand-link, #portal-tab-home, #portal-back-home, .bottom-home-link');
   homeLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
