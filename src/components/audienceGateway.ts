@@ -151,15 +151,17 @@ function setupGatewayInteractivity(overlay: HTMLElement): void {
 }
 
 export function openAudienceGateway(): void {
-  if (gatewayOverlayElement) {
-    gatewayOverlayElement.classList.remove('hidden');
+  const el = document.getElementById('audience-gateway') || gatewayOverlayElement;
+  if (el) {
+    el.classList.remove('hidden');
     document.body.classList.add('no-scroll');
   }
 }
 
 export function closeAudienceGateway(): void {
-  if (gatewayOverlayElement) {
-    gatewayOverlayElement.classList.add('hidden');
+  const el = document.getElementById('audience-gateway') || gatewayOverlayElement;
+  if (el) {
+    el.classList.add('hidden');
     document.body.classList.remove('no-scroll');
   }
 }

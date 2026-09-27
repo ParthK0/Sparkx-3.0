@@ -183,11 +183,11 @@ function setupNavbarInteractivity(nav: HTMLElement): void {
   appState.subscribe(updateButtons);
 
   // Scroll reveal threshold (px from top before navbar slides in)
-  const SCROLL_THRESHOLD = 70;
+  const SCROLL_THRESHOLD = 50;
 
   // Scroll spy effect & scroll progress bar
   const onScroll = () => {
-    const scrollY = window.scrollY;
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
     const isMobileMenuOpen = mobileDrawer?.classList.contains('open');
 
     const heroFloatingNav = document.getElementById('hero-floating-nav');

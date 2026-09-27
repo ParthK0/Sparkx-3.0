@@ -19,28 +19,63 @@ import { renderStickyMobileBar } from './components/stickyMobileBar';
 import { renderNetworkStatus } from './components/networkStatus';
 import { renderNotFoundPage } from './components/notFound';
 import { renderRegisterPage } from './components/registerPage';
-import { renderChallengesEvaluationPage } from './components/challengesEvaluationPage';
+import { renderChallengesEvaluationPage, switchPortalTab } from './components/challengesEvaluationPage';
 import { setupGlobalImageFallbacks } from './utils/imageFallback';
 import { router } from './router';
 import { initScrollReveal } from './animations/scrollReveal';
 import { initCardTilt } from './animations/cardTilt';
 
-function mountHomeView(targetAnchor?: string): void {
-  const app = document.querySelector<HTMLDivElement>('#app');
-  if (!app) return;
+let hasCompletedInitialLoad = false;
 
-  const existingMain = app.querySelector('#main-content');
-  if (existingMain) {
-    if (targetAnchor) {
-      const el = document.getElementById(targetAnchor);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+function transitionView(renderFn: () => void, targetScroll: number | string = 0): void {
+  const app = document.querySelector<HTMLDivElement>('#app');
+  if (!app) {
+    renderFn();
     return;
   }
 
-  // Clear existing content
+  // 1. Check if Modern View Transitions API is supported
+  const hasViewTransition = 'startViewTransition' in document &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (hasViewTransition) {
+    try {
+      (document as any).startViewTransition(() => {
+        renderFn();
+        if (typeof targetScroll === 'string') {
+          const el = document.getElementById(targetScroll);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: targetScroll, behavior: 'instant' });
+        }
+      });
+      return;
+    } catch {
+      // Fallback to CSS animation below
+    }
+  }
+
+  // 2. CSS Fallback Transition
+  app.classList.add('page-transition-exit');
+  setTimeout(() => {
+    renderFn();
+    if (typeof targetScroll === 'string') {
+      const el = document.getElementById(targetScroll);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: targetScroll, behavior: 'instant' });
+    }
+    app.classList.remove('page-transition-exit');
+    app.classList.add('page-transition-enter');
+    requestAnimationFrame(() => {
+      app.classList.remove('page-transition-enter');
+      app.classList.add('page-transition-active');
+      setTimeout(() => app.classList.remove('page-transition-active'), 250);
+    });
+  }, 120);
+}
+
+function renderHomeDOM(app: HTMLElement): void {
   app.innerHTML = '';
 
   // Append navbar and main sections
@@ -88,22 +123,42 @@ function mountHomeView(targetAnchor?: string): void {
   // Mount Sticky Mobile Registration Bar (< 768px viewports)
   app.appendChild(renderStickyMobileBar());
 
-  // Mount Audience Selection Gateway (Modal)
-  const gateway = renderAudienceGateway();
-  app.appendChild(gateway);
+  // Initialize scroll-triggered animations and 3D card tilts
+  initScrollReveal();
+  initCardTilt();
+}
 
-  // Check if first visit in session and whether audience has been chosen
-  const hasLoaded = sessionStorage.getItem('sparkx_visited');
-  const hasChosenAudience = sessionStorage.getItem('sparkx_audience_chosen');
+function mountHomeView(targetAnchor?: string): void {
+  const app = document.querySelector<HTMLDivElement>('#app');
+  if (!app) return;
 
-  if (!hasLoaded) {
-    sessionStorage.setItem('sparkx_visited', 'true');
-    const loader = renderLoadingScreen(() => {
-      setTimeout(startHeroTypewriter, 300);
-      // Immediately open Choose Your SparkX Journey after loading screen!
-      if (!hasChosenAudience) {
-        setTimeout(openAudienceGateway, 100);
+  const existingMain = app.querySelector('#main-content');
+  if (existingMain) {
+    if (targetAnchor) {
+      const el = document.getElementById(targetAnchor);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
       }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    return;
+  }
+
+  // Ensure Audience Selection Gateway is mounted on document.body
+  if (!document.getElementById('audience-gateway')) {
+    document.body.appendChild(renderAudienceGateway());
+  }
+
+  if (!hasCompletedInitialLoad) {
+    hasCompletedInitialLoad = true;
+    renderHomeDOM(app);
+
+    // Initial load: show loading screen then open Indian/International selection gateway
+    const loader = renderLoadingScreen(() => {
+      setTimeout(startHeroTypewriter, 250);
+      // Immediately open Choose Your SparkX Journey (Indian vs International)
+      setTimeout(openAudienceGateway, 100);
       if (targetAnchor) {
         setTimeout(() => {
           const el = document.getElementById(targetAnchor);
@@ -111,48 +166,48 @@ function mountHomeView(targetAnchor?: string): void {
         }, 150);
       }
     });
-    app.appendChild(loader);
+    document.body.appendChild(loader);
   } else {
-    setTimeout(startHeroTypewriter, 200);
-    // If returning in session but hasn't picked audience yet, open gateway
-    if (!hasChosenAudience) {
-      setTimeout(openAudienceGateway, 100);
-    }
-    if (targetAnchor) {
-      setTimeout(() => {
-        const el = document.getElementById(targetAnchor);
-        el?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
+    transitionView(() => {
+      renderHomeDOM(app);
+      setTimeout(startHeroTypewriter, 200);
+    }, targetAnchor || 0);
   }
-
-  // Initialize scroll-triggered animations and 3D card tilts
-  initScrollReveal();
-  initCardTilt();
 }
 
 function mountRegisterView(): void {
   const app = document.querySelector<HTMLDivElement>('#app');
   if (!app) return;
-  app.innerHTML = '';
-  app.appendChild(renderRegisterPage());
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  transitionView(() => {
+    app.innerHTML = '';
+    app.appendChild(renderRegisterPage());
+  });
 }
 
 function mountChallengesEvalView(activeTab: 'tracks' | 'challenges' | 'evaluation' = 'tracks', targetChallengeId?: string): void {
   const app = document.querySelector<HTMLDivElement>('#app');
   if (!app) return;
-  app.innerHTML = '';
-  app.appendChild(renderChallengesEvaluationPage(activeTab, targetChallengeId));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const existingPortal = app.querySelector<HTMLElement>('#challenges-detail-portal');
+  if (existingPortal) {
+    // Portal already mounted! Smoothly switch tab without destroying the DOM
+    switchPortalTab(activeTab, targetChallengeId);
+    return;
+  }
+
+  transitionView(() => {
+    app.innerHTML = '';
+    app.appendChild(renderChallengesEvaluationPage(activeTab, targetChallengeId));
+  });
 }
 
 function mountNotFoundView(missingPath: string): void {
   const app = document.querySelector<HTMLDivElement>('#app');
   if (!app) return;
-  app.innerHTML = '';
-  app.appendChild(renderNotFoundPage(missingPath));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  transitionView(() => {
+    app.innerHTML = '';
+    app.appendChild(renderNotFoundPage(missingPath));
+  });
 }
 
 function initApp(): void {
