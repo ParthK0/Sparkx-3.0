@@ -13,6 +13,7 @@ export function renderCommittee(): HTMLElement {
   section.className = 'committee-section section-padding';
   section.id = 'committee';
 
+  const chiefPatrons = COMMITTEE.filter(m => m.category === 'chief-patron');
   const patrons = COMMITTEE.filter(m => m.category === 'patron');
   const international = COMMITTEE.filter(m => m.category === 'international');
   const leadership = COMMITTEE.filter(m => m.category === 'leadership');
@@ -29,9 +30,29 @@ export function renderCommittee(): HTMLElement {
         </p>
       </div>
 
+      <!-- Chief Patron -->
+      <div class="committee-tier">
+        <h3 class="tier-label">Chief Patron</h3>
+        <div class="patrons-grid chief-patron-grid">
+          ${chiefPatrons.map(p => `
+            <div class="patron-card chief-patron-card">
+              <div class="patron-avatar ${p.image ? 'has-img' : ''}">
+                ${renderPersonAvatar(p.image, p.name, 'patron-img')}
+              </div>
+              <div class="patron-meta">
+                <span class="member-badge chief-badge">${p.badge || 'Chief Patron'}</span>
+                <h4 class="member-name">${p.name}</h4>
+                <p class="member-designation">${p.designation}</p>
+                <p class="member-org">${p.organization}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
       <!-- University Patrons -->
       <div class="committee-tier">
-        <h3 class="tier-label">Chief Patrons</h3>
+        <h3 class="tier-label">Patrons</h3>
         <div class="patrons-grid">
           ${patrons.map(p => `
             <div class="patron-card">

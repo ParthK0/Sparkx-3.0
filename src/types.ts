@@ -56,7 +56,7 @@ export interface CommitteeMember {
   role: string;
   designation: string;
   organization: string;
-  category: 'patron' | 'international' | 'leadership' | 'organizing' | 'evaluation' | 'challenge';
+  category: 'chief-patron' | 'patron' | 'international' | 'leadership' | 'organizing' | 'evaluation' | 'challenge';
   badge?: string;
   image?: string;
 }

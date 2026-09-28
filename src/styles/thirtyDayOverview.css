@@ -286,3 +286,33 @@
 .td-portal-cta {
   flex-shrink: 0;
 }
+
+/* Registration CTA */
+.td-register-cta {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.td-register-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 36px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: td-cta-pulse 2.5s ease-in-out infinite;
+}
+
+.td-register-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.35);
+}
+
+@keyframes td-cta-pulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25); }
+  50% { box-shadow: 0 4px 28px rgba(37, 99, 235, 0.45); }
+}

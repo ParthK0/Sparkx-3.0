@@ -5,7 +5,7 @@
    Deep links connect directly to the portal blueprints.
    ========================================================================== */
 
-import { CHALLENGES } from '../data/content';
+import { CHALLENGES, EVENT_DETAILS } from '../data/content';
 
 export function render30DayChallengeOverview(): HTMLElement {
   const section = document.createElement('section');
@@ -54,6 +54,14 @@ export function render30DayChallengeOverview(): HTMLElement {
             <span class="td-prize-pill bronze">🥉 3rd: USD 80</span>
           </div>
         </div>
+      </div>
+
+      <!-- Registration CTA -->
+      <div class="td-register-cta">
+        <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg td-register-btn">
+          <span>🚀 Register Now for 30-Day Challenge</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+        </a>
       </div>
 
       <!-- 4 Problem Domain Cards Grid -->

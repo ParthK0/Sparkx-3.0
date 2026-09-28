@@ -276,3 +276,38 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Chief Patron — Prominent single-card display */
+.chief-patron-grid {
+  grid-template-columns: 1fr;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.chief-patron-card {
+  border: 2px solid var(--theme-major);
+  background: linear-gradient(135deg, #fffbf0 0%, #ffffff 100%);
+  padding: 24px 28px;
+  box-shadow: 0 4px 20px rgba(197, 157, 56, 0.12);
+  flex-direction: column;
+  text-align: center;
+  gap: 12px;
+}
+
+.chief-patron-card .patron-avatar {
+  width: 88px;
+  height: 88px;
+  border-width: 3px;
+  border-color: var(--theme-major);
+  margin: 0 auto;
+}
+
+.chief-patron-card .patron-meta {
+  text-align: center;
+}
+
+.chief-badge {
+  color: #b8860b !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.5px;
+}

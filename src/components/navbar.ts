@@ -22,6 +22,7 @@ export function renderNavbar(): HTMLElement {
         </a>
 
         <nav class="desktop-menu" aria-label="Main Navigation">
+          <a href="#hero" class="nav-link" data-section="hero">Home</a>
           <a href="#about" class="nav-link" data-section="about">About</a>
           <a href="#pro-novel" class="nav-link" data-section="pro-novel">Pro & Novel</a>
           <a href="#thirty-day-challenge" class="nav-link" data-section="thirty-day-challenge">30-Day Challenge</a>
@@ -71,11 +72,12 @@ export function renderNavbar(): HTMLElement {
         </div>
 
         <nav class="mobile-nav-links">
-          <a href="#about" class="mob-link" style="--delay: 1">About SparkX</a>
-          <a href="#pro-novel" class="mob-link" style="--delay: 2">Pro & Novel</a>
-          <a href="#thirty-day-challenge" class="mob-link" style="--delay: 3">30-Day Challenge</a>
-          <a href="#timeline" class="mob-link" style="--delay: 4">Important Dates</a>
-          <a href="#faq" class="mob-link" style="--delay: 5">Frequently Asked Questions</a>
+          <a href="#hero" class="mob-link" style="--delay: 1">Home</a>
+          <a href="#about" class="mob-link" style="--delay: 2">About SparkX</a>
+          <a href="#pro-novel" class="mob-link" style="--delay: 3">Pro & Novel</a>
+          <a href="#thirty-day-challenge" class="mob-link" style="--delay: 4">30-Day Challenge</a>
+          <a href="#timeline" class="mob-link" style="--delay: 5">Important Dates</a>
+          <a href="#faq" class="mob-link" style="--delay: 6">Frequently Asked Questions</a>
         </nav>
 
         <div class="mobile-drawer-cta">
@@ -211,7 +213,7 @@ function setupNavbarInteractivity(nav: HTMLElement): void {
     }
 
     // 3. Active Nav Link Scrollspy
-    const sections = ['about', 'pro-novel', 'thirty-day-challenge', 'timeline', 'faq'];
+    const sections = ['hero', 'about', 'pro-novel', 'thirty-day-challenge', 'timeline', 'faq'];
     let currentActive = '';
     const buffer = 160;
 

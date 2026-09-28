@@ -72,6 +72,12 @@ export function renderProNovelOverview(): HTMLElement {
             </div>
           </div>
 
+          <!-- Registration Notice -->
+          <div class="pn-registration-notice">
+            <span class="pn-reg-icon">📅</span>
+            <span class="pn-reg-text">Registration opens on <strong>15 Oct</strong></span>
+          </div>
+
           <div class="pn-card-footer">
             <a href="#/tracks" class="btn btn-secondary w-full">
               <span>View Full Pro Specifications & Deliverables</span>
@@ -127,6 +133,12 @@ export function renderProNovelOverview(): HTMLElement {
                 <span class="pn-tier-amount">₹5,000</span>
               </div>
             </div>
+          </div>
+
+          <!-- Registration Notice -->
+          <div class="pn-registration-notice">
+            <span class="pn-reg-icon">📅</span>
+            <span class="pn-reg-text">Registration opens on <strong>15 Oct</strong></span>
           </div>
 
           <div class="pn-card-footer">

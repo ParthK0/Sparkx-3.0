@@ -493,6 +493,15 @@ export const TIMELINE: TimelineMilestone[] = [
 
 export const COMMITTEE: CommitteeMember[] = [
   {
+    name: 'Dr. Dhruv Galgotia',
+    role: 'Chief Patron',
+    designation: 'Chief Executive Officer',
+    organization: 'Galgotias University, India',
+    category: 'chief-patron',
+    badge: 'Chief Patron',
+    image: '/images/dhruv.jpg'
+  },
+  {
     name: 'Prof. (Dr.) K. Mallikharjuna Babu',
     role: 'Patron',
     designation: 'Vice Chancellor',
