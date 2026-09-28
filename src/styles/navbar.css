@@ -78,6 +78,7 @@
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  margin-left: -100px;
 }
 
 .brand-logo-box {
@@ -259,6 +260,8 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 14px rgba(192, 38, 45, 0.22);
+    margin-right: -100px;
+
 }
 
 .register-btn-nav::after {
@@ -415,6 +418,10 @@
 }
 
 @media (max-width: 640px) {
+  .brand-logo-link {
+    margin-left: 0;
+  }
+
   .brand-logo-box {
     padding: 4px 10px;
     gap: 8px;
