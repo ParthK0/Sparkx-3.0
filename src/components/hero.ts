@@ -103,6 +103,13 @@ export function renderHero(): HTMLElement {
             class="hero-eyebrow-quanta-logo" 
             loading="eager"
           />
+          <span class="eyebrow-cross">×</span>
+          <img 
+            src="/images/logos/gu-ieee-sb-transparent.png" 
+            alt="Galgotias University IEEE Student Branch" 
+            class="hero-eyebrow-ieee-sb-logo" 
+            loading="eager"
+          />
         </div>
 
 
@@ -132,6 +139,24 @@ export function renderHero(): HTMLElement {
           <span>Entrepreneurship</span>
         </div>
 
+        <!-- In Association With — Partner & Institutional Logo Strip -->
+        <div class="hero-association-strip">
+          <span class="hero-association-label">In Association With</span>
+          <div class="hero-association-logos">
+            <div class="hero-assoc-logo-item">
+              <img src="/images/logos/ieee.jpg" alt="IEEE" loading="eager" />
+            </div>
+            <div class="hero-assoc-logo-item">
+              <img src="/images/logos/ieee-up-section.jpg" alt="IEEE UP Section (India)" loading="eager" />
+            </div>
+            <div class="hero-assoc-logo-item">
+              <img src="/images/logos/gu-ieee-student-branch.jpg" alt="Galgotias University IEEE Student Branch" loading="eager" />
+            </div>
+            <div class="hero-assoc-logo-item">
+              <img src="/images/logos/iccsai.jpg" alt="ICCSAI" loading="eager" />
+            </div>
+          </div>
+        </div>
 
         <!-- Hero Element 1: 30-Day Innovation Challenge Banner -->
         <div class="hero-challenge-banner-wrap">
