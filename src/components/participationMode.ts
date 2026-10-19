@@ -25,9 +25,9 @@ export function renderParticipationMode(): HTMLElement {
 
       <!-- Quick CTA -->
       <div class="how-cta-strip text-center" style="margin-top: 36px;">
-        <p style="margin-bottom: 12px; font-weight: 600; color: var(--text-muted);">Ready to participate in SparkX 3.0?</p>
+        <p style="margin-bottom: 12px; font-weight: 600; color: var(--text-muted);">SparkX Pro & Novel registrations are now open for Indian engineering teams.</p>
         <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-md">
-          Submit Official Registration &rarr;
+          Submit Pro & Novel Registration &rarr;
         </a>
       </div>
     </div>

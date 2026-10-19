@@ -194,8 +194,8 @@ function setupContactSegregation(section: HTMLElement): void {
               <span class="seal-name">Department of AI & Data Science</span>
               <span class="seal-school">Galgotias University, India</span>
             </div>
-            <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-theme btn-sm venue-map-link">
-              <span>Submit Global Application</span>
+            <a href="#/challenges" class="btn btn-outline-theme btn-sm venue-map-link">
+              <span>View Global Problem Blueprints</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>

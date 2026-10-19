@@ -85,6 +85,18 @@
   color: #1e40af;
 }
 
+.portal-badge.badge-success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.portal-badge.badge-closed {
+  background: #ffe4e6;
+  color: #9f1239;
+  border: 1px solid #fecdd3;
+}
+
 .portal-badge.badge-dates {
   background: #fee2e2;
   color: #991b1b;
@@ -106,6 +118,40 @@
   margin-bottom: 32px;
 }
 
+.portal-track-status-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.portal-status-pill {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.portal-status-pill.open-pill {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.4);
+}
+
+.portal-status-pill.closed-pill {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.portal-track-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
 .portal-cta-box {
   background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
   color: #ffffff;
@@ -115,8 +161,42 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
   box-shadow: 0 12px 28px -8px rgba(30, 58, 138, 0.4);
+}
+
+.portal-closed-box {
+  background: #fff5f5;
+  border: 1.5px solid #fed7d7;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.closed-box-text h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #9b2c2c;
+  margin-bottom: 6px;
+}
+
+.closed-box-text p {
+  font-size: 0.88rem;
+  color: #742a2a;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.closed-box-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
 .cta-box-text h3 {

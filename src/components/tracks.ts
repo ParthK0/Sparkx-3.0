@@ -7,7 +7,7 @@
    ========================================================================== */
 
 import { appState } from '../state';
-import { TRACKS, CHALLENGES } from '../data/content';
+import { TRACKS, CHALLENGES, EVENT_DETAILS } from '../data/content';
 import { Audience } from '../types';
 
 export function renderTracks(): HTMLElement {
@@ -88,7 +88,7 @@ function setupTracksSegregation(section: HTMLElement): void {
         <span class="section-badge badge-gold">🇮🇳 Indian Student Challenges</span>
         <h2 class="section-heading">SparkX 3.0 & 30-Day Sprint (Indian Challenges)</h2>
         <p class="section-subheading">
-          Indian students are eligible for both SparkX 3.0 (7th Sem Pro & 3rd/5th Sem Novel) and the 30-Day Innovation Sprint.
+          SparkX 3.0 Pro & Novel registrations are now <strong>OPEN</strong>. 30-Day Innovation Sprint registration is now <strong>CLOSED</strong>.
         </p>
       `;
 
@@ -127,9 +127,17 @@ function setupTracksSegregation(section: HTMLElement): void {
 
             <div class="track-card-footer">
               <a href="#/tracks" class="btn btn-secondary w-full">
-                <span>View Challenge Details</span>
-                <span class="btn-arr">&rarr;</span>
+                <span>View Challenge Details &rarr;</span>
               </a>
+              ${!is30Day ? `
+                <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm w-full" style="margin-top: 8px; font-weight: 700;">
+                  <span>Register Now (Open) &rarr;</span>
+                </a>
+              ` : `
+                <div style="margin-top: 8px; text-align: center; font-size: 0.78rem; font-weight: 700; color: #9f1239; background: #fff1f2; padding: 6px; border-radius: 6px; border: 1px solid #fecdd3;">
+                  Registration Closed
+                </div>
+              `}
             </div>
           </div>
         `;
@@ -138,10 +146,13 @@ function setupTracksSegregation(section: HTMLElement): void {
     } else {
       // 1. International Title
       titleArea.innerHTML = `
-        <span class="section-badge badge-blue">🌍 International Participation Track</span>
+        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 8px;">
+          <span class="section-badge badge-blue">🌍 International Participation Track</span>
+          <span class="section-badge" style="background: #fee2e2; color: #991b1b; border: 1px solid #fecaca;">🔴 Registration Closed</span>
+        </div>
         <h2 class="section-heading">Global 30-Day Innovation Challenge</h2>
         <p class="section-subheading">
-          <strong>Eligibility Notice:</strong> SparkX 3.0 on-campus tracks are exclusively for Indian students. International teams participate worldwide in the 30-Day AI Innovation Challenge (100% Virtual).
+          Registration for the 30-Day AI Innovation Challenge is now <strong>CLOSED</strong>. Registered international teams are participating 100% virtually across 4 predefined domain blueprints.
         </p>
       `;
 

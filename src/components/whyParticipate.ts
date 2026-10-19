@@ -27,10 +27,10 @@ export function renderWhyParticipate(): HTMLElement {
       <div class="why-cta-box">
         <div class="why-cta-content">
           <h3>Ready to start building?</h3>
-          <p>Registration is free and open to all undergraduate and postgraduate engineering students.</p>
+          <p>Registration is free and now officially <strong>OPEN</strong> for Indian engineering students in SparkX Pro (7th Sem) and Novel (3rd & 5th Sem).</p>
         </div>
         <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
-          <span>Register Your Team</span>
+          <span>Register for Pro & Novel (Now Open)</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>

@@ -73,7 +73,7 @@ export function renderFooter(): HTMLElement {
             <li><a href="#/evaluation">Evaluation Rubric & Deliverables</a></li>
             <li><a href="#committee">Leadership & Committee</a></li>
             <li><a href="#faq">Frequently Asked Questions</a></li>
-            <li><a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer">Official Registration Form (Google Form)</a></li>
+            <li><a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer">Official Registration Form — Pro & Novel (Google Form)</a></li>
             <li><a href="${GOOGLE_MAPS_URL}" target="_blank" rel="noopener noreferrer">Campus Map & Directions &rarr;</a></li>
           </ul>
         </div>

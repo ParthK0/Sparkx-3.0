@@ -574,12 +574,56 @@
   flex-shrink: 0;
 }
 
+/* Hero Live Track Status Pill Strip */
+.hero-live-status-pill-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.hero-status-pill {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-status-open {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  box-shadow: 0 1px 4px rgba(16, 185, 129, 0.12);
+}
+
+.hero-status-closed {
+  background: #fff1f2;
+  color: #9f1239;
+  border: 1px solid #fecdd3;
+  box-shadow: 0 1px 4px rgba(225, 29, 72, 0.1);
+}
+
 /* CTA Group: Register Now MUST be the strongest CTA */
 .hero-cta-group {
   display: flex;
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.btn-hero-closed {
+  background: linear-gradient(135deg, #475569 0%, #334155 100%) !important;
+  box-shadow: 0 8px 24px rgba(51, 65, 85, 0.25) !important;
+}
+
+.btn-hero-closed:hover {
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%) !important;
+  box-shadow: 0 12px 30px rgba(51, 65, 85, 0.35) !important;
 }
 
 .btn-hero-dominant {

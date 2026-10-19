@@ -183,10 +183,16 @@ export function renderHero(): HTMLElement {
           <!-- Injected strictly based on active audience -->
         </div>
 
+        <!-- Live Track Registration Status Strip -->
+        <div class="hero-live-status-pill-strip" id="hero-status-strip">
+          <span class="hero-status-pill hero-status-open">🟢 SparkX Pro & Novel: <strong>Registration OPEN</strong></span>
+          <span class="hero-status-pill hero-status-closed">🔴 30-Day Challenge: <strong>Registration CLOSED</strong></span>
+        </div>
+
         <!-- Call to Action Area -->
         <div class="hero-cta-group">
-          <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-hero-dominant" id="hero-main-register-btn" aria-label="Register Now for SparkX 3.0">
-            <span class="btn-text" id="hero-register-btn-text">REGISTER NOW</span>
+          <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-hero-dominant" id="hero-main-register-btn" aria-label="Register Now for SparkX 3.0 Pro & Novel">
+            <span class="btn-text" id="hero-register-btn-text">REGISTER FOR PRO & NOVEL (NOW OPEN)</span>
             <span class="btn-arrow-box">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
             </span>
@@ -222,6 +228,7 @@ export function renderHero(): HTMLElement {
 function setupHeroSegregation(section: HTMLElement): void {
   const floatingPrize = section.querySelector('#hero-floating-prize') as HTMLElement | null;
   const dvBar = section.querySelector('#hero-date-venue-bar') as HTMLElement | null;
+  const mainRegisterBtn = section.querySelector('#hero-main-register-btn') as HTMLAnchorElement | null;
   const registerBtnText = section.querySelector('#hero-register-btn-text') as HTMLElement | null;
   const exploreBtnText = section.querySelector('#hero-explore-btn-text') as HTMLElement | null;
 
@@ -263,7 +270,13 @@ function setupHeroSegregation(section: HTMLElement): void {
       `;
       }
 
-      if (registerBtnText) registerBtnText.textContent = 'REGISTER (SPARKX 3.0 & 30-DAY SPRINT)';
+      if (mainRegisterBtn) {
+        mainRegisterBtn.href = EVENT_DETAILS.registrationUrl;
+        mainRegisterBtn.target = '_blank';
+        mainRegisterBtn.rel = 'noopener noreferrer';
+        mainRegisterBtn.classList.remove('btn-hero-closed');
+      }
+      if (registerBtnText) registerBtnText.textContent = 'REGISTER FOR PRO & NOVEL (NOW OPEN)';
       if (exploreBtnText) exploreBtnText.textContent = 'EXPLORE CHALLENGES';
     } else {
       if (floatingPrize) {
@@ -300,7 +313,13 @@ function setupHeroSegregation(section: HTMLElement): void {
       `;
       }
 
-      if (registerBtnText) registerBtnText.textContent = 'REGISTER (30-DAY AI CHALLENGE)';
+      if (mainRegisterBtn) {
+        mainRegisterBtn.href = '#/challenges';
+        mainRegisterBtn.removeAttribute('target');
+        mainRegisterBtn.removeAttribute('rel');
+        mainRegisterBtn.classList.add('btn-hero-closed');
+      }
+      if (registerBtnText) registerBtnText.textContent = '30-DAY CHALLENGE (REGISTRATION CLOSED)';
       if (exploreBtnText) exploreBtnText.textContent = 'EXPLORE 4 AI CHALLENGES';
     }
   };

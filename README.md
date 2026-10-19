@@ -73,5 +73,5 @@ npm run preview
 - **Patron:** Prof. (Dr.) K. Mallikharjuna Babu (Vice Chancellor, Galgotias University)
 - **Leadership:** Prof. (Dr.) Manish Raj (Dean, SoAI), Prof. (Dr.) Saurabh Singh (Associate Dean, AI & DS)
 - **International Experts:** Mr. Kothandarman Sridharan (CEO, CleverInsight), Prof. (Dr.) Ciro Rodriguez Rodriguez (UNMSM, Peru)
-- **Coordinator:** Dr. Vartika Puri (`vartika.puri@galgotiasuniversity.edu.in` | `+91 9560430101`)
-- **Official Registration Link:** [https://forms.gle/ci5yKTxQCprMmJj4A](https://forms.gle/ci5yKTxQCprMmJj4A)
+- **Official Registration Link (Pro & Novel Tracks):** [https://docs.google.com/forms/d/e/1FAIpQLSdrfo-Pqs0QmUjavc2qxiJm1gSWkrCLV1Co3geu_sRM_7jEPA/viewform](https://docs.google.com/forms/d/e/1FAIpQLSdrfo-Pqs0QmUjavc2qxiJm1gSWkrCLV1Co3geu_sRM_7jEPA/viewform)
+- **Track Status:** SparkX Pro & Novel Registration **OPEN** • 30-Day AI Innovation Challenge Registration **CLOSED**

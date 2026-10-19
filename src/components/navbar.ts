@@ -42,8 +42,8 @@ export function renderNavbar(): HTMLElement {
             </button>
           </div>
 
-          <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm register-btn-nav">
-            <span>Register Now</span>
+          <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm register-btn-nav" title="Register for SparkX Pro & Novel">
+            <span>Register (Pro & Novel)</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
           </a>
 
@@ -74,15 +74,15 @@ export function renderNavbar(): HTMLElement {
         <nav class="mobile-nav-links">
           <a href="#hero" class="mob-link" style="--delay: 1">Home</a>
           <a href="#about" class="mob-link" style="--delay: 2">About SparkX</a>
-          <a href="#pro-novel" class="mob-link" style="--delay: 3">Pro & Novel</a>
-          <a href="#thirty-day-challenge" class="mob-link" style="--delay: 4">30-Day Challenge</a>
+          <a href="#pro-novel" class="mob-link" style="--delay: 3">Pro & Novel (Open)</a>
+          <a href="#thirty-day-challenge" class="mob-link" style="--delay: 4">30-Day Challenge (Closed)</a>
           <a href="#timeline" class="mob-link" style="--delay: 5">Important Dates</a>
           <a href="#faq" class="mob-link" style="--delay: 6">Frequently Asked Questions</a>
         </nav>
 
         <div class="mobile-drawer-cta">
           <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full">
-            Register Now
+            Register for Pro & Novel (Now Open)
           </a>
         </div>
       </div>

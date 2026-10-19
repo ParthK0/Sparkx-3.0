@@ -180,6 +180,7 @@ function setupTimelineSegregation(
   const subheading = section.querySelector('#timeline-subheading') as HTMLElement;
   const nodesWrapper = section.querySelector('#timeline-nodes-wrapper') as HTMLElement;
   const metaGrid = section.querySelector('#timeline-meta-grid') as HTMLElement;
+  const bottomCta = section.querySelector('.timeline-bottom-cta') as HTMLElement;
 
   const { milestones } = dateState;
 
@@ -201,8 +202,8 @@ function setupTimelineSegregation(
         let title = m.title;
         let desc = m.description;
         if (idx === 0) {
-          title = 'Registration Opens';
-          desc = 'Online registration begins for Indian tracks (SparkX Pro 7th Sem & SparkX Novel 3rd/5th Sem) and the National 30-Day Innovation Sprint.';
+          title = 'Registration Open (Pro & Novel)';
+          desc = 'Online registration is now OPEN for Indian tracks (SparkX Pro 7th Sem & SparkX Novel 3rd/5th Sem). Registration for the 30-Day Innovation Sprint is now CLOSED.';
         } else if (idx === 1) {
           title = 'Registration & Concept Submission Deadline';
           desc = 'Indian teams must submit their team roster, challenge selection, and initial project concept/synopsis.';
@@ -219,7 +220,15 @@ function setupTimelineSegregation(
         return { ...m, title, description: desc };
       });
 
-      renderNodes(nodesWrapper, indianMilestones);
+      renderNodes(nodesWrapper, indianMilestones, true);
+
+      if (bottomCta) {
+        bottomCta.innerHTML = `
+          <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-md shadow-gold">
+            Register for Pro & Novel (Now Open) &rarr;
+          </a>
+        `;
+      }
 
       metaGrid.innerHTML = `
         <div class="timeline-day-card">
@@ -254,8 +263,8 @@ function setupTimelineSegregation(
         let title = m.title;
         let desc = m.description;
         if (idx === 0) {
-          title = 'Global Registration Opens';
-          desc = 'Online registration begins for international university teams in the Global 30-Day AI Innovation Challenge.';
+          title = '30-Day Sprint Registration Closed';
+          desc = 'Registration for the International 30-Day AI Innovation Challenge is now CLOSED. Registered teams are currently executing their sprint.';
         } else if (idx === 1) {
           title = 'Global Registration & AI Concept Deadline';
           desc = 'Foreign teams submit their roster (1–4 members), AI challenge selection, and architecture synopsis.';
@@ -272,7 +281,15 @@ function setupTimelineSegregation(
         return { ...m, title, description: desc };
       });
 
-      renderNodes(nodesWrapper, intlMilestones);
+      renderNodes(nodesWrapper, intlMilestones, false);
+
+      if (bottomCta) {
+        bottomCta.innerHTML = `
+          <a href="#/challenges" class="btn btn-secondary btn-md">
+            30-Day Registration Closed • View AI Blueprints &rarr;
+          </a>
+        `;
+      }
 
       metaGrid.innerHTML = `
         <div class="timeline-day-card">
@@ -297,7 +314,7 @@ function setupTimelineSegregation(
   appState.subscribe(update);
 }
 
-function renderNodes(wrapper: HTMLElement, items: EvaluatedMilestone[]): void {
+function renderNodes(wrapper: HTMLElement, items: EvaluatedMilestone[], isIndian: boolean = true): void {
   wrapper.innerHTML = items
     .map((item, index) => {
       const isFinished = item.computedStatus === 'completed';
@@ -338,10 +355,16 @@ function renderNodes(wrapper: HTMLElement, items: EvaluatedMilestone[]): void {
 
             ${isActive ? `
               <div class="active-node-cta">
-                <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="active-cta-btn">
-                  <span>Register Your Team Now</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
+                ${isIndian ? `
+                  <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="active-cta-btn">
+                    <span>Register for Pro & Novel (Now Open)</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                ` : `
+                  <span style="font-size: 0.78rem; font-weight: 700; color: #9f1239; background: #fff1f2; padding: 6px 12px; border-radius: 6px; border: 1px solid #fecdd3; display: inline-block;">
+                    🔴 30-Day Registration Closed
+                  </span>
+                `}
               </div>
             ` : ''}
           </div>

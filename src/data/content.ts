@@ -7,7 +7,10 @@ export const EVENT_DETAILS = {
   subTagline: 'From Intelligent Software to Real-World AI Systems',
   dates: '25 & 26 November 2026',
   countdownTarget: '2026-11-25T09:00:00+05:30',
-  registrationUrl: 'https://forms.gle/ci5yKTxQCprMmJj4A',
+  registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdrfo-Pqs0QmUjavc2qxiJm1gSWkrCLV1Co3geu_sRM_7jEPA/viewform',
+  proNovelRegistrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdrfo-Pqs0QmUjavc2qxiJm1gSWkrCLV1Co3geu_sRM_7jEPA/viewform',
+  isProNovelRegistrationOpen: true,
+  isThirtyDayRegistrationClosed: true,
   university: 'Galgotias University',
   department: 'Department of Artificial Intelligence & Data Science',
   school: 'Galgotias University',
@@ -57,7 +60,7 @@ export const TRACKS: Track[] = [
     subtitle: 'Advanced Project Proposal, Implementation & Research',
     targetGroup: '7th Semester (Indian Students Only)',
     focus: 'Proposal • Implementation • Validation • Research Orientation',
-    badge: 'Final-Year Capstone (India)',
+    badge: 'Final-Year Capstone (India) • Registration Open',
     description: 'The 7th Semester track is exclusively for Indian students, focusing on advanced research depth, structured validation, and deployable systems capable of evolving into publishable literature, patents, and commercial ventures.',
     expectedOutput: 'Implemented project with research component, experimental validation, and high prototype/publication potential.',
     components: [
@@ -76,7 +79,7 @@ export const TRACKS: Track[] = [
     subtitle: 'Novel Product-Based Innovation',
     targetGroup: '3rd & 5th Semester (Indian Students Only)',
     focus: 'Product Innovation • Novelty • Differentiation • UX',
-    badge: 'Intermediate Innovation (India)',
+    badge: 'Intermediate Innovation (India) • Registration Open',
     description: 'Exclusively for Indian students in 3rd & 5th semesters. Students focus on creating real products or hardware/software prototypes that demonstrate undeniable novelty, user-centric ergonomics, and market distinctiveness.',
     expectedOutput: 'Novel product/prototype with clear differentiated features and verified user utility.',
     components: [
@@ -95,7 +98,7 @@ export const TRACKS: Track[] = [
     subtitle: 'Open to Both Indian & International Students',
     targetGroup: 'UG/PG Category (Open to Indian & International)',
     focus: 'Predefined AI Challenges • Rapid Sprint • Deployed System',
-    badge: 'Open to India & Global',
+    badge: 'Open to India & Global • Registration Closed',
     description: 'A high-intensity sprint open to both Indian and international students across 4 global impact tracks. Indian teams present on campus while international teams present virtually.',
     expectedOutput: 'Functional end-to-end software/prototype integrating intelligent AI/ML models, seamless user flows, and real-time inference.',
     components: [
@@ -448,8 +451,8 @@ export const TIMELINE: TimelineMilestone[] = [
     startDate: '2026-09-25T00:00:00+05:30',
     endDate: '2026-10-10T23:59:59+05:30',
     phaseLabel: 'Phase 1: Registration Window',
-    title: 'Registration Opens',
-    description: 'Online registration begins for Indian tracks (Pro & Novel) and the Global 30-Day Innovation Challenge.',
+    title: 'Registration Open (Pro & Novel)',
+    description: 'Online registration is now OPEN for Indian tracks (SparkX Pro & Novel) using the official registration form. Registration for the 30-Day Innovation Challenge is now CLOSED.',
     status: 'active'
   },
   {
@@ -695,7 +698,7 @@ export const FAQS: FAQItem[] = [
   {
     category: 'general',
     question: 'What are the main dates?',
-    answer: 'Registrations open on 25 September 2026. Idea Submission deadline is 10 October 2026. The 30-Day Challenge sprint runs from 15 October to 15 November 2026. The Grand Exhibition and Final Evaluation take place on 25 & 26 November 2026.'
+    answer: 'Registrations for SparkX Pro & Novel are now OPEN via the official application form. Registration for the 30-Day Innovation Challenge is now CLOSED. The 30-Day Challenge sprint runs from 15 October to 15 November 2026. The Grand Exhibition and Final Evaluation take place on 25 & 26 November 2026.'
   },
   {
     category: 'general',
@@ -752,8 +755,8 @@ export const TRACK_DETAILS: TrackDetail[] = [
     targetGroup: '7th Semester',
     primaryFocus: 'Advanced Project Proposal, Implementation & Research',
     expectedOutput: 'Implemented project, research component, prototype/publication potential',
-    eligibility: 'Exclusively for Indian Students (Final-Year Capstone)',
-    audienceBadge: '🇮🇳 Indian Students Only · 7th Sem',
+    eligibility: 'Exclusively for Indian Students (Final-Year Capstone) — Registration Now Open',
+    audienceBadge: '🇮🇳 Indian Students Only · 7th Sem · 🟢 Registration Open',
     description: 'The 7th Semester track focuses on advanced project proposal, implementation, and research-oriented development. Students are evaluated on deep algorithmic rigor, research gap validation, and systems that can translate into patents, publications, and venture-backed prototypes.',
     highlights: [
       'Define a clear problem statement and clinical/industrial research motivation.',
@@ -786,8 +789,8 @@ export const TRACK_DETAILS: TrackDetail[] = [
     targetGroup: '3rd & 5th Semester',
     primaryFocus: 'Novel Product-Based Innovation',
     expectedOutput: 'Novel product/prototype with differentiated features',
-    eligibility: 'Exclusively for Indian Students (3rd & 5th Semesters)',
-    audienceBadge: '🇮🇳 Indian Students Only · 3rd & 5th Sem',
+    eligibility: 'Exclusively for Indian Students (3rd & 5th Semesters) — Registration Now Open',
+    audienceBadge: '🇮🇳 Indian Students Only · 3rd & 5th Sem · 🟢 Registration Open',
     description: 'The 3rd and 5th Semester track centers on novel product-based innovations. Students focus on building working hardware/software products that demonstrate clear originality, distinctive user experience, and practical real-world utility.',
     highlights: [
       'Demonstrate originality, creativity, and differentiation from existing solutions.',
@@ -819,8 +822,8 @@ export const TRACK_DETAILS: TrackDetail[] = [
     targetGroup: 'Open category of UG/PG students from National/International Institutions',
     primaryFocus: 'Participants work on predefined challenges across 4 mission-critical AI domains',
     expectedOutput: 'Functional research / product / prototype / application',
-    eligibility: 'Open to both Indian & International students worldwide',
-    audienceBadge: '🌍 Global & National · Open Category',
+    eligibility: 'Open to both Indian & International students worldwide — Registration Closed',
+    audienceBadge: '🌍 Global & National · Open Category · 🔴 Registration Closed',
     description: 'A high-velocity 30-day build sprint open to students globally. Participants build end-to-end intelligent systems targeting 4 predefined domain blueprints. Indian teams present on campus while international teams present 100% virtually.',
     highlights: [
       'Focus on 4 Predefined Problem Statements: Event Planning, Career Readiness, Virtual Lab SPOC, University Copilot.',

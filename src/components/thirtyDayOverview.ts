@@ -56,12 +56,24 @@ export function render30DayChallengeOverview(): HTMLElement {
         </div>
       </div>
 
-      <!-- Registration CTA -->
-      <div class="td-register-cta">
-        <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg td-register-btn">
-          <span>🚀 Register Now for 30-Day Challenge</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
-        </a>
+      <!-- Registration Status: Closed -->
+      <div class="td-registration-status-box">
+        <div class="td-status-badge-wrap">
+          <span class="td-closed-badge">🔴 REGISTRATION CLOSED</span>
+          <span class="td-closed-sub">30-Day AI Innovation Challenge</span>
+        </div>
+        <p class="td-closed-text">
+          Registrations for the 30-Day AI Innovation Challenge are now officially closed. Registered participants have commenced sprint execution across the 4 AI problem domains. All problem blueprints, engineering modules, and jury rubrics remain fully accessible below for team reference.
+        </p>
+        <div class="td-closed-actions">
+          <a href="#/challenges" class="btn btn-outline-theme btn-sm">
+            <span>Explore 4 Problem Domain Blueprints</span>
+            <span>&rarr;</span>
+          </a>
+          <a href="#/evaluation" class="btn btn-secondary btn-sm">
+            <span>View Jury Evaluation Rubric</span>
+          </a>
+        </div>
       </div>
 
       <!-- 4 Problem Domain Cards Grid -->

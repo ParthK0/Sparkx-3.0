@@ -6,7 +6,7 @@
    ========================================================================== */
 
 import { appState } from '../state';
-import { TRACK_DETAILS, CHALLENGES, PRIZE_TABLE_DATA } from '../data/content';
+import { TRACK_DETAILS, CHALLENGES, PRIZE_TABLE_DATA, EVENT_DETAILS } from '../data/content';
 import { Audience } from '../types';
 
 export function renderChallengesOverview(): HTMLElement {
@@ -133,7 +133,7 @@ function setupOverviewInteractivity(section: HTMLElement): void {
         <span class="section-badge badge-gold">🇮🇳 Indian Innovation Challenges</span>
         <h2 class="section-heading">Program Challenges & AI Overview</h2>
         <p class="section-subheading">
-          Indian students can participate in SparkX 3.0 (7th Semester Pro, 3rd & 5th Semester Novel) and the National 30-Day Innovation Sprint.
+          SparkX 3.0 Pro & Novel registrations are now <strong>OPEN</strong>. 30-Day Innovation Sprint registration is now <strong>CLOSED</strong>.
         </p>
       `;
 
@@ -145,12 +145,20 @@ function setupOverviewInteractivity(section: HTMLElement): void {
       grid.innerHTML = TRACK_DETAILS.map((track, idx) => {
         const accentClass = idx === 0 ? 'card-accent-gold' : idx === 1 ? 'card-accent-emerald' : 'card-accent-blue';
         const pillClass = idx === 0 ? 'pill-gold' : idx === 1 ? 'pill-emerald' : 'pill-blue';
+        const isClosed = track.id === 'challenge30';
 
         return `
           <div class="ch-ov-card ${accentClass}">
             <div class="ch-ov-card-head">
               <span class="ch-ov-number">${track.sectionNumber}</span>
               <span class="ch-ov-pill ${pillClass}">${track.targetGroup}</span>
+            </div>
+
+            <div style="margin-bottom: 8px;">
+              ${isClosed 
+                ? `<span style="font-size: 0.72rem; font-weight: 800; background: #fff1f2; color: #e11d48; border: 1px solid #fecdd3; padding: 3px 8px; border-radius: 999px;">🔴 REGISTRATION CLOSED</span>`
+                : `<span style="font-size: 0.72rem; font-weight: 800; background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; padding: 3px 8px; border-radius: 999px;">🟢 REGISTRATION OPEN</span>`
+              }
             </div>
 
             <h3 class="ch-ov-title">${track.name}</h3>
@@ -174,10 +182,18 @@ function setupOverviewInteractivity(section: HTMLElement): void {
             </div>
 
             <div class="ch-ov-footer">
-              <a href="#/challenges" class="btn btn-secondary w-full">
-                <span>View Challenge Specifications</span>
-                <span>&rarr;</span>
+              <a href="#/tracks" class="btn btn-secondary w-full">
+                <span>View Challenge Specifications &rarr;</span>
               </a>
+              ${!isClosed ? `
+                <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm w-full" style="margin-top: 8px; font-weight: 700;">
+                  <span>Register Now (Open) &rarr;</span>
+                </a>
+              ` : `
+                <div style="margin-top: 8px; text-align: center; font-size: 0.78rem; font-weight: 700; color: #9f1239; background: #fff1f2; padding: 6px; border-radius: 6px; border: 1px solid #fecdd3;">
+                  Registration Closed
+                </div>
+              `}
             </div>
           </div>
         `;
@@ -186,10 +202,13 @@ function setupOverviewInteractivity(section: HTMLElement): void {
     } else {
       // International Header
       header.innerHTML = `
-        <span class="section-badge badge-blue">🌍 Global 30-Day Innovation Challenge</span>
+        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 8px;">
+          <span class="section-badge badge-blue">🌍 Global 30-Day Innovation Challenge</span>
+          <span class="section-badge" style="background: #fee2e2; color: #991b1b; border: 1px solid #fecaca;">🔴 Registration Closed</span>
+        </div>
         <h2 class="section-heading">4 Mission-Critical AI Problem Domains</h2>
         <p class="section-subheading">
-          Open to students worldwide. Build functional AI prototypes 100% virtually across 4 predefined domain blueprints.
+          Registration for the 30-Day Innovation Challenge is now closed. Registered teams are building their functional AI prototypes 100% virtually across 4 predefined domain blueprints.
         </p>
       `;
 

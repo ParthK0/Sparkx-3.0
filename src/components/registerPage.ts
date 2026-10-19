@@ -33,25 +33,55 @@ export function renderRegisterPage(): HTMLElement {
       <!-- Main Portal Card -->
       <div class="register-portal-card">
         <div class="portal-badge-row">
-          <span class="portal-badge badge-active">Official Registration Portal</span>
+          <span class="portal-badge badge-success">🟢 Pro & Novel: Registration OPEN</span>
+          <span class="portal-badge badge-closed">🔴 30-Day Challenge: Registration CLOSED</span>
           <span class="portal-badge badge-dates">Event Dates: ${EVENT_DETAILS.dates}</span>
         </div>
 
-        <h1 class="portal-title">Register for SparkX 3.0 Beyond Boundaries</h1>
+        <h1 class="portal-title">SparkX 3.0 Registration Portal</h1>
         <p class="portal-subtitle">
-          Submit your team and project proposal to compete in the International Project Innovation Challenge at Galgotias University.
+          Official registration and application gateway for SparkX 3.0 Beyond Boundaries at Galgotias University.
         </p>
 
-        <!-- Primary Action Box -->
-        <div class="portal-cta-box">
+        <!-- Track 1 & 2: Pro & Novel - REGISTRATION OPEN -->
+        <div class="portal-cta-box portal-open-box">
           <div class="cta-box-text">
-            <h3>Ready to submit your application?</h3>
-            <p>Registration is managed via the official Galgotias University SparkX 3.0 application system.</p>
+            <div class="portal-track-status-head">
+              <span class="portal-status-pill open-pill">🟢 NOW OPEN</span>
+              <span class="portal-track-label">Track 3.1 (Pro) & Track 3.2 (Novel)</span>
+            </div>
+            <h3>SparkX 3.0 — Pro & Novel Registration</h3>
+            <p>
+              Registration is now officially <strong>OPEN</strong> for Indian students participating in <strong>SparkX Pro</strong> (7th Semester Capstone) and <strong>SparkX Novel</strong> (3rd & 5th Semester Product Innovation). Both tracks use this unified official Google Form.
+            </p>
           </div>
           <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg portal-main-cta" id="reg-direct-link">
-            <span>Proceed to Official Registration Form</span>
+            <span>Proceed to Pro & Novel Form</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
           </a>
+        </div>
+
+        <!-- Track 3: 30-Day Innovation Challenge - REGISTRATION CLOSED -->
+        <div class="portal-closed-box">
+          <div class="closed-box-text">
+            <div class="portal-track-status-head">
+              <span class="portal-status-pill closed-pill">🔴 REGISTRATION CLOSED</span>
+              <span class="portal-track-label">Track 3.3 (Global 30-Day Sprint)</span>
+            </div>
+            <h3>30-Day AI Innovation Challenge</h3>
+            <p>
+              Registrations for the 30-Day AI Innovation Challenge are now officially closed. Registered national and international teams are currently building their AI prototypes. All problem blueprints, engineering modules, and jury rubrics remain fully accessible below for reference.
+            </p>
+          </div>
+          <div class="closed-box-actions">
+            <a href="#/challenges" class="btn btn-outline-theme btn-sm">
+              <span>View Problem Blueprints</span>
+              <span>&rarr;</span>
+            </a>
+            <a href="#/evaluation" class="btn btn-secondary btn-sm">
+              <span>Evaluation Rubric</span>
+            </a>
+          </div>
         </div>
 
         <!-- Registration Essentials Grid -->
@@ -67,16 +97,16 @@ export function renderRegisterPage(): HTMLElement {
           <div class="portal-info-item">
             <div class="info-icon">🇮🇳</div>
             <div class="info-content">
-              <h4>Indian Participants</h4>
-              <p>Eligible for SparkX 3.0 (Pro & Novel semester tracks) and the 30-Day Innovation Sprint with on-campus physical showcase.</p>
+              <h4>Indian Participants (Pro & Novel)</h4>
+              <p><strong>Registration Open:</strong> SparkX Pro (7th Sem) and Novel (3rd & 5th Sem) on-campus physical showcase.</p>
             </div>
           </div>
 
           <div class="portal-info-item">
             <div class="info-icon">🌍</div>
             <div class="info-content">
-              <h4>International Participants</h4>
-              <p>Participate exclusively in the 30-Day Innovation Challenge (SparkX 3.0 is for Indian students only) with 100% online showcase.</p>
+              <h4>30-Day Innovation Challenge</h4>
+              <p><strong>Registration Closed:</strong> Sprint in progress for registered Indian & International teams (100% online showcase for foreign teams).</p>
             </div>
           </div>
 
@@ -91,8 +121,8 @@ export function renderRegisterPage(): HTMLElement {
 
         <!-- Direct Form URL Fallback (For firewalls / restrictions) -->
         <div class="portal-fallback-box">
-          <h4>Having trouble with the button?</h4>
-          <p>Copy and paste this direct form link into your browser:</p>
+          <h4>Direct Registration Link (Pro & Novel Tracks)</h4>
+          <p>Copy and paste this official Google Form URL into your browser:</p>
           <div class="portal-url-copy">
             <input type="text" readonly value="${EVENT_DETAILS.registrationUrl}" id="copy-url-input" class="portal-copy-input" />
             <button type="button" class="btn btn-secondary btn-sm" id="copy-url-btn">Copy Link</button>

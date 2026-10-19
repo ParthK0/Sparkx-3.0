@@ -5,6 +5,8 @@
    Deep link leads to dedicated portal for comprehensive blueprints and rubrics.
    ========================================================================== */
 
+import { EVENT_DETAILS } from '../data/content';
+
 export function renderProNovelOverview(): HTMLElement {
   const section = document.createElement('section');
   section.className = 'pro-novel-section section-padding';
@@ -72,10 +74,17 @@ export function renderProNovelOverview(): HTMLElement {
             </div>
           </div>
 
-          <!-- Registration Notice -->
-          <div class="pn-registration-notice">
-            <span class="pn-reg-icon">📅</span>
-            <span class="pn-reg-text">Registration opens on <strong>15 Oct</strong></span>
+          <!-- Registration Open Notice & Action -->
+          <div class="pn-registration-notice pn-registration-open">
+            <div class="pn-reg-status-cluster">
+              <span class="pn-live-pulse-dot"></span>
+              <span class="pn-reg-status-badge">REGISTRATION NOW OPEN</span>
+            </div>
+            <p class="pn-reg-subtext">Apply now for SparkX 3.0 Pro Track (7th Semester)</p>
+            <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm pn-register-btn-direct">
+              <span>Register for Pro Track</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+            </a>
           </div>
 
           <div class="pn-card-footer">
@@ -135,10 +144,17 @@ export function renderProNovelOverview(): HTMLElement {
             </div>
           </div>
 
-          <!-- Registration Notice -->
-          <div class="pn-registration-notice">
-            <span class="pn-reg-icon">📅</span>
-            <span class="pn-reg-text">Registration opens on <strong>15 Oct</strong></span>
+          <!-- Registration Open Notice & Action -->
+          <div class="pn-registration-notice pn-registration-open">
+            <div class="pn-reg-status-cluster">
+              <span class="pn-live-pulse-dot"></span>
+              <span class="pn-reg-status-badge">REGISTRATION NOW OPEN</span>
+            </div>
+            <p class="pn-reg-subtext">Apply now for SparkX 3.0 Novel Track (3rd & 5th Semester)</p>
+            <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm pn-register-btn-direct">
+              <span>Register for Novel Track</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+            </a>
           </div>
 
           <div class="pn-card-footer">

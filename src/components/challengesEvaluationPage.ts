@@ -169,10 +169,18 @@ export function renderChallengesEvaluationPage(
                     ` : ''}
                   </div>
 
-                  <a href="#/register" class="btn btn-primary btn-sm">
-                    <span>Register for Track ${t.sectionNumber}</span>
-                    <span>&rarr;</span>
-                  </a>
+                  ${t.id === 'challenge30' ? `
+                    <div class="track-status-action-group">
+                      <span class="track-closed-pill">🔴 Registration Closed</span>
+                      <a href="#/challenges" class="btn btn-secondary btn-sm">
+                        <span>View AI Blueprints &rarr;</span>
+                      </a>
+                    </div>
+                  ` : `
+                    <a href="${EVENT_DETAILS.registrationUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                      <span>Register for Track ${t.sectionNumber} (Now Open) &rarr;</span>
+                    </a>
+                  `}
                 </div>
               </article>
             `).join('')}
@@ -226,10 +234,13 @@ export function renderChallengesEvaluationPage(
         <!-- ============================================================ -->
         <section id="pane-challenges" class="portal-tab-pane ${activeTab === 'challenges' ? 'active' : ''}" role="tabpanel">
           <div class="portal-hero-header">
-            <span class="portal-hero-badge badge-blue">30-Day Innovation Challenge • Annexure Blueprints</span>
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px;">
+              <span class="portal-hero-badge badge-blue">30-Day Innovation Challenge • Annexure Blueprints</span>
+              <span class="portal-hero-badge" style="background: #fee2e2; color: #991b1b; border: 1px solid #fecaca;">🔴 Registration Closed</span>
+            </div>
             <h1 class="portal-hero-title">AI Challenge Problem Statements</h1>
             <p class="portal-hero-lead">
-              Four predefined mission-critical engineering challenges for the 30-Day Sprint (01 – 30 Oct 2026).
+              Four predefined mission-critical engineering challenges for the 30-Day Sprint (15 Oct – 15 Nov 2026).
               Teams select one domain and build an end-to-end working prototype with integrated intelligence.
             </p>
           </div>
